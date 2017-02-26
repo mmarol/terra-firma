@@ -1,0 +1,144 @@
+@font-face {
+  font-family: 'Modern Pictograms Pro';
+  font-weight: 100;
+  src: url("../fonts/modernpics_2_268e-webfont.woff2") format('woff2'),
+  url("../fonts/modernpics_2_268e-webfont.woff") format('woff'),
+  url("../fonts/modernpics_2_268e-webfont.eot") format('eot'),;
+}
+
+%sans-serif {
+
+}
+
+%serif {
+
+}
+
+%antialiased {
+  -webkit-font-smoothing:antialiased;
+  -moz-font-smoothing:antialiased;
+  font-smoothing:antialiased;
+}
+
+%pictographic {
+  font-family: 'Modern Pictograms Pro';
+  line-height: 1;
+}
+
+%all-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+%inline-link {
+  border-bottom: 1px solid;
+
+  &:hover {
+
+  }
+}
+
+
+/* --------------------------------------------------------
+
+Remove the unit of a length
+@param {Number} $number - Number to remove unit from
+@return {Number} - Unitless number
+
+-------------------------------------------------------- */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+/* --------------------------------------------------------
+
+Variable Map Lists for the text-size mixin
+
+-------------------------------------------------------- */
+
+$small: (
+  base: (12px, 18px),
+  small: (14px, 18px),
+  medium: (14px, 18px),
+  large: (14px, 18px),
+  huge: (16px, 24px)
+) !default;
+
+$regular: (
+  base: (16px, 24px),
+  small: (16px, 24px),
+  medium: (16px, 24px),
+  large: (16px, 24px),
+  huge: (22px, 30px)
+) !default;
+
+$medium: (
+  base: (16px, 24px),
+  small: (24px, 30px),
+  medium: (24px, 30px),
+  large: (28px, 36px),
+  huge: (28px, 36px)
+) !default;
+
+$large: (
+  base: (24px, 30px),
+  small: (28px, 36px),
+  medium: (28px, 36px),
+  large: (36px, 42px),
+  huge: (36px, 42px)
+) !default;
+
+$huge: (
+  base: (28px, 36px),
+  small: (36px, 42px),
+  medium: (36px, 42px),
+  large: (48px, 54px),
+  huge: (48px, 54px)
+) !default;
+
+$massive: (
+  base: (36px, 42px),
+  small: (48px, 54px),
+  medium: (48px, 54px),
+  large: (54px, 60px),
+  huge: (54px, 60px)
+) !default;
+
+
+/* --------------------------------------------------------
+Mixin for font-size and line-height definition
+  Usage Example: @include text-size($large);
+
+If the mixin is called and values are not entered, it will default to regular font-size
+-------------------------------------------------------- */
+
+@mixin text-size($fs-map: $regular, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $keyNumber in $fs-map {
+
+    @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+    } @else {
+      @warn "Breakpoints have not been defined correctly";
+    }
+
+    // @debug $fs-breakpoint;
+    // @debug $keyNumber;
+
+    $fontSize: nth($keyNumber, 1);
+    $leading: nth($keyNumber, 2);
+    $leading-unitless: calc(#{strip-unit($leading)} / #{strip-unit($fontSize)});
+
+    // @debug $fontSize;
+    // @debug $leading;
+    // @debug $leading-unitless;
+
+    @include respond-above($fs-breakpoint) {
+      font-size: $fontSize;
+      line-height: $leading-unitless;
+    };
+  }
+}
