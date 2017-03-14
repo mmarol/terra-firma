@@ -1,0 +1,34 @@
+{% extends "templates/partials/base.html" %}
+
+{% set projects = cms.projects %}
+{% set projectTypes = cms.projecttypes %}
+{% set clients = cms.clients %}
+
+{% block title %}{% parent %} - Projects{% endblock %}
+
+{% block content %}
+
+  <h1 class="page__title">Our work</h1>
+
+  {% for project in projects %}
+    {% set projectCategory = project.project_type %}
+    {% if loop.first %}
+      <section class="projects">
+        <div class="projects__type-container">
+          {% for projectType in projectTypes %}
+            <a data-project-type-query="{{ projectType.name|lower }}" class="project__type">{{ projectType.name }}</a>
+          {% endfor %}
+        </div>
+        <div class="project__list">
+    {% endif %}
+          <a href="{{ url(project) }}" class="project__item" data-project-type-target="{{ projectCategory.name|lower }}">
+            <img src="{{ project.representative_image|imageSize(600) }}" alt="" class="project__thumbnail-image">
+            <h3 class="project__thumbnail-title">{{ project.name }}</h3>
+          </a>
+    {% if loop.last %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

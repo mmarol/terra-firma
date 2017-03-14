@@ -1,0 +1,19 @@
+{% extends "templates/partials/base.html" %}
+
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
+{% block content %}
+
+  <section class="media">
+      <div class="media__item">
+        {% if item.representative_image %}
+          <img src="{{ item.representative_image|imageSize(600) }}" alt="" class="article__thumbnail-image">
+        {% endif %}
+        <h3 class="article__thumbnail-name">{{ item.name }}</h3>
+        <h4 class="article__thumbnail-date">{{ item.date|date('M Y') }}</h4>
+        <div class="article__description">{{ item.description|safe }}</div>
+        <h5 class="article__pdf-link"><a href="{{ item.pdf.url }}" target="_blank">Download the PDF</a></h5>
+      </div>
+  </section>
+
+{% endblock %}

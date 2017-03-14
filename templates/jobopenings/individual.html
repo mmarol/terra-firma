@@ -1,0 +1,16 @@
+{% extends "templates/partials/base.html" %}
+
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
+{% block content %}
+  
+  <section class="jobs">
+    <div class="jobs__item">
+      <h3 class="jobs__name">{{ item.name }}</h3>
+      <div class="jobs__description">{{ item.description|safe }}</div>
+      <div class="jobs__description">{{ item.requirements|safe }}</div>
+      <div class="jobs__description"><span>Location:</span> {{ item.location }}</div>
+    </div>
+  </section>
+  
+{% endblock %}

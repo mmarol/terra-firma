@@ -1,0 +1,51 @@
+{% extends "templates/partials/base.html" %}
+
+{% set contact = cms.contact %}
+
+{% block title %}{% parent %} - {{ contact.name }}{% endblock %}
+
+{% block content %}
+
+  <h1 class="page__title">{{ contact.name }}</h1>
+  <div class="page__description">{{ contact.description|safe }}</div>
+
+  {% if contact.locations %}
+    <section class="locations">
+      <h2 class="section__name locations__title">Our Locations</h2>
+      {% for location in contact.locations %}
+        <div class="locations__item">
+          <h3 class="locations__name">{{ location.name }}</h3>
+          <div class="locations__address">{{ location.address|safe }}</div>
+          {% if location.email %}
+            <p class="locations__email"><a href="mailto:{{ location.email }}">{{ location.email }}</a></p>
+          {% endif %}
+          {% if location.phone_number_1 %}
+            <p class="locations__phone"><a href="tel:{{ location.phone_number_1 }}">{{ location.phone_number_1 }}</a></p>
+          {% endif %}
+          {% if location.phone_number_2 %}
+            <p class="locations__phone"><a href="tel:{{ location.phone_number_2 }}">{{ location.phone_number_2 }}</a></p>
+          {% endif %}
+          {% if location.fax_number %}
+            <p class="locations__fax">{{ location.fax_number }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  {% if contact.job_openings %}
+    <section class="jobs">
+      <h2 class="section__name jobs__title">Join our team</h2>
+      <div class="jobs__description">{{ contact.work_environment|safe }}</div>
+      {% for job in contact.job_openings %}
+        <div class="jobs__item">
+          <h3 class="jobs__name"><a href="{{ url(job) }}">{{ job.name }}</a></h3>
+          <div class="jobs__description">{{ job.description|safe }}</div>
+          <div class="jobs__description">{{ job.requirements|safe }}</div>
+          <div class="jobs__description"><span>Location:</span> {{ job.location }}</div>
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+{% endblock %}

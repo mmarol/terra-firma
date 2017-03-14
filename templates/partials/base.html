@@ -37,16 +37,21 @@
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
       <![endif]-->
 
-      {% block header %}
-        {% include "templates/partials/header.html" %}
-      {% endblock %}
+      <header>
+        {% block header %}
+          {% include "templates/partials/header.html" %}
+        {% endblock %}
+      </header>
 
-      {# By default, your inner pages will load into this block. #}
-      {% block content %}{% endblock %}
+      <main>
+        {% block content %}{% endblock %}
+      </main>
 
-      {% block footer %}
-        {% include "templates/partials/footer.html" %}
-      {% endblock %}
+      <footer>
+        {% block footer %}
+          {% include "templates/partials/footer.html" %}
+        {% endblock %}
+      </footer>
 
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
