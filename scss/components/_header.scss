@@ -1,9 +1,15 @@
-.header {
-
+.nav {
+  padding: 0 1rem;
+  @extend %sans-serif;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
 }
 
-.nav {
-
+.nav__container {
+  position: fixed;
+  // left: 0;
+  // top: 0;
 }
 
 .nav--up {
@@ -14,23 +20,43 @@
 
 }
 
-.nav__container {
-
-}
-
-.nav__item {
+.nav__item-container {
 
 }
 
 .nav__logo {
-
+  line-height: 0;
   svg {
-
+    padding: 1rem 0;
+    max-width: 100%;
+    width: auto;
+    height: 5rem;
   }
 
   path {
 
   }
+
+  .logo__mark {
+    fill: $pop-color;
+  }
+
+  .logo__text {
+    fill: $text-color;
+  }
+
+}
+
+.nav__header {
+
+}
+
+.nav__list {
+
+}
+
+.nav__item {
+
 }
 
 .nav__item--activator {

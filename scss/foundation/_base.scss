@@ -4,11 +4,26 @@ html {
 }
 
 body {
+  @include text-size($regular);
+  @extend %serif;
+  color: $text-color;
+  display: flex;
+  flex-wrap: wrap;
+}
 
+header {
+  flex-basis: 15%;
+  position: relative;
 }
 
 main {
+  flex-basis: 85%;
+  margin-top: 7rem;
+  z-index: 100;
+}
 
+footer {
+  flex-basis: 85%;
 }
 
 h1 {
@@ -102,7 +117,7 @@ ul {
 
 div,
 img {
-
+  width: 100%;
 }
 
 iframe {

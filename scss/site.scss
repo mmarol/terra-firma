@@ -10,5 +10,8 @@
 
 //Global components that exist on multiple pages, but not necessarily all pages
 @import "components/header";
+@import "components/page";
+@import "components/projects";
+@import "components/media";
 
 //Page specific modules, which hopefully can distill down even further into components.

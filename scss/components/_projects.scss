@@ -1,0 +1,23 @@
+.projects {
+
+}
+
+.projects__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.projects__item {
+  flex-basis: calc((100% / 3) - 0.5rem);
+  margin-bottom: 1rem;
+}
+
+.projects__thumbnail-image {
+
+}
+
+.projects__thumbnail-title {
+  @include text-size($regular);
+  @extend %sans-serif;
+}

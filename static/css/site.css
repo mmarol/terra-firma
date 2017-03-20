@@ -1,0 +1,490 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Modern Pictograms Pro';
+  font-weight: 100;
+  src: url("../fonts/modernpics_2_268e-webfont.woff2") format("woff2"), url("../fonts/modernpics_2_268e-webfont.woff") format("woff"), url("../fonts/modernpics_2_268e-webfont.eot") format("eot");
+}
+.nav, .page__title, .section__name, .projects__thumbnail-title, .article__thumbnail-name, .article__thumbnail-date {
+  font-family: 'PT Sans', sans-serif;
+}
+
+body {
+  font-family: 'PT Serif', serif;
+}
+
+/* --------------------------------------------------------
+
+Remove the unit of a length
+@param {Number} $number - Number to remove unit from
+@return {Number} - Unitless number
+
+-------------------------------------------------------- */
+/* --------------------------------------------------------
+
+Variable Map Lists for the text-size mixin
+
+-------------------------------------------------------- */
+/* --------------------------------------------------------
+Mixin for font-size and line-height definition
+  Usage Example: @include text-size($large);
+
+If the mixin is called and values are not entered, it will default to regular font-size
+-------------------------------------------------------- */
+/* Layout */
+body {
+  margin: 0;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  display: block;
+}
+
+/* Text */
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: inherit;
+}
+
+dl,
+dd,
+ol,
+ul,
+p,
+address,
+blockquote,
+figure,
+figcaption,
+pre {
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+pre {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 0.75em;
+}
+
+sub,
+sup {
+  position: relative;
+  vertical-align: baseline;
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content */
+img {
+  border: 0;
+}
+
+/* Forms */
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  color: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-appearance: textfield;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0;
+}
+
+th {
+  vertical-align: bottom;
+}
+
+td {
+  vertical-align: top;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  color: #505050;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media screen and (min-width: 1px) {
+  body {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  body {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  body {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  body {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  body {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
+}
+
+header {
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
+  position: relative;
+}
+
+main {
+  -ms-flex-preferred-size: 85%;
+      flex-basis: 85%;
+  margin-top: 7rem;
+  z-index: 100;
+}
+
+footer {
+  -ms-flex-preferred-size: 85%;
+      flex-basis: 85%;
+}
+
+a {
+  display: inline;
+}
+p a {
+  display: inline;
+}
+
+strong {
+  font-weight: bold;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+cite:before {
+  content: "— ";
+}
+
+div,
+img {
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+}
+
+.nav {
+  padding: 0 1rem;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+}
+
+.nav__container {
+  position: fixed;
+}
+
+.nav__logo {
+  line-height: 0;
+}
+.nav__logo svg {
+  padding: 1rem 0;
+  max-width: 100%;
+  width: auto;
+  height: 5rem;
+}
+.nav__logo .logo__mark {
+  fill: #b7f622;
+}
+.nav__logo .logo__text {
+  fill: #505050;
+}
+
+.page__hero {
+  margin-bottom: 2rem;
+}
+
+.page__title {
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 1px) {
+  .page__title {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 513px) {
+  .page__title {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+@media screen and (min-width: 769px) {
+  .page__title {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .page__title {
+    font-size: 36px;
+    line-height: calc(42 / 36);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .page__title {
+    font-size: 36px;
+    line-height: calc(42 / 36);
+  }
+}
+
+.page__description {
+  margin-bottom: 2rem;
+}
+
+.section__name {
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 1px) {
+  .section__name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .section__name {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 769px) {
+  .section__name {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .section__name {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .section__name {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+
+.projects__list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+}
+
+.projects__item {
+  -ms-flex-preferred-size: calc((100% / 3) - 0.5rem);
+      flex-basis: calc((100% / 3) - 0.5rem);
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1px) {
+  .projects__thumbnail-title {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .projects__thumbnail-title {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  .projects__thumbnail-title {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .projects__thumbnail-title {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .projects__thumbnail-title {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
+}
+
+.media__list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+}
+
+.media__item {
+  -ms-flex-preferred-size: calc((100% / 3) - 0.5rem);
+      flex-basis: calc((100% / 3) - 0.5rem);
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1px) {
+  .article__thumbnail-name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .article__thumbnail-name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  .article__thumbnail-name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .article__thumbnail-name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .article__thumbnail-name {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
+}
+
+.article__thumbnail-date {
+  font-weight: normal;
+}
+@media screen and (min-width: 1px) {
+  .article__thumbnail-date {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .article__thumbnail-date {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  .article__thumbnail-date {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .article__thumbnail-date {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .article__thumbnail-date {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
+}
+
+/*# sourceMappingURL=site.css.map */

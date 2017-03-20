@@ -5,9 +5,10 @@
 {% set media = cms.mediacoverage | slice(0, 6) %}
 
 {% block content %}
-  <script>
-    console.log({{home|json|safe}});
-  </script>
+
+  <div class="page__hero">
+    <img src="{{ home.hero_image|imageSize(1200) }}" alt="">
+  </div>
 
   <h1 class="page__title">{{ home.name }}</h1>
   <div class="page__description">{{ home.short_description|safe }}</div>
@@ -16,14 +17,20 @@
     <section class="projects">
       <h2 class="section__name">Recent projects</h2>
       {% for project in projects %}
-        <div class="projects__item">
-          <a href="{{ url(project) }}">
-            {% if project.representative_image %}
-              <img src="{{ project.representative_image|imageSize(300) }}" alt="" class="projects__thumbnail-image">
-            {% endif %}
-            <h3 class="project__thumbnail-title">{{ project.name }}</h3>
-          </a>
-        </div>
+        {% if loop.first %}
+          <div class="projects__list">
+        {% endif %}
+            <div class="projects__item">
+              <a href="{{ url(project) }}">
+                {% if project.representative_image %}
+                  <img src="{{ project.representative_image|imageSize(300) }}" alt="" class="projects__thumbnail-image">
+                {% endif %}
+                <h3 class="projects__thumbnail-title">{{ project.name }}</h3>
+              </a>
+            </div>
+        {% if loop.last %}
+          </div>
+        {% endif %}
       {% endfor %}
     </section>
   {% endif %}
@@ -32,15 +39,21 @@
     <section class="media">
       <h2 class="section__name">In the media</h2>
       {% for article in media %}
-        <div class="media__item">
-          <a href="{{ url(article) }}">
-            {% if article.representative_image %}
-              <img src="{{ article.representative_image|imageSize(300) }}" alt="" class="article__thumbnail-image">
-            {% endif %}
-            <h3 class="article__thumbnail-name">{{ article.name }}</h3>
-            <h4 class="article__thumbnail-date">{{ article.date|date('M Y') }}</h4>
-          </a>
-        </div>
+        {% if loop.first %}
+          <div class="media__list">
+        {% endif %}
+            <div class="media__item">
+              <a href="{{ url(article) }}">
+                {% if article.representative_image %}
+                  <img src="{{ article.representative_image|imageSize(300) }}" alt="" class="article__thumbnail-image">
+                {% endif %}
+                <h3 class="article__thumbnail-name">{{ article.name }}</h3>
+                <h4 class="article__thumbnail-date">{{ article.date|date('M Y') }}</h4>
+              </a>
+            </div>
+        {% if loop.last %}
+          </div>
+        {% endif %}
       {% endfor %}
     </section>
   {% endif %}

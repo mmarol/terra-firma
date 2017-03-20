@@ -1,0 +1,19 @@
+.page__hero {
+  margin-bottom: 2rem;
+}
+
+.page__title {
+  @include text-size($large);
+  @extend %sans-serif;
+  margin-bottom: 1rem;
+}
+
+.page__description {
+  margin-bottom: 2rem;
+}
+
+.section__name {
+  @include text-size($medium);
+  @extend %sans-serif;
+  margin-bottom: 1rem;
+}
