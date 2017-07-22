@@ -4,11 +4,11 @@
   font-weight: 100;
   src: url("../fonts/modernpics_2_268e-webfont.woff2") format("woff2"), url("../fonts/modernpics_2_268e-webfont.woff") format("woff"), url("../fonts/modernpics_2_268e-webfont.eot") format("eot");
 }
-.nav, .page__hero-title, .page__title, .section__name, .projects__thumbnail-title, .article__thumbnail-name, .article__thumbnail-date {
+.nav, .page__hero-title, .page__title, .section__name, .people__name, .people__designations, .awards__name, .awards__year, .projects__thumbnail-title, .article__thumbnail-name, .article__thumbnail-date {
   font-family: 'PT Sans', sans-serif;
 }
 
-body {
+body, .people__info, .awards__notes, .awards__project {
   font-family: 'PT Serif', serif;
 }
 
@@ -334,6 +334,9 @@ iframe {
   width: 100%;
   overflow: auto;
 }
+.page__main.padded section:first-child {
+  padding-top: 4rem;
+}
 
 .page__hero {
   position: relative;
@@ -478,6 +481,106 @@ iframe {
     font-size: 28px;
     line-height: calc(36 / 28);
   }
+}
+
+.people {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.people__title {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.people__item {
+  -ms-flex-preferred-size: calc(100% / 6);
+      flex-basis: calc(100% / 6);
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 1px) {
+  .people__item {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .people__item {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  .people__item {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .people__item {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .people__item {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
+}
+
+.people__name {
+  font-weight: bold;
+}
+
+.people__designations {
+  font-weight: normal;
+}
+
+.people__info {
+  font-style: italic;
+}
+.people__info a {
+  border-bottom: 1px solid #b7f622;
+}
+
+.awards {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.awards__title {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.awards__item {
+  -ms-flex-preferred-size: calc(100% / 4);
+      flex-basis: calc(100% / 4);
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.awards__name {
+  font-weight: bold;
+}
+
+.awards__year {
+  font-weight: normal;
+}
+
+.awards__project {
+  font-style: italic;
+}
+.awards__project a {
+  border-bottom: 1px solid #b7f622;
 }
 
 .projects__list {

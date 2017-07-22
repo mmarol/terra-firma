@@ -1,0 +1,38 @@
+.awards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.awards__title {
+  flex-basis: 100%;
+}
+
+.awards__item {
+  flex-basis: calc(100% / 4);
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.awards__name {
+  @extend %sans-serif;
+  font-weight: bold;
+}
+
+.awards__year {
+  @extend %sans-serif;
+  font-weight: normal;
+}
+
+.awards__notes {
+  @extend %serif;
+}
+
+.awards__project {
+  @extend %serif;
+  font-style: italic;
+
+  a {
+    border-bottom: 1px solid $pop-color;
+  }
+}

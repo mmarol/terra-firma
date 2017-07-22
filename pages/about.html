@@ -4,6 +4,8 @@
 
 {% block title %}{% parent %} - {{ about.name }}{% endblock %}
 
+{% block mainClass %}padded{% endblock %}
+
 {% block content %}
 
   <section class="page__description">{{ about.long_description|safe }}</section>
@@ -13,7 +15,9 @@
     <h2 class="people__title section__name">Our team</h2>
     {% for person in about.team_members %}
       <div class="people__item">
-        <img src="{{ person.portrait|imageSize(300) }}" alt="" class="people__image">
+        {% if person.portrait %}
+          <img src="{{ person.portrait|imageSize(300) }}" alt="" class="people__image">
+        {% endif %}
         <h3 class="people__name">{{ person.name }}</h3>
         {% if person.designations %}
           <h4 class="people__designations">
@@ -44,13 +48,10 @@
       <h2 class="awards__title section__name">Awards</h2>
       {% for award in about.awards %}
         <div class="awards__item">
-          <h3 class="award__name">{{ award.name }}</h3>
-          <h4 class="award__year">{{ award.year }}</h4>
-          <div class="award__notes">{{ award.award_notes|safe }}</div>
-          <script>
-            console.log({{award.related_project|json|safe}});
-          </script>
-          <p class="award__project"><a href="{{ url(award.related_project) }}">{{ award.related_project.name }}</a></p>
+          <h3 class="awards__name">{{ award.name }}</h3>
+          <h4 class="awards__year">{{ award.year }}</h4>
+          <div class="awards__notes">{{ award.award_notes|safe }}</div>
+          <p class="awards__project"><a href="{{ url(award.related_project) }}">View project</a></p>
         </div>
       {% endfor %}
     </section>

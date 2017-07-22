@@ -17,6 +17,14 @@
   height: 100vh;
   width: 100%;
   overflow: auto;
+
+  &.padded {
+    section {
+      &:first-child {
+        padding-top: 4rem;
+      }
+    }
+  }
 }
 
 .page__hero {

@@ -4,10 +4,11 @@
 
 {% block title %}{% parent %} - {{ contact.name }}{% endblock %}
 
+{% block mainClass %}padded{% endblock %}
+
 {% block content %}
 
-  <h1 class="page__title">{{ contact.name }}</h1>
-  <div class="page__description">{{ contact.description|safe }}</div>
+  <section class="page__description">{{ contact.description|safe }}</section>
 
   {% if contact.locations %}
     <section class="locations">

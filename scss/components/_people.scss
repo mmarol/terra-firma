@@ -1,0 +1,39 @@
+.people {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.people__title {
+  flex-basis: 100%;
+}
+
+.people__item {
+  flex-basis: calc(100% / 6);
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+  @include text-size($regular);
+}
+
+.people__image {
+
+}
+
+.people__name {
+  @extend %sans-serif;
+  font-weight: bold;
+}
+
+.people__designations {
+  @extend %sans-serif;
+  font-weight: normal;
+}
+
+.people__info {
+  @extend %serif;
+  font-style: italic;
+
+  a {
+    border-bottom: 1px solid $pop-color;
+  }
+}

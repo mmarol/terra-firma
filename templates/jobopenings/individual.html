@@ -2,8 +2,10 @@
 
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
+{% block mainClass %}padded{% endblock %}
+
 {% block content %}
-  
+
   <section class="jobs">
     <div class="jobs__item">
       <h3 class="jobs__name">{{ item.name }}</h3>
@@ -12,5 +14,5 @@
       <div class="jobs__description"><span>Location:</span> {{ item.location }}</div>
     </div>
   </section>
-  
+
 {% endblock %}
