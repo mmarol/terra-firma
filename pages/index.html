@@ -6,15 +6,14 @@
 
 {% block content %}
 
-  <div class="page__hero">
-    <img src="{{ home.hero_image|imageSize(1200) }}" alt="">
-  </div>
+  <section class="page__hero" style="background-image: url({{ home.hero_image|imageSize(1200) }})">
+    <div class="page__logo">{% include "templates/partials/icons/logo__full.html" %}</div>
+  </section>
 
-  <h1 class="page__title">{{ home.name }}</h1>
-  <div class="page__description">{{ home.short_description|safe }}</div>
+  <section class="page__description">{{ home.short_description|safe }}</section>
 
   {% if projects %}
-    <section class="projects">
+    <section class="home__projects">
       <h2 class="section__name">Recent projects</h2>
       {% for project in projects %}
         {% if loop.first %}
@@ -36,8 +35,8 @@
   {% endif %}
 
   {% if media %}
-    <section class="media">
-      <h2 class="section__name">In the media</h2>
+    <section class="home__media">
+      <h2 class="section__name">Media recognition</h2>
       {% for article in media %}
         {% if loop.first %}
           <div class="media__list">

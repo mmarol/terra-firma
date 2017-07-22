@@ -4,7 +4,7 @@
   font-weight: 100;
   src: url("../fonts/modernpics_2_268e-webfont.woff2") format("woff2"), url("../fonts/modernpics_2_268e-webfont.woff") format("woff"), url("../fonts/modernpics_2_268e-webfont.eot") format("eot");
 }
-.nav, .page__title, .section__name, .projects__thumbnail-title, .article__thumbnail-name, .article__thumbnail-date {
+.nav, .page__hero-title, .page__title, .section__name, .projects__thumbnail-title, .article__thumbnail-name, .article__thumbnail-date {
   font-family: 'PT Sans', sans-serif;
 }
 
@@ -211,22 +211,13 @@ body {
   }
 }
 
-header {
-  -ms-flex-preferred-size: 15%;
-      flex-basis: 15%;
-  position: relative;
-}
-
-main {
-  -ms-flex-preferred-size: 85%;
-      flex-basis: 85%;
-  margin-top: 7rem;
-  z-index: 100;
-}
-
 footer {
   -ms-flex-preferred-size: 85%;
       flex-basis: 85%;
+}
+
+section {
+  padding: 2rem;
 }
 
 a {
@@ -261,32 +252,127 @@ iframe {
 .nav {
   padding: 0 1rem;
   box-sizing: border-box;
-  height: 100vh;
-  width: 100%;
-}
-
-.nav__container {
-  position: fixed;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .nav__logo {
   line-height: 0;
+  margin-right: 2rem;
 }
 .nav__logo svg {
   padding: 1rem 0;
   max-width: 100%;
   width: auto;
-  height: 5rem;
+  height: 2rem;
 }
 .nav__logo .logo__mark {
-  fill: #b7f622;
+  fill: #505050;
 }
 .nav__logo .logo__text {
   fill: #505050;
 }
 
+.nav__header {
+  margin: 0 2rem;
+  transition: color 0.2s ease;
+}
+@media screen and (min-width: 1px) {
+  .nav__header {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .nav__header {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  .nav__header {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .nav__header {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .nav__header {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
+}
+.nav__header:hover {
+  color: white;
+}
+
+.page__header {
+  position: fixed;
+  top: 0;
+  transition: all 0.2s ease;
+  -ms-transform: translate(-100%);
+      transform: translate(-100%);
+  background-color: #b7f622;
+  z-index: 500;
+}
+.page__header.active {
+  -ms-transform: translate(0%);
+      transform: translate(0%);
+}
+
+.page__main {
+  box-sizing: border-box;
+  border: 1rem solid #b7f622;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+}
+
 .page__hero {
-  margin-bottom: 2rem;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  padding: 0;
+}
+.page__hero .page__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  z-index: 200;
+}
+.page__hero .page__logo svg {
+  width: 50%;
+}
+.page__hero .page__logo path {
+  fill: #b7f622;
+}
+
+.page__hero-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  color: #b7f622;
+  font-size: 7rem;
+  line-height: 0.8;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .page__title {
@@ -324,7 +410,40 @@ iframe {
 }
 
 .page__description {
-  margin-bottom: 2rem;
+  background-color: #b7f622;
+}
+@media screen and (min-width: 1px) {
+  .page__description {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .page__description {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 769px) {
+  .page__description {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .page__description {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .page__description {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+.page__description p {
+  max-width: 35em;
 }
 
 .section__name {

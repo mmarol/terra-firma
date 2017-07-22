@@ -2,22 +2,8 @@
   padding: 0 1rem;
   @extend %sans-serif;
   box-sizing: border-box;
-  height: 100vh;
-  width: 100%;
-}
-
-.nav__container {
-  position: fixed;
-  // left: 0;
-  // top: 0;
-}
-
-.nav--up {
-
-}
-
-.nav--down {
-
+  display: flex;
+  align-items: center;
 }
 
 .nav__item-container {
@@ -26,11 +12,12 @@
 
 .nav__logo {
   line-height: 0;
+  margin-right: 2rem;
   svg {
     padding: 1rem 0;
     max-width: 100%;
     width: auto;
-    height: 5rem;
+    height: 2rem;
   }
 
   path {
@@ -38,7 +25,7 @@
   }
 
   .logo__mark {
-    fill: $pop-color;
+    fill: $text-color;
   }
 
   .logo__text {
@@ -48,7 +35,13 @@
 }
 
 .nav__header {
+  margin: 0 2rem;
+  transition: color 0.2s ease;
+  @include text-size($regular);
 
+  &:hover {
+    color: $background-color;
+  }
 }
 
 .nav__list {

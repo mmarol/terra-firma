@@ -6,8 +6,7 @@
 
 {% block content %}
 
-  <h1 class="page__title">{{ about.name }}</h1>
-  <div class="page__description">{{ about.long_description|safe }}</div>
+  <section class="page__description">{{ about.long_description|safe }}</section>
 
   {% if about.team_members %}
     <section class="people">

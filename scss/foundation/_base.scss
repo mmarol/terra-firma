@@ -12,18 +12,19 @@ body {
 }
 
 header {
-  flex-basis: 15%;
-  position: relative;
+
 }
 
 main {
-  flex-basis: 85%;
-  margin-top: 7rem;
-  z-index: 100;
+
 }
 
 footer {
   flex-basis: 85%;
+}
+
+section {
+  padding: 2rem;
 }
 
 h1 {
