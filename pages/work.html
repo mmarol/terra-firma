@@ -16,14 +16,15 @@
       <section class="projects">
         <div class="projects__type-container">
           {% for projectType in projectTypes %}
-            <a data-project-type-query="{{ projectType.name|lower }}" class="project__type">{{ projectType.name }}</a>
+            <a data-project-type-query="{{ projectType.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}" class="projects__type">{{ projectType.name }}</a>
           {% endfor %}
+          <a data-project-type-query="all" class="projects__type active">All</a>
         </div>
-        <div class="project__list">
+        <div class="projects__list">
     {% endif %}
-          <a href="{{ url(project) }}" class="project__item" data-project-type-target="{{ projectCategory.name|lower }}">
-            <img src="{{ project.representative_image|imageSize(600) }}" alt="" class="project__thumbnail-image">
-            <h3 class="project__thumbnail-title">{{ project.name }}</h3>
+          <a href="{{ url(project) }}" class="projects__item" data-project-type-target="{{ projectCategory.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}">
+            <img src="{{ project.representative_image|imageSize(600) }}" alt="" class="projects__thumbnail-image">
+            <h3 class="projects__thumbnail-title">{{ project.name }}</h3>
           </a>
     {% if loop.last %}
         </div>

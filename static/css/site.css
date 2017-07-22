@@ -8,7 +8,7 @@
   font-family: 'PT Sans', sans-serif;
 }
 
-body, .people__info, .awards__notes, .awards__project {
+body, .people__info, .awards__notes, .awards__project, .projects__type {
   font-family: 'PT Serif', serif;
 }
 
@@ -597,6 +597,9 @@ iframe {
       flex-basis: calc((100% / 3) - 0.5rem);
   margin-bottom: 1rem;
 }
+.projects__item.hide {
+  display: none;
+}
 
 @media screen and (min-width: 1px) {
   .projects__thumbnail-title {
@@ -627,6 +630,30 @@ iframe {
     font-size: 22px;
     line-height: calc(30 / 22);
   }
+}
+
+.projects__type-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.projects__type {
+  font-style: italic;
+  background-color: #b7f622;
+  padding: 0.25rem 0.5rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.projects__type:hover {
+  background-color: white;
+}
+.projects__type.active {
+  background-color: white;
 }
 
 .media__list {
