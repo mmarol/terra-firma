@@ -15,10 +15,10 @@
     {% if loop.first %}
       <section class="projects">
         <div class="projects__type-container">
+          <a data-project-type-query="all" class="projects__type active">All</a>
           {% for projectType in projectTypes %}
             <a data-project-type-query="{{ projectType.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}" class="projects__type">{{ projectType.name }}</a>
           {% endfor %}
-          <a data-project-type-query="all" class="projects__type active">All</a>
         </div>
         <div class="projects__list">
     {% endif %}

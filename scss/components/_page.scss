@@ -13,7 +13,7 @@
 
 .page__main {
   box-sizing: border-box;
-  border: 1rem solid $pop-color;
+  // border: 1rem solid $pop-color;
   height: 100vh;
   width: 100%;
   overflow: auto;
@@ -21,7 +21,7 @@
   &.padded {
     section {
       &:first-child {
-        padding-top: 4rem;
+        padding-top: 6rem;
       }
     }
   }
@@ -78,8 +78,10 @@
   @include text-size($medium);
   background-color: $pop-color;
 
-  p {
+  p, ol {
     max-width: 35em;
+    margin: auto;
+    margin-bottom: 1rem;
   }
 }
 

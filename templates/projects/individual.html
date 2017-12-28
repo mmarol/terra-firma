@@ -12,33 +12,32 @@
   <section class="projects">
     <div class="project">
       <h1 class="project__title">{{ item.name }}</h1>
-      <h5 class="project__category">{{ item.project_type.name }}</h5>
-      <ul class="project__info">
-      {% if item.location %}
-        <li class="project__info-item">{{ item.location }}</li>
-      {% endif %}
-      {% if item.size %}
-        <li class="project__info-item">{{ item.size }}</li>
-      {% endif %}
-      {% if item.year %}
-        <li class="project__info-item">{{ item.year }}</li>
-      {% endif %}
-      {% if item.client %}
-        <li class="project__info-item">{{ item.client.name }}</li>
-      {% endif %}
-      </ul>
       <div class="project__description">{{ item.description|safe }}</div>
+      <div class="project__info-group">
+        <h5 class="project__category">{{ item.project_type.name }}</h5>
+        <ul class="project__info">
+        {% if item.location %}
+          <li class="project__info-item">{{ item.location }}</li>
+        {% endif %}
+        {% if item.size %}
+          <li class="project__info-item">{{ item.size }}</li>
+        {% endif %}
+        {% if item.year %}
+          <li class="project__info-item">{{ item.year }}</li>
+        {% endif %}
+        {% if item.client %}
+          <li class="project__info-item">{{ item.client.name }}</li>
+        {% endif %}
+        </ul>
+      </div>
       <div class="project__gallery">
+        <div class="project__image--sizer"></div>
         {% for image in item.photographs %}
-          <div class="project__image project__image--{{ image.size|lower }}"><img src="{{ image.image|imageSize(600) }}" alt=""></div>
+          <div class="project__image project__image--{{ image.size|lower }}"><img data-resize-src="{{ image.image.resize_url }}" src="{{ image.image|imageSize(600) }}" alt=""></div>
         {% endfor %}
       </div>
     </div>
     <div class="project__more">
-    <script>
-      console.log({{previousProject|json|safe}});
-      console.log({{nextProject|json|safe}});
-    </script>
     {% if previousProject %}
       <span class="project__previous"><a href="{{ url(previousProject) }}">Previous project</a></span>
     {% endif %}
