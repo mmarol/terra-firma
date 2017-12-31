@@ -1,29 +1,19 @@
 var $ = global.jQuery;
 
-module.exports = ProjectFilter;
+module.exports = function($) {
 
-function ProjectFilter(opts) {
-  if (!(this instanceof ProjectFilter)) {
-    return new ProjectFilter(opts);
-  }
+  console.log("ProjectFilter initialized");
 
-  console.log('ProjectFilter initialized.');
-
-
-  var projectQuery;
-  var projectTargets;
-  var projects = $('.projects__item');
-
-  filterProjects();
-
-  function filterProjects() {
-    $('.projects__type').click(function() {
+  function filter(query) {
+    var projectQuery;
+    var projectTargets;
+    var projects = $('.projects__item');
 
       // style the buttons
-      $(this).addClass('active').siblings().removeClass('active');
+      $(query).addClass('active').siblings().removeClass('active');
 
       // filter projects
-      projectQuery = $(this).data('project-type-query');
+      projectQuery = $(query).data('project-type-query');
       if (projectQuery === 'all') {
         projectTargets = projects;
       } else {
@@ -31,7 +21,10 @@ function ProjectFilter(opts) {
       }
       projects.addClass('hide');
       projectTargets.removeClass('hide');
-    });
   }
 
-}
+	return {
+    filter: filter
+	};
+
+};

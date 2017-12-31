@@ -14311,21 +14311,30 @@ var jQueryBridget = require('jquery-bridget');
 var Packery = require('packery');
 var imagesLoaded = require('imagesloaded');
 
-module.exports = ImageSort;
+module.exports = function($) {
 
-function ImageSort() {
-  if (!(this instanceof ImageSort)) {
-      return new ImageSort();
+  console.log("ImageSort initialized");
+
+  // shuffleImages();
+  packImages();
+
+  /* Image shuffle -------------------------------- */
+
+  function shuffleImages(images, imageContainer) {
+
+    var $images = $(images);
+    var $imageContainer = $(imageContainer);
+
+    var shuffledImages = shuffle($images);
+    // remove items from container
+    for(var i = 0; i < shuffledImages.length; i++) {
+      $(shuffledImages[i]).remove();
+    }
+    // add shuffled items to container
+    for(var j = 0; j < shuffledImages.length; j++) {
+      $(shuffledImages[j]).appendTo($($imageContainer));
+    }
   }
-
-  console.log('ImageSort initialized.');
-
-/* Initial random resize ----------------------------------------------------------------- */
-
-  var $images = $('.project__image');
-  var imageCount = $images.length;
-  var firstThird = Math.round(imageCount / 2);
-  var secondThird = Math.round(imageCount / 5);
 
   function shuffle(array) {
     var m = array.length, t, i;
@@ -14341,56 +14350,42 @@ function ImageSort() {
     return array;
   }
 
-  $images.each(function() {
-    var images = $(this);
-    for(var i = 0; i < images.length; i++) {
-      $(images[i]).remove();
-    }
-    $(shuffle($images));
-    for(var j = 0; j < images.length; j++) {
-      $(images[j]).appendTo($('.project__gallery'));
-    }
-  });
+  /* Packery sort -------------------------------- */
 
+  function packImages(images, imageContainer) {
 
-/* Packery sort ----------------------------------------------------------------- */
+    var $images = $(images);
+    var $imageContainer = $(imageContainer);
 
-  var $imageContainer = $('.project__gallery');
-  var $imageItems = $('.project__image img');
+    // setup imagesLoaded & packery as jquery plugins
+    imagesLoaded.makeJQueryPlugin( $ );
+    jQueryBridget( 'packery', Packery, $ );
 
-  // setup imagesLoaded & packery as jquery plugins
-  imagesLoaded.makeJQueryPlugin( $ );
-  jQueryBridget( 'packery', Packery, $ );
-
-  imagesLoaded($imageItems).on('progress', function(imagesLoadedInstance, image) {
-    $(image.img).parents('.project__image').addClass('show');
-  });
-
-  // now use .imagesLoaded() jQuery plugin
-  $imageContainer.imagesLoaded( function() {
-
-    // now you can use $().packery()
-    var $grid = $imageContainer.packery({
-      itemSelector: '.project__image',
-      columnWidth: '.project__image--sizer',
-      gutter: 0,
-      // gutter: '.resource__spacer',
-      transitionDuration: '0.2s',
-      percentPosition: true
+    imagesLoaded($images).on('progress', function(imagesLoadedInstance, image) {
+      $(image.img).parents(images).addClass('show');
     });
 
-/*  // expand images to large size on click and rearrange the grid
-    $grid.on( 'click', '.resource__image', function( event ) {
-      var $item = $( event.currentTarget );
-      // change size of item by toggling large class
-      $item.toggleClass('resource__image--magnified').siblings().removeClass('resource__image--magnified');
-      // fit current item
-      $grid.packery( 'fit', event.currentTarget );
-    });
-*/
-  });
+    // now use .imagesLoaded() jQuery plugin
+    $imageContainer.imagesLoaded( function() {
 
-}
+      // now you can use $().packery()
+      var $grid = $imageContainer.packery({
+        itemSelector: images,
+        columnWidth: images,
+        gutter: '.packery__gutter',
+        transitionDuration: '0.2s',
+        percentPosition: true
+      });
+
+    });
+  }
+
+	return {
+    packImages: packImages,
+    shuffleImages: shuffleImages
+	};
+
+};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"imagesloaded":1,"jquery-bridget":4,"packery":8}],21:[function(require,module,exports){
@@ -14398,12 +14393,23 @@ function ImageSort() {
 global.jQuery = require('jquery');
 global.$ = global.jQuery;
 
-var projectFilter = require('./projectFilter.js')();
-var imageSort = require('./imageSort.js')();
+var projectFilter = require('./projectFilter.js')($);
+var imageSort = require('./imageSort.js')($);
 var projectLightbox = require('./lightbox.js')({
   decorate: '.project__image'
 });
 // var exampleModule = require('./exampleModule.js')();
+
+imageSort.shuffleImages('.featured-projects__item', '.featured-projects__list');
+imageSort.packImages('.featured-projects__item', '.featured-projects__list');
+// imageSort.shuffleImages('.projects__item', '.projects__list');
+imageSort.packImages('.projects__item', '.projects__list');
+
+$('.projects__type').click(function() {
+  console.log("clicked");
+  projectFilter.filter(this);
+  imageSort.packImages('.projects__item', '.projects__list');
+});
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./imageSort.js":20,"./lightbox.js":22,"./projectFilter.js":23,"jquery":5}],22:[function(require,module,exports){
@@ -14635,30 +14641,20 @@ function bem (base) {
 (function (global){
 var $ = global.jQuery;
 
-module.exports = ProjectFilter;
+module.exports = function($) {
 
-function ProjectFilter(opts) {
-  if (!(this instanceof ProjectFilter)) {
-    return new ProjectFilter(opts);
-  }
+  console.log("ProjectFilter initialized");
 
-  console.log('ProjectFilter initialized.');
-
-
-  var projectQuery;
-  var projectTargets;
-  var projects = $('.projects__item');
-
-  filterProjects();
-
-  function filterProjects() {
-    $('.projects__type').click(function() {
+  function filter(query) {
+    var projectQuery;
+    var projectTargets;
+    var projects = $('.projects__item');
 
       // style the buttons
-      $(this).addClass('active').siblings().removeClass('active');
+      $(query).addClass('active').siblings().removeClass('active');
 
       // filter projects
-      projectQuery = $(this).data('project-type-query');
+      projectQuery = $(query).data('project-type-query');
       if (projectQuery === 'all') {
         projectTargets = projects;
       } else {
@@ -14666,10 +14662,13 @@ function ProjectFilter(opts) {
       }
       projects.addClass('hide');
       projectTargets.removeClass('hide');
-    });
   }
 
-}
+	return {
+    filter: filter
+	};
+
+};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}]},{},[21]);
