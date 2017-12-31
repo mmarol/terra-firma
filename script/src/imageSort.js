@@ -13,7 +13,7 @@ module.exports = function($) {
 
   /* Image shuffle -------------------------------- */
 
-  function shuffleImages(images, imageContainer) {
+  function shuffleImages(imageContainer, images) {
 
     var $images = $(images);
     var $imageContainer = $(imageContainer);
@@ -45,7 +45,7 @@ module.exports = function($) {
 
   /* Packery sort -------------------------------- */
 
-  function packImages(images, imageContainer) {
+  function packImages(imageContainer, images, imageSizer) {
 
     var $images = $(images);
     var $imageContainer = $(imageContainer);
@@ -64,7 +64,7 @@ module.exports = function($) {
       // now you can use $().packery()
       var $grid = $imageContainer.packery({
         itemSelector: images,
-        columnWidth: images,
+        columnWidth: imageSizer,
         gutter: '.packery__gutter',
         transitionDuration: '0.2s',
         percentPosition: true

@@ -18,13 +18,14 @@
         {% if loop.first %}
           <div class="featured-projects__list">
             <div class="packery__gutter"></div>
+            <div class="packery__sizer"></div>
         {% endif %}
             <div class="featured-projects__item">
               <a href="{{ url(project) }}">
-                {% if project.representative_image %}
-                  <img src="{{ project.representative_image|imageSize(600) }}" alt="" class="projects__thumbnail-image">
+                {% if project.photographs[0] %}
+                  <img src="{{ project.photographs[0].image|imageSize(800) }}" alt="" class="featured-projects__thumbnail-image">
                 {% endif %}
-                <h3 class="projects__thumbnail-title">{{ project.name }}</h3>
+                <h3 class="featured-projects__thumbnail-title">{{ project.name }}</h3>
               </a>
             </div>
         {% if loop.last %}

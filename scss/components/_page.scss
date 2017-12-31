@@ -1,22 +1,13 @@
 .page__header {
-  position: fixed;
-  top: 0;
-  transition: all 0.2s ease;
-  transform: translate(-100%);
-  background-color: $primary-color;
-  z-index: 5000;
 
-  &.active {
-    transform: translate(0%);
-  }
 }
 
 .page__main {
   box-sizing: border-box;
   // border: 1rem solid $primary-color;
-  height: 100vh;
+  // height: 100vh;
   width: 100%;
-  overflow: auto;
+  // overflow: auto;
 
   &.padded {
     section {
@@ -37,20 +28,20 @@
 
   .page__logo {
     position: absolute;
-    left: 0;
-    top: 50%;
-    width: 50%;
+    right: 0;
+    top: 0;
+    margin: 2rem;
+    width: 20%;
     height: auto;
     z-index: 200;
-    margin-left: 2rem;
 
     svg {
-      width: 50%;
+      width: 100%;
       height: auto;
     }
 
     path {
-      fill: $background-color;
+      fill: $secondary-color;
     }
   }
 }
