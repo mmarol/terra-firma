@@ -7,7 +7,7 @@
 }
 
 $ff-sans: 'PT Sans', sans-serif;
-$ff-serif: 'PT Serif', serif;
+$ff-serif: 'Playfair Display', serif;
 $ff-mono: 'PT Mono', monospace;
 $ff-pictographic: 'Modern Pictograms Pro';
 
@@ -130,7 +130,7 @@ Mixin for font-size and line-height definition
 If the mixin is called and values are not entered, it will default to regular font-size
 -------------------------------------------------------- */
 
-@mixin text-size($fs-map: $regular, $fs-breakpoints: $breakpoints) {
+@mixin text-size($fs-map: $regular, $fs-breakpoints: $breakpoints, $lineheight: "") {
   @each $fs-breakpoint, $keyNumber in $fs-map {
 
     @if map-has-key($fs-breakpoints, $fs-breakpoint) {
@@ -145,9 +145,16 @@ If the mixin is called and values are not entered, it will default to regular fo
     $leading: nth($keyNumber, 2);
     $leading-unitless: calc(#{strip-unit($leading)} / #{strip-unit($fontSize)});
 
+    // @debug $lineheight;
+    @if $lineheight != "" {
+      $leading-unitless: $lineheight;
+    }
+
     // @debug $fontSize;
     // @debug $leading;
     // @debug $leading-unitless;
+
+    // @debug "------";
 
     @include respond-above($fs-breakpoint) {
       font-size: $fontSize;

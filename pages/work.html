@@ -10,7 +10,7 @@
 
 {% block content %}
 
-  {% for project in projects|sort('name') %}
+  {% for project in projects|sort('year', true) %}
     {% set projectCategory = project.project_type %}
     {% if loop.first %}
       <section class="projects">

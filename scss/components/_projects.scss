@@ -178,8 +178,8 @@
   @include font-family($ff-serif);
   @include text-size($huge);
   color: $primary-color;
-  font-weight: normal;
-  font-style: italic;
+  font-weight: bold;
+  // font-style: italic;
   margin-left: 15%;
   margin-bottom: 3rem;
 }
@@ -235,11 +235,11 @@
 
 .project__image-caption {
   @include font-family($ff-sans);
-  @include text-size($small);
+  @include text-size($small, $lineheight: 1);
   color: $text-color--light;
-  font-weight: bold;
+  font-style: italic;
   text-align: left;
-  display: inline-block;
+  display: block;
 }
 
 .packery__sizer {

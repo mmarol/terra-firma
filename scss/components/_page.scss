@@ -66,21 +66,27 @@
 }
 
 .page__description {
-  @include text-size($medium);
-  background-color: $primary-color;
+  @include font-family($ff-sans);
+  // width: 40%;
+  position: relative;
+  margin-top: 3rem;
 
-  p, ol {
-    max-width: 35em;
-    margin: auto;
-    margin-bottom: 1rem;
+  p {
+    margin-bottom: 0.5rem;
+    margin-left: 40%;
+    max-width: 40em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 .section__name {
   @include text-size($huge);
   @include font-family($ff-serif);
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 1rem;
-  font-style: italic;
+  // font-style: italic;
   color: $primary-color;
 }
