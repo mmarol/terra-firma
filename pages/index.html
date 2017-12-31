@@ -1,28 +1,28 @@
 {% extends "templates/partials/base.html" %}
 
 {% set home = cms.home %}
-{% set projects = cms.projects | slice(0, 6) %}
 {% set media = cms.mediacoverage | slice(0, 6) %}
 
 {% block content %}
 
-  <section class="page__hero" style="background-image: url({{ home.hero_image|imageSize(1200) }})">
+  <section class="page__hero" style="background-image: url({{ home.hero_image|imageSize(1600) }})">
     <div class="page__logo">{% include "templates/partials/icons/logo__full.html" %}</div>
   </section>
 
-  <section class="page__description">{{ home.short_description|safe }}</section>
+  <section class="home__description">{{ home.short_description|safe }}</section>
 
-  {% if projects %}
+  {% if home.projects %}
     <section class="home__projects">
-      <h2 class="section__name">Recent projects</h2>
-      {% for project in projects %}
+      <h2 class="section__name">Featured projects</h2>
+      {% for project in home.projects %}
         {% if loop.first %}
-          <div class="projects__list">
+          <div class="featured-projects__list">
+            <div class="packery__gutter"></div>
         {% endif %}
-            <div class="projects__item">
+            <div class="featured-projects__item">
               <a href="{{ url(project) }}">
                 {% if project.representative_image %}
-                  <img src="{{ project.representative_image|imageSize(300) }}" alt="" class="projects__thumbnail-image">
+                  <img src="{{ project.representative_image|imageSize(600) }}" alt="" class="projects__thumbnail-image">
                 {% endif %}
                 <h3 class="projects__thumbnail-title">{{ project.name }}</h3>
               </a>

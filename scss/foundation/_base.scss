@@ -5,7 +5,7 @@ html {
 
 body {
   @include text-size($regular);
-  @extend %serif;
+  @include font-family($ff-serif);
   color: $text-color;
   display: flex;
   flex-wrap: wrap;

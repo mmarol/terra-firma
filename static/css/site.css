@@ -4,18 +4,6 @@
   font-weight: 100;
   src: url("../fonts/modernpics_2_268e-webfont.woff2") format("woff2"), url("../fonts/modernpics_2_268e-webfont.woff") format("woff"), url("../fonts/modernpics_2_268e-webfont.eot") format("eot");
 }
-.nav, .page__hero-title, .page__title, .section__name, .people__name, .people__designations, .awards__name, .awards__year, .projects__thumbnail-title, .project__title, .project__category, .project__info, .article__thumbnail-name, .article__thumbnail-date {
-  font-family: 'PT Sans', sans-serif;
-}
-
-body, .people__info, .awards__notes, .awards__project, .projects__type {
-  font-family: 'PT Serif', serif;
-}
-
-.project__info-item {
-  font-family: 'PT Mono', monospace;
-}
-
 /* --------------------------------------------------------
 
 Remove the unit of a length
@@ -178,6 +166,7 @@ a {
 }
 
 body {
+  font-family: "PT Serif", serif;
   color: #505050;
   display: -ms-flexbox;
   display: flex;
@@ -255,6 +244,7 @@ iframe {
 
 .nav {
   padding: 0 1rem;
+  font-family: "PT Sans", sans-serif;
   box-sizing: border-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,7 +314,7 @@ iframe {
   -ms-transform: translate(-100%);
       transform: translate(-100%);
   background-color: #b7f622;
-  z-index: 500;
+  z-index: 5000;
 }
 .page__header.active {
   -ms-transform: translate(0%);
@@ -347,26 +337,23 @@ iframe {
   width: 100%;
   background-size: cover;
   padding: 0;
+  z-index: 2000;
 }
 .page__hero .page__logo {
   position: absolute;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
+  top: 50%;
+  width: 50%;
+  height: auto;
   z-index: 200;
+  margin-left: 2rem;
 }
 .page__hero .page__logo svg {
   width: 50%;
+  height: auto;
 }
 .page__hero .page__logo path {
-  fill: #b7f622;
+  fill: white;
 }
 
 .page__hero-title {
@@ -378,10 +365,12 @@ iframe {
   font-size: 7rem;
   line-height: 0.8;
   letter-spacing: 0.03em;
+  font-family: "PT Sans", sans-serif;
   text-transform: uppercase;
 }
 
 .page__title {
+  font-family: "PT Sans", sans-serif;
   margin-bottom: 1rem;
 }
 @media screen and (min-width: 1px) {
@@ -455,37 +444,58 @@ iframe {
 }
 
 .section__name {
+  font-family: "PT Serif", serif;
+  font-weight: normal;
   margin-bottom: 1rem;
+  font-style: italic;
+  color: #b7f622;
 }
 @media screen and (min-width: 1px) {
   .section__name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 28px;
+    line-height: calc(36 / 28);
   }
 }
 @media screen and (min-width: 513px) {
   .section__name {
-    font-size: 24px;
-    line-height: calc(30 / 24);
+    font-size: 36px;
+    line-height: calc(42 / 36);
   }
 }
 @media screen and (min-width: 769px) {
   .section__name {
-    font-size: 24px;
-    line-height: calc(30 / 24);
+    font-size: 36px;
+    line-height: calc(42 / 36);
   }
 }
 @media screen and (min-width: 1025px) {
   .section__name {
-    font-size: 28px;
-    line-height: calc(36 / 28);
+    font-size: 48px;
+    line-height: calc(54 / 48);
   }
 }
 @media screen and (min-width: 1441px) {
   .section__name {
-    font-size: 28px;
-    line-height: calc(36 / 28);
+    font-size: 48px;
+    line-height: calc(54 / 48);
   }
+}
+
+.home__description {
+  font-family: "PT Sans", sans-serif;
+  width: 40%;
+  padding: 2rem;
+  margin-top: -20vh;
+  background-color: white;
+  z-index: 3000;
+  position: relative;
+  margin-left: 10rem;
+}
+.home__description p {
+  margin-bottom: 0.5rem;
+}
+.home__description p:last-child {
+  margin-bottom: 0;
 }
 
 .people {
@@ -539,14 +549,17 @@ iframe {
 }
 
 .people__name {
+  font-family: "PT Sans", sans-serif;
   font-weight: bold;
 }
 
 .people__designations {
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 
 .people__info {
+  font-family: "PT Serif", serif;
   font-style: italic;
 }
 .people__info a {
@@ -574,18 +587,66 @@ iframe {
 }
 
 .awards__name {
+  font-family: "PT Sans", sans-serif;
   font-weight: bold;
 }
 
 .awards__year {
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 
+.awards__notes {
+  font-family: "PT Serif", serif;
+}
+
 .awards__project {
+  font-family: "PT Serif", serif;
   font-style: italic;
 }
 .awards__project a {
   border-bottom: 1px solid #b7f622;
+}
+
+.projects {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+
+.featured-projects__list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+
+.featured-projects__item {
+  -ms-flex-preferred-size: calc((100% / 3) - 1rem);
+      flex-basis: calc((100% / 3) - 1rem);
+  width: calc((100% / 3) - 1rem);
+  margin-bottom: 1rem;
+  display: block;
+  line-height: 0;
+}
+.featured-projects__item.hide {
+  display: none;
+}
+.featured-projects__item a {
+  display: block;
+  line-height: 0;
+}
+.featured-projects__item:hover .projects__thumbnail-image {
+  filter: grayscale(0) opacity(1);
 }
 
 .projects__list {
@@ -595,11 +656,16 @@ iframe {
       flex-wrap: wrap;
   -ms-flex-pack: justify;
       justify-content: space-between;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-preferred-size: 85%;
+      flex-basis: 85%;
 }
 
 .projects__item {
-  -ms-flex-preferred-size: calc((100% / 3) - 0.5rem);
-      flex-basis: calc((100% / 3) - 0.5rem);
+  -ms-flex-preferred-size: calc((100% / 3) - 1rem);
+      flex-basis: calc((100% / 3) - 1rem);
+  width: calc((100% / 3) - 1rem);
   margin-bottom: 1rem;
   display: block;
   line-height: 0;
@@ -612,9 +678,13 @@ iframe {
   line-height: 0;
 }
 
+.packery__gutter {
+  width: 1rem;
+}
+
 .projects__thumbnail-title {
-  background-color: #b7f622;
-  padding: 0.25rem 0.5rem;
+  font-family: "PT Sans", sans-serif;
+  color: #ff8260;
   display: inline-block;
 }
 @media screen and (min-width: 1px) {
@@ -654,27 +724,25 @@ iframe {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-bottom: 1rem;
+  -ms-flex-preferred-size: 15%;
+      flex-basis: 15%;
 }
 
 .projects__type {
-  font-style: italic;
-  background-color: white;
-  padding: 0.25rem 0.5rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  font-family: "PT Serif", serif;
+  font-style: normal;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 2px solid #b7f622;
+  color: #ff8260;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 .projects__type:hover {
-  background-color: #505050;
-  color: #b7f622;
-  border-color: transparent;
+  color: #505050;
 }
 .projects__type.active {
-  background-color: #505050;
-  color: #b7f622;
-  border-color: transparent;
+  color: #505050;
+  font-style: italic;
 }
 
 .project {
@@ -687,6 +755,7 @@ iframe {
 .project__title {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+  font-family: "PT Sans", sans-serif;
 }
 @media screen and (min-width: 1px) {
   .project__title {
@@ -725,7 +794,16 @@ iframe {
 }
 
 .project__category {
+  font-family: "PT Sans", sans-serif;
   font-weight: bold;
+}
+
+.project__info {
+  font-family: "PT Sans", sans-serif;
+}
+
+.project__info-item {
+  font-family: "PT Mono", monospace;
 }
 
 .project__description {
@@ -856,6 +934,9 @@ iframe {
   margin-bottom: 1rem;
 }
 
+.article__thumbnail-name {
+  font-family: "PT Sans", sans-serif;
+}
 @media screen and (min-width: 1px) {
   .article__thumbnail-name {
     font-size: 16px;
@@ -888,6 +969,7 @@ iframe {
 }
 
 .article__thumbnail-date {
+  font-family: "PT Sans", sans-serif;
   font-weight: normal;
 }
 @media screen and (min-width: 1px) {

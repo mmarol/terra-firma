@@ -6,6 +6,15 @@
   url("../fonts/modernpics_2_268e-webfont.eot") format('eot'),;
 }
 
+$ff-sans: 'PT Sans', sans-serif;
+$ff-serif: 'PT Serif', serif;
+$ff-mono: 'PT Mono', monospace;
+$ff-pictographic: 'Modern Pictograms Pro';
+
+@mixin font-family($ff) {
+  font-family: $ff;
+}
+
 %sans-serif {
   font-family: 'PT Sans', sans-serif;
 }

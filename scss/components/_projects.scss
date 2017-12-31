@@ -1,17 +1,22 @@
 .projects {
-
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
 }
 
-// Project list page
+// Home page
 
-.projects__list {
+.featured-projects__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
-.projects__item {
-  flex-basis: calc((100% / 3) - 0.5rem);
+.featured-projects__item {
+  flex-basis: calc((100% / 3) - 1rem);
+  width: calc((100% / 3) - 1rem);
   margin-bottom: 1rem;
   display: block;
   line-height: 0;
@@ -24,6 +29,55 @@
     display: block;
     line-height: 0;
   }
+
+  &:hover {
+    .projects__thumbnail-image {
+      filter: grayscale(0) opacity(1);
+    }
+    .projects__thumbnail-title {
+
+    }
+  }
+}
+
+// Project list page
+
+.projects__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-basis: 85%;
+}
+
+.projects__item {
+  flex-basis: calc((100% / 3) - 1rem);
+  width: calc((100% / 3) - 1rem);
+  margin-bottom: 1rem;
+  display: block;
+  line-height: 0;
+
+  &.hide {
+    display: none;
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+
+  &:hover {
+    .projects__thumbnail-image {
+
+    }
+    .projects__thumbnail-title {
+
+    }
+  }
+}
+
+.packery__gutter {
+  width: 1rem;
 }
 
 .projects__thumbnail-image {
@@ -32,9 +86,8 @@
 
 .projects__thumbnail-title {
   @include text-size($regular);
-  @extend %sans-serif;
-  background-color: $pop-color;
-  padding: 0.25rem 0.5rem;
+  @include font-family($ff-sans);
+  color: $secondary-color;
   display: inline-block;
 }
 
@@ -42,29 +95,24 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+  flex-basis: 15%;
 }
 
 .projects__type {
-  @extend %serif;
-  font-style: italic;
-  background-color: $background-color;
-  padding: 0.25rem 0.5rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  @include font-family($ff-serif);
+  font-style: normal;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 2px solid $pop-color;
+  color: $secondary-color;
+  flex-basis: 100%;
 
   &:hover {
-    background-color: $text-color;
-    color: $pop-color;
-    border-color: transparent;
+    color: $text-color;
   }
 
   &.active {
-    background-color: $text-color;
-    color: $pop-color;
-    border-color: transparent;
+    color: $text-color;
+    font-style: italic;
   }
 }
 
@@ -78,7 +126,7 @@
 
 .project__title {
   flex-basis: 100%;
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   @include text-size($large);
 }
 
@@ -87,16 +135,16 @@
 }
 
 .project__category {
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   font-weight: bold;
 }
 
 .project__info {
-  @extend %sans-serif;
+  @include font-family($ff-sans);
 }
 
 .project__info-item {
-  @extend %mono;
+  @include font-family($ff-mono);
 }
 
 .project__description {
