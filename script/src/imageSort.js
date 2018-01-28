@@ -4,21 +4,30 @@ var jQueryBridget = require('jquery-bridget');
 var Packery = require('packery');
 var imagesLoaded = require('imagesloaded');
 
-module.exports = ImageSort;
+module.exports = function($) {
 
-function ImageSort() {
-  if (!(this instanceof ImageSort)) {
-      return new ImageSort();
+  console.log("ImageSort initialized");
+
+  // shuffleImages();
+  packImages();
+
+  /* Image shuffle -------------------------------- */
+
+  function shuffleImages(imageContainer, images) {
+
+    var $images = $(images);
+    var $imageContainer = $(imageContainer);
+
+    var shuffledImages = shuffle($images);
+    // remove items from container
+    for(var i = 0; i < shuffledImages.length; i++) {
+      $(shuffledImages[i]).remove();
+    }
+    // add shuffled items to container
+    for(var j = 0; j < shuffledImages.length; j++) {
+      $(shuffledImages[j]).appendTo($($imageContainer));
+    }
   }
-
-  console.log('ImageSort initialized.');
-
-/* Initial random resize ----------------------------------------------------------------- */
-
-  var $images = $('.project__image');
-  var imageCount = $images.length;
-  var firstThird = Math.round(imageCount / 2);
-  var secondThird = Math.round(imageCount / 5);
 
   function shuffle(array) {
     var m = array.length, t, i;
@@ -34,53 +43,39 @@ function ImageSort() {
     return array;
   }
 
-  $images.each(function() {
-    var images = $(this);
-    for(var i = 0; i < images.length; i++) {
-      $(images[i]).remove();
-    }
-    $(shuffle($images));
-    for(var j = 0; j < images.length; j++) {
-      $(images[j]).appendTo($('.project__gallery'));
-    }
-  });
+  /* Packery sort -------------------------------- */
 
+  function packImages(imageContainer, images, imageSizer) {
 
-/* Packery sort ----------------------------------------------------------------- */
+    var $images = $(images);
+    var $imageContainer = $(imageContainer);
 
-  var $imageContainer = $('.project__gallery');
-  var $imageItems = $('.project__image img');
+    // setup imagesLoaded & packery as jquery plugins
+    imagesLoaded.makeJQueryPlugin( $ );
+    jQueryBridget( 'packery', Packery, $ );
 
-  // setup imagesLoaded & packery as jquery plugins
-  imagesLoaded.makeJQueryPlugin( $ );
-  jQueryBridget( 'packery', Packery, $ );
-
-  imagesLoaded($imageItems).on('progress', function(imagesLoadedInstance, image) {
-    $(image.img).parents('.project__image').addClass('show');
-  });
-
-  // now use .imagesLoaded() jQuery plugin
-  $imageContainer.imagesLoaded( function() {
-
-    // now you can use $().packery()
-    var $grid = $imageContainer.packery({
-      itemSelector: '.project__image',
-      columnWidth: '.project__image--sizer',
-      gutter: 0,
-      // gutter: '.resource__spacer',
-      transitionDuration: '0.2s',
-      percentPosition: true
+    imagesLoaded($images).on('progress', function(imagesLoadedInstance, image) {
+      $(image.img).parents(images).addClass('show');
     });
 
-/*  // expand images to large size on click and rearrange the grid
-    $grid.on( 'click', '.resource__image', function( event ) {
-      var $item = $( event.currentTarget );
-      // change size of item by toggling large class
-      $item.toggleClass('resource__image--magnified').siblings().removeClass('resource__image--magnified');
-      // fit current item
-      $grid.packery( 'fit', event.currentTarget );
-    });
-*/
-  });
+    // now use .imagesLoaded() jQuery plugin
+    $imageContainer.imagesLoaded( function() {
 
-}
+      // now you can use $().packery()
+      var $grid = $imageContainer.packery({
+        itemSelector: images,
+        columnWidth: imageSizer,
+        gutter: '.packery__gutter',
+        transitionDuration: '0.2s',
+        percentPosition: true
+      });
+
+    });
+  }
+
+	return {
+    packImages: packImages,
+    shuffleImages: shuffleImages
+	};
+
+};

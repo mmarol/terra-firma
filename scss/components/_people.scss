@@ -20,20 +20,20 @@
 }
 
 .people__name {
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   font-weight: bold;
 }
 
 .people__designations {
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   font-weight: normal;
 }
 
 .people__info {
-  @extend %serif;
+  @include font-family($ff-serif);
   font-style: italic;
 
   a {
-    border-bottom: 1px solid $pop-color;
+    border-bottom: 1px solid $primary-color;
   }
 }

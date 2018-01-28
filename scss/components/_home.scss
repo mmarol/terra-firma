@@ -1,0 +1,19 @@
+.home {
+
+}
+
+.home__description {
+  @include font-family($ff-sans);
+  width: 40%;
+  position: relative;
+  margin-left: 10rem;
+  margin-top: 3rem;
+
+  p {
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

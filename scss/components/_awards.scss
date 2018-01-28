@@ -15,24 +15,24 @@
 }
 
 .awards__name {
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   font-weight: bold;
 }
 
 .awards__year {
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   font-weight: normal;
 }
 
 .awards__notes {
-  @extend %serif;
+  @include font-family($ff-serif);
 }
 
 .awards__project {
-  @extend %serif;
+  @include font-family($ff-serif);
   font-style: italic;
 
   a {
-    border-bottom: 1px solid $pop-color;
+    border-bottom: 1px solid $primary-color;
   }
 }

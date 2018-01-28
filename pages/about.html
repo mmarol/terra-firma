@@ -8,11 +8,14 @@
 
 {% block content %}
 
-  <section class="page__description">{{ about.long_description|safe }}</section>
+  <section class="page__description">
+    <h2 class="people__title section__name">Our Story</h2>
+    {{ about.long_description|safe }}
+  </section>
 
   {% if about.team_members %}
     <section class="people">
-    <h2 class="people__title section__name">Our team</h2>
+    <h2 class="people__title section__name">The Team</h2>
     {% for person in about.team_members %}
       <div class="people__item">
         {% if person.portrait %}
@@ -45,7 +48,7 @@
 
   {% if about.awards %}
     <section class="awards">
-      <h2 class="awards__title section__name">Awards</h2>
+      <h2 class="awards__title section__name">Awards and Recognition</h2>
       {% for award in about.awards %}
         <div class="awards__item">
           <h3 class="awards__name">{{ award.name }}</h3>

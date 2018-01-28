@@ -1,0 +1,64 @@
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.jobs__title {
+  flex-basis: 100%;
+  margin-bottom: 3rem;
+}
+
+.jobs__intro {
+  max-width: 35em;
+  margin-left: 20%;
+  @include font-family($ff-sans);
+  margin-bottom: 3rem;
+}
+
+.jobs__item {
+  flex-basis: 100%;
+  @include font-family($ff-sans);
+}
+
+.jobs__name {
+  @include text-size($medium);
+  margin-bottom: 0.5rem;
+
+  span {
+    @include font-family($ff-serif);
+    font-style: italic;
+    font-weight: normal;
+    // @include text-size($regular);
+    // text-transform: uppercase;
+
+  }
+}
+
+.jobs__description {
+  max-width: 35em;
+  margin-bottom: 1rem;
+
+  span {
+
+  }
+
+   a {
+
+   }
+}
+
+
+.jobs__list {
+  margin-left: 10%;
+  max-width: 35em;
+  list-style: disc;
+}
+
+.jobs__subtitle {
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.jobs__list-item {
+  margin-bottom: 0.5rem;
+}

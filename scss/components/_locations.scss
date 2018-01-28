@@ -1,0 +1,48 @@
+.locations {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.locations__title {
+  flex-basis: 100%;
+  margin-left: 10%;
+  margin-bottom: 3rem;
+}
+
+.locations__item {
+  width: auto;
+  margin-right: 4rem;
+  @include font-family($ff-sans);
+}
+
+.locations__name {
+  margin-bottom: 0.5rem;
+  @include text-size($medium);
+}
+
+.locations__info-container {
+
+}
+
+.locations__info {
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  span {
+    font-style: italic;
+    color: $text-color--light;
+  }
+
+  a {
+    color: $secondary-color;
+
+    &:hover {
+      border-bottom: 1px solid $secondary-color;
+    }
+  }
+}

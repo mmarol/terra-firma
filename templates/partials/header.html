@@ -1,7 +1,8 @@
-<header class="nav">
-    <div class="nav__logo">{% include "templates/partials/icons/logo__simplified.html" %}</div>
-    <h5 class="nav__header"><a href="/">Home</a></h5>
-    <h5 class="nav__header"><a href="/about">About</a></h5>
-    <h5 class="nav__header"><a href="/work">Work</a></h5>
-    <h5 class="nav__header"><a href="/contact">Contact</a></h5>
-</header>
+<nav class="nav">
+  <div class="nav__logo"><a href="/">{% include "templates/partials/icons/logo__simplified.html" %}</a></div>
+  <div class="nav__item-container">
+    <h5 class="nav__item"><a href="/work">Work</a></h5>
+    <h5 class="nav__item"><a href="/about">About</a></h5>
+    <h5 class="nav__item"><a href="/contact">Contact</a></h5>
+  </div>
+</nav>

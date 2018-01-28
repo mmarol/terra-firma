@@ -19,11 +19,11 @@
 
 .article__thumbnail-name {
   @include text-size($regular);
-  @extend %sans-serif;
+  @include font-family($ff-sans);
 }
 
 .article__thumbnail-date {
   @include text-size($regular);
-  @extend %sans-serif;
+  @include font-family($ff-sans);
   font-weight: normal;
 }
