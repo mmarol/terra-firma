@@ -85,6 +85,21 @@
   }
 }
 
+.projects__item-container {
+  height: 0;
+  padding-bottom: 65%;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
+  }
+}
+
 .packery__gutter {
   width: 1rem;
 }
