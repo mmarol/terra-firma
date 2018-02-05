@@ -56,15 +56,25 @@
 // Project list page
 
 .projects__list {
-  flex-basis: 85%;
+  flex-basis: 100%;
 }
 
 .projects__item {
-  flex-basis: calc((100% / 3) - 1rem);
-  width: calc((100% / 3) - 1rem);
+  flex-basis: 100%;
+  width: 100%;
   margin-bottom: 1rem;
   display: block;
   line-height: 0;
+
+  @include respond-above(medium) {
+    flex-basis: calc((100% / 2) - 1rem);
+    width: calc((100% / 2) - 1rem);
+  };
+
+  @include respond-above(large) {
+    flex-basis: calc((100% / 3) - 1rem);
+    width: calc((100% / 3) - 1rem);
+  };
 
   &.hide {
     display: none;
@@ -120,7 +130,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 1rem;
-  flex-basis: 15%;
+  flex-basis: 100%;
 }
 
 .projects__type {
@@ -129,8 +139,9 @@
   cursor: pointer;
   transition: all 0.2s ease;
   color: $secondary-color;
-  flex-basis: 100%;
-  margin-bottom: 0.5rem;
+  flex-basis: calc(50% - 1rem);
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 
   &:hover {
     color: $text-color;
@@ -140,11 +151,20 @@
     color: $text-color;
     font-style: italic;
   }
+
+  @include respond-above(small) {
+    flex-basis: calc(100% / 3 - 1rem)
+  };
+
+  @include respond-above(medium) {
+    flex-basis: auto;
+  };
 }
 
 .projects__type-title {
   margin-bottom: 0.5rem;
   @include font-family($ff-sans);
+  flex-basis: 100%;
 }
 
 
@@ -157,22 +177,52 @@
 }
 
 .project__info-group {
-  flex-basis: 15%;
-  position: fixed;
-  width: 15%;
+  flex-basis: 100%;
+  width: 100%;
+  position: relative;
   margin-top: 1rem;
   padding-right: 1rem;
   box-sizing: border-box;
+  order: 2;
+  display: flex;
+  flex-wrap: wrap;
+
+  @include respond-above(large) {
+    order: 1;
+    position: fixed;
+    flex-basis: 15%;
+    width: 15%;
+  };
 }
 
 .project__info {
   @include text-size($regular);
+  flex-basis: 50%;
+  padding-right: 1rem;
+  box-sizing: border-box;
+
+  @include respond-above(small) {
+    flex-basis: calc(100% / 3);
+  };
+
+  @include respond-above(medium) {
+    flex-basis: 25%;
+  };
+
+  @include respond-above(large) {
+    flex-basis: 100%;
+  };
 }
 
 .project__info-name {
   @include font-family($ff-sans);
   @include text-size($regular);
   color: $secondary-color;
+  display: none;
+
+  @include respond-above(large) {
+    display: block;
+  };
 }
 
 .project__info-title {
@@ -188,37 +238,62 @@
   color: $text-color;
 }
 
+.project__description-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  order: 1;
+
+  @include respond-above(large) {
+    order: 2;
+    margin-left: 15%;
+  };
+}
+
 .project__title {
-  flex-basis: 75%;
+  flex-basis: 100%;
   @include font-family($ff-serif);
   @include text-size($huge);
   color: $primary-color;
   font-weight: bold;
-  // font-style: italic;
-  margin-left: 15%;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+
+  @include respond-above(large) {
+    flex-basis: 50%;
+    margin-bottom: 3rem;
+  };
 }
 
 .project__description {
   @include font-family($ff-sans);
-  flex-basis: 70%;
-  max-width: 35em;
+  flex-basis: 100%;
+  max-width: 30em;
   width: 40%;
-  margin-left: 60%;
   position: relative;
   right: 0;
+
+  @include respond-above(large) {
+    flex-basis: 50%;
+    top: -2rem;
+  };
 }
 
 .project__gallery {
   // width: auto;
   display: flex;
   margin-top: 3rem;
-  flex-basis: 85%;
-  margin-left: 15%;
+  flex-basis: 100%;
+  order: 3;
+
+  @include respond-above(large) {
+    order: 3;
+    margin-left: 15%;
+    flex-basis: 85%;
+  };
 }
 
 .project__image {
-  width: calc(50%);
+  width: calc(50% - 1rem);
   box-sizing: border-box;
 
   @include respond-above(small) {
@@ -298,14 +373,14 @@
 }
 
 .project__image--large {
-  width: 100%;
+  width: calc(100% - 1rem);
 
 	@include respond-above(small) {
-		width: 100%;
+		width: calc(100% - 1rem);
 	};
 
 	@include respond-above(medium) {
-		width: 100%;
+		width: calc(100% - 1rem);
 	};
 
 	@include respond-above(large) {
@@ -318,12 +393,16 @@
 }
 
 .project__more {
-  width: 85%;
-  margin-left: 15%;
+  width: 100%;
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @include respond-above(large) {
+    width: 85%;
+    margin-left: 15%;
+  };
 }
 
 .project__previous, .project__next {

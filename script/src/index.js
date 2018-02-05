@@ -17,6 +17,9 @@ imageSort.packImages('.projects__list', '.projects__item', '.projects__item');
 // Individual projects
 imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 
+// People
+imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
+
 $('.projects__type').click(function() {
   projectFilter.filter(this);
   imageSort.packImages('.projects__list', '.projects__item', '.projects__item');
