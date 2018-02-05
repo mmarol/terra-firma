@@ -1,6 +1,7 @@
 {% extends "templates/partials/base.html" %}
 
 {% set about = cms.about %}
+{% set team = cms.team %}
 
 {% block title %}{% parent %} - {{ about.name }}{% endblock %}
 
@@ -9,44 +10,67 @@
 {% block content %}
 
   <section class="page__description">
-    <h2 class="people__title section__name">Our Story</h2>
+    <h2 class="people__title section__name">About us</h2>
     {{ about.long_description|safe }}
   </section>
 
-  {% if about.team_members %}
-    <section class="people">
-    <h2 class="people__title section__name">The Team</h2>
-    {% for person in about.team_members %}
-      <div class="people__item">
-        {% if person.portrait %}
-          <img src="{{ person.portrait|imageSize(300) }}" alt="" class="people__image">
-        {% endif %}
-        <h3 class="people__name">{{ person.name }}</h3>
-        {% if person.designations %}
-          <h4 class="people__designations">
-          {% spaceless %}
-            {% for designation in person.designations %}
-              {% if loop.first %}
-                {{ designation.name }}
-              {% else %}
-                ,&nbsp;{{ designation.name }}
-              {% endif %}
-            {% endfor %}
-          {% endspaceless %}
-          </h4>
-        {% endif %}
-        {% if person.email %}
-          <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-        {% endif %}
-        {% if person.phone_number %}
-          <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
-        {% endif %}
-      </div>
-    {% endfor %}
-    </section>
-  {% endif %}
+  {% for personGroup in team|groupBy('level') %}
+    {% set imageSizeClass %}
+    {% if loop.key === 'Principal' %}
+      {% set imageSizeClass = 'large' %}
+    {% elseif loop.key === 'Associate' %}
+      {% set imageSizeClass = 'medium' %}
+    {% elseif loop.key === 'Senior' %}
+      {% set imageSizeClass = 'small' %}
+    {% elseif loop.key === 'Junior' %}
+      {% set imageSizeClass = 'hidden' %}
+    {% endif %}
+    {% if loop.first %}
+      <section class="people">
+        <div class="packery__gutter"></div>
+        <div class="people__grid-sizer"></div>
+    {% endif %}
+    {% for person in personGroup %}
+      {% if imageSizeClass === 'large' || imageSizeClass === 'medium' || imageSizeClass === 'small' %}
+        <div class="people__item {{ imageSizeClass }}">
+          <img src="/static/images/portrait_placeholder.jpg" alt="" class="people__image">
+          {# {% if person.portrait %}
+            <img src="{{ person.portrait|imageSize(300) }}" alt="" class="people__image">
+          {% endif %} #}
+          <h3 class="people__name">{{ person.name }}</h3>
+          {% if person.title %}
+            <h4 class="people__designations">{{ person.title }}</h4>
+          {% endif %}
+          {% if person.email %}
+            <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
+          {% endif %}
+          {% if person.phone_number %}
+            <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="people__item small">
+          <h3 class="people__name">{{ person.name }}</h3>
+          {% if person.title %}
+            <h4 class="people__designations">{{ person.title }}</h4>
+          {% endif %}
+          {% if person.email %}
+            <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
+          {% endif %}
+          {% if person.phone_number %}
+            <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
+          {% endif %}
+        </div>
+      {% endif %}
 
-  {% if about.awards %}
+    {% endfor %}
+    {% if loop.last %}
+      </section>
+    {% endif %}
+  {% endfor %}
+
+
+  {% if about.awards.show_award_list === true %}
     <section class="awards">
       <h2 class="awards__title section__name">Awards and Recognition</h2>
       {% for award in about.awards %}
