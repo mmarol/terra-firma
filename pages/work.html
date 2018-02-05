@@ -10,6 +10,10 @@
 
 {% block content %}
 
+  <section class="page__description">
+    <h2 class="people__title section__name">Our work</h2>
+  </section>
+
   {% for project in projects|sort('year', true) %}
     {% set projectCategory = project.project_type %}
     {% if loop.first %}

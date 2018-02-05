@@ -12,7 +12,7 @@
 
   {% if contact.locations %}
     <section class="locations">
-      <h2 class="section__name locations__title">Our Locations</h2>
+      <h2 class="section__name locations__title">Our offices</h2>
       {% for location in contact.locations %}
         <div class="locations__item">
           <h3 class="locations__name">{{ location.city }}</h3>
@@ -40,7 +40,7 @@
 
   {% if contact.job_openings %}
     <section class="jobs">
-      <h2 class="section__name jobs__title">Join our team</h2>
+      <h2 class="section__name jobs__title">Work with us</h2>
       <div class="jobs__intro">{{ contact.work_environment|safe }}</div>
       {% for job in contact.job_openings %}
         <div class="jobs__item">
