@@ -17,27 +17,38 @@
         <dl class="project__info">
           <dt class="project__info-title">Type</dt>
           <dd class="project__info-value">{{ item.project_type.name }}</dd>
+        </dl>
         {% if item.location %}
-          <dt class="project__info-title">Location</dt>
-          <dd class="project__info-value">{{ item.location }}</dd>
+          <dl class="project__info">
+            <dt class="project__info-title">Location</dt>
+            <dd class="project__info-value">{{ item.location }}</dd>
+          </dl>
         {% endif %}
         {% if item.size %}
-          <dt class="project__info-title">Size</dt>
-          <dd class="project__info-value">{{ item.size }}</dd>
+          <dl class="project__info">
+            <dt class="project__info-title">Size</dt>
+            <dd class="project__info-value">{{ item.size }}</dd>
+          </dl>
         {% endif %}
         {% if item.year %}
-          <dt class="project__info-title">Completion date</dt>
-          <dd class="project__info-value">{{ item.year }}</dd>
+          <dl class="project__info">
+            <dt class="project__info-title">Completion date</dt>
+            <dd class="project__info-value">{{ item.year }}</dd>
+          </dl>
         {% endif %}
         {% if item.client %}
-          <dt class="project__info-title">Client</dt>
-          <dd class="project__info-value">{{ item.client.name }}</dd>
+          <dl class="project__info">
+            <dt class="project__info-title">Client</dt>
+            <dd class="project__info-value">{{ item.client.name }}</dd>
+          </dl>
         {% endif %}
         </dl>
       </div>
 
-      <h1 class="project__title">{{ item.name }}</h1>
-      <div class="project__description">{{ item.description|safe }}</div>
+      <div class="project__description-container">
+        <h1 class="project__title">{{ item.name }}</h1>
+        <div class="project__description">{{ item.description|safe }}</div>
+      </div>
 
       <div class="project__gallery">
         <div class="packery__gutter"></div>
