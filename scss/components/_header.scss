@@ -14,8 +14,13 @@
 
 .nav__logo {
   line-height: 0;
-  margin: 0 2rem;
-  width: auto;
+  margin: 0 1rem 0 2rem;
+  flex-basis: 2rem;
+  flex-shrink: 0;
+
+  @include respond-above(small) {
+    margin: 0 2rem;
+  };
 
   svg {
     padding: 1rem 0;
@@ -49,9 +54,13 @@
 }
 
 .nav__item {
-  margin: 0 2rem;
+  margin: 0 2rem 0 1rem;
   transition: color 0.2s ease;
   @include text-size($regular);
+
+  @include respond-above(small) {
+    margin: 0 2rem;
+  };
 
   a {
     color: $text-color;

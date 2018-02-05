@@ -12,7 +12,19 @@
   &.padded {
     section {
       &:first-child {
-        padding-top: 6rem;
+        padding-top: 3rem;
+
+        @include respond-above(small) {
+          padding-top: 4rem;
+        };
+
+        @include respond-above(medium) {
+          padding-top: 5rem;
+        };
+
+        @include respond-above(large) {
+          padding-top: 6rem;
+        };
       }
     }
   }
@@ -25,6 +37,7 @@
   background-size: cover;
   padding: 0;
   z-index: 2000;
+  margin: 0;
 
   .page__logo {
     position: absolute;
