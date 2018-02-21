@@ -794,16 +794,8 @@ iframe {
   display: block;
   line-height: 0;
 }
-.featured-projects__item:hover .featured-projects__thumbnail-image {
-  filter: grayscale(0) opacity(1);
-}
 .featured-projects__item:hover .featured-projects__thumbnail-title {
   color: #505050;
-}
-
-.featured-projects__thumbnail-image {
-  filter: grayscale(1) opacity(0.5);
-  transition: filter 0.2s ease;
 }
 
 .featured-projects__thumbnail-title {
@@ -811,6 +803,7 @@ iframe {
   color: #ff8260;
   display: inline-block;
   transition: color 0.2s ease;
+  margin-top: 0.25rem;
 }
 @media screen and (min-width: 1px) {
   .featured-projects__thumbnail-title {
@@ -820,26 +813,26 @@ iframe {
 }
 @media screen and (min-width: 513px) {
   .featured-projects__thumbnail-title {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 24px;
+    line-height: calc(30 / 24);
   }
 }
 @media screen and (min-width: 769px) {
   .featured-projects__thumbnail-title {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 24px;
+    line-height: calc(30 / 24);
   }
 }
 @media screen and (min-width: 1025px) {
   .featured-projects__thumbnail-title {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 28px;
+    line-height: calc(36 / 28);
   }
 }
 @media screen and (min-width: 1441px) {
   .featured-projects__thumbnail-title {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 28px;
+    line-height: calc(36 / 28);
   }
 }
 
@@ -1505,6 +1498,31 @@ iframe {
   width: auto;
   margin-right: 4rem;
   font-family: "PT Sans", sans-serif;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-preferred-size: calc(50% - 4rem);
+      flex-basis: calc(50% - 4rem);
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+}
+
+.locations__map {
+  height: 15rem;
+  -ms-flex-preferred-size: calc(50% - 2rem);
+      flex-basis: calc(50% - 2rem);
+  margin-right: 2rem;
+  border: 1px solid #b7f622;
+  box-sizing: border-box;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+
+.locations__text {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  width: auto;
 }
 
 .locations__name {

@@ -15,7 +15,26 @@
   width: auto;
   margin-right: 4rem;
   @include font-family($ff-sans);
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: calc(50% - 4rem);
+  flex-shrink: 1;
 }
+
+.locations__map {
+  height: 15rem;
+  flex-basis: calc(50% - 2rem);
+  margin-right: 2rem;
+  border: 1px solid $primary-color;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.locations__text {
+  flex-basis: auto;
+  width: auto;
+}
+
 
 .locations__name {
   margin-bottom: 0.5rem;

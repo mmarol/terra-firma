@@ -31,9 +31,6 @@
   }
 
   &:hover {
-    .featured-projects__thumbnail-image {
-      filter: grayscale(0) opacity(1);
-    }
     .featured-projects__thumbnail-title {
       color: $text-color;
     }
@@ -41,16 +38,16 @@
 }
 
 .featured-projects__thumbnail-image {
-  filter: grayscale(1) opacity(0.5);
-  transition: filter 0.2s ease;
+
 }
 
 .featured-projects__thumbnail-title {
-  @include text-size($regular);
+  @include text-size($medium);
   @include font-family($ff-sans);
   color: $secondary-color;
   display: inline-block;
   transition: color 0.2s ease;
+  margin-top: 0.25rem;
 }
 
 // Project list page
