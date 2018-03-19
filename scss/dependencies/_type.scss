@@ -6,8 +6,33 @@
   url("../fonts/modernpics_2_268e-webfont.eot") format('eot'),;
 }
 
+@font-face {
+  font-family: 'Canela';
+  font-weight: 400;
+  src: url("../fonts/Canela-Regular-Web.woff2") format('woff2'),
+  url("../fonts/Canela-Regular-Web.woff") format('woff'),
+  url("../fonts/Canela-Regular-Web.eot") format('eot'),;
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../fonts/Canela-RegularItalic-Web.woff2") format('woff2'),
+  url("../fonts/Canela-RegularItalic-Web.woff") format('woff'),
+  url("../fonts/Canela-RegularItalic-Web.eot") format('eot'),;
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-weight: 700;
+  src: url("../fonts/Canela-Bold-Web.woff2") format('woff2'),
+  url("../fonts/Canela-Bold-Web.woff") format('woff'),
+  url("../fonts/Canela-Bold-Web.eot") format('eot'),;
+}
+
 $ff-sans: 'PT Sans', sans-serif;
-$ff-serif: 'Playfair Display', serif;
+$ff-serif: 'Canela', serif;
 $ff-mono: 'PT Mono', monospace;
 $ff-pictographic: 'Modern Pictograms Pro';
 
@@ -74,7 +99,7 @@ Variable Map Lists for the text-size mixin
 
 -------------------------------------------------------- */
 
-$small: (
+$xs: (
   base: (12px, 18px),
   small: (14px, 18px),
   medium: (14px, 18px),
@@ -82,7 +107,7 @@ $small: (
   huge: (16px, 24px)
 ) !default;
 
-$regular: (
+$s: (
   base: (16px, 24px),
   small: (16px, 24px),
   medium: (16px, 24px),
@@ -90,7 +115,7 @@ $regular: (
   huge: (22px, 30px)
 ) !default;
 
-$medium: (
+$m: (
   base: (16px, 24px),
   small: (24px, 30px),
   medium: (24px, 30px),
@@ -98,7 +123,7 @@ $medium: (
   huge: (28px, 36px)
 ) !default;
 
-$large: (
+$l: (
   base: (24px, 30px),
   small: (28px, 36px),
   medium: (28px, 36px),
@@ -106,7 +131,7 @@ $large: (
   huge: (36px, 42px)
 ) !default;
 
-$huge: (
+$xl: (
   base: (42px, 48px),
   small: (48px, 54px),
   medium: (60px, 66px),
@@ -114,7 +139,7 @@ $huge: (
   huge: (66px, 72px)
 ) !default;
 
-$massive: (
+$xxl: (
   base: (36px, 42px),
   small: (48px, 54px),
   medium: (48px, 54px),
@@ -125,12 +150,12 @@ $massive: (
 
 /* --------------------------------------------------------
 Mixin for font-size and line-height definition
-  Usage Example: @include text-size($large);
+  Usage Example: @include text-size($l);
 
 If the mixin is called and values are not entered, it will default to regular font-size
 -------------------------------------------------------- */
 
-@mixin text-size($fs-map: $regular, $fs-breakpoints: $breakpoints, $lineheight: "") {
+@mixin text-size($fs-map: $s, $fs-breakpoints: $breakpoints, $lineheight: "") {
   @each $fs-breakpoint, $keyNumber in $fs-map {
 
     @if map-has-key($fs-breakpoints, $fs-breakpoint) {
