@@ -15,23 +15,20 @@
       <h2 class="section__name locations__title">Our offices</h2>
       {% for location in contact.locations %}
         <div class="locations__item">
-          <div class="locations__map" id="{{ location.city|lower }}"></div>
+          <div class="locations__map" id="{{ location.city|lower }}" data-mapurl="{{ location.google_map_link.original_url }}"></div>
           <div class="locations__text">
             <h3 class="locations__name">{{ location.city }}</h3>
             <div class="locations__info-container">
-            <div class="locations__info">{{ location.address|safe }}</div>
+            <div class="locations__info"><a href="{{ location.google_map_link }}" target="_blank">{{ location.address|safe }}</a></div>
             {% if location.email %}
-              <p class="locations__info"><a href="mailto:{{ location.email }}">{{ location.email }}</a></p>
+              <p class="locations__info"><a href="mailto:{{ location.email }}" target="_blank">{{ location.email }}</a></p>
             {% endif %}
               <p class="locations__info">
               {% if location.phone_number_1 %}
-                <span>ph: </span><a href="tel:{{ location.phone_number_1 }}">{{ location.phone_number_1 }}</a>
+                <a href="tel:{{ location.phone_number_1 }}">{{ location.phone_number_1 }}</a>
               {% endif %}
               {% if location.phone_number_2 %}
-                <br><span>ph: </span><a href="tel:{{ location.phone_number_2 }}">{{ location.phone_number_2 }}</a>
-              {% endif %}
-              {% if location.fax_number %}
-                <br><span>fax: </span>{{ location.fax_number }}
+                <br><a href="tel:{{ location.phone_number_2 }}">{{ location.phone_number_2 }}</a>
               {% endif %}
               </p>
             </div>

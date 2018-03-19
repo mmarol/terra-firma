@@ -9,6 +9,18 @@ function Map(opts) {
 
   console.log('Map initialized.');
 
+
+  // function getCoordinates(mapID) {
+  //   var url = $('#' + mapID).data('mapurl');
+  //   console.log(url);
+  //   var regex = new RegExp('@(.*),(.*),');
+  //   var lon_lat_match = url.match(regex);
+  //   var lon = lon_lat_match[1];
+  //   var lat = lon_lat_match[2];
+  //
+  //   return [lon, lat];
+  // }
+
   // Script goes here
   window.initMap = function() {
 
@@ -145,10 +157,18 @@ function Map(opts) {
 
     // Bangalore Map
 
+    // This isn't working because the URL has the wrong coordinates for some reason
+    // var bangalore = {
+    //   lat: parseFloat(getCoordinates('bangalore')[0]),
+    //   lng: parseFloat(getCoordinates('bangalore')[1])
+    // };
+
+    // Manually pulling coordinates until I figure out how to get the correct coordinates from the URL
     var bangalore = {
-      lat: 12.929395,
+      lat: 12.929113,
       lng: 77.625519
     };
+
 
     var bangaloreMap = new google.maps.Map(document.getElementById('bangalore'), {
       center: bangalore,
@@ -168,13 +188,13 @@ function Map(opts) {
     // Chennai Map
 
     var chennai = {
-      lat: 12.929395,
-      lng: 77.625519
+      lat: 12.9794466,
+      lng: 80.2209492
     };
 
     var chennaiMap = new google.maps.Map(document.getElementById('chennai'), {
       center: chennai,
-      zoom: 16,
+      zoom: 17,
       mapTypeControl: false
     });
 
