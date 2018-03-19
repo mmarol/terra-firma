@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  @include text-size($regular);
+  @include text-size($s);
   @include font-family($ff-serif);
   color: $text-color;
   display: flex;
@@ -20,7 +20,7 @@ main {
 }
 
 footer {
-  flex-basis: 85%;
+  
 }
 
 section {

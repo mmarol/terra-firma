@@ -45,15 +45,13 @@
         {% endblock %}
       </header>
 
-    <main class="page__main {% block mainClass %}{% endblock %}">
+      <main class="page__main {% block mainClass %}{% endblock %}">
         {% block content %}{% endblock %}
       </main>
 
-      <footer>
-        {% block footer %}
-          {% include "templates/partials/footer.html" %}
-        {% endblock %}
-      </footer>
+      {% block footer %}
+        {% include "templates/partials/footer.html" %}
+      {% endblock %}
 
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 

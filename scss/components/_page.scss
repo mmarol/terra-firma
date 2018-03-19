@@ -73,7 +73,7 @@
 }
 
 .page__title {
-  @include text-size($large);
+  @include text-size($l);
   @include font-family($ff-sans);
   margin-bottom: 1rem;
 }
@@ -96,7 +96,7 @@
 }
 
 .section__name {
-  @include text-size($huge);
+  @include text-size($xl);
   @include font-family($ff-serif);
   font-weight: bold;
   margin-bottom: 1rem;

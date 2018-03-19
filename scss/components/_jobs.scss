@@ -21,14 +21,14 @@
 }
 
 .jobs__name {
-  @include text-size($medium);
+  @include text-size($m);
   margin-bottom: 0.5rem;
 
   span {
     @include font-family($ff-serif);
     font-style: italic;
     font-weight: normal;
-    // @include text-size($regular);
+    // @include text-size($s);
     // text-transform: uppercase;
 
   }

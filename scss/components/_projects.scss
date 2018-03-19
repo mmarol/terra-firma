@@ -42,7 +42,7 @@
 }
 
 .featured-projects__thumbnail-title {
-  @include text-size($medium);
+  @include text-size($m);
   @include font-family($ff-sans);
   color: $secondary-color;
   display: inline-block;
@@ -116,7 +116,7 @@
 }
 
 .projects__thumbnail-title {
-  @include text-size($regular);
+  @include text-size($s);
   @include font-family($ff-sans);
   color: $secondary-color;
   display: inline-block;
@@ -193,7 +193,7 @@
 }
 
 .project__info {
-  @include text-size($regular);
+  @include text-size($s);
   flex-basis: 50%;
   padding-right: 1rem;
   box-sizing: border-box;
@@ -213,7 +213,7 @@
 
 .project__info-name {
   @include font-family($ff-sans);
-  @include text-size($regular);
+  @include text-size($s);
   color: $secondary-color;
   display: none;
 
@@ -250,7 +250,7 @@
 .project__title {
   flex-basis: 100%;
   @include font-family($ff-serif);
-  @include text-size($huge);
+  @include text-size($xl);
   color: $primary-color;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -322,7 +322,7 @@
 
 .project__image-caption {
   @include font-family($ff-sans);
-  @include text-size($small, $lineheight: 1);
+  @include text-size($xs, $lineheight: 1);
   color: $text-color--light;
   font-style: italic;
   text-align: left;

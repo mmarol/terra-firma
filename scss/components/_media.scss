@@ -18,12 +18,12 @@
 }
 
 .article__thumbnail-name {
-  @include text-size($regular);
+  @include text-size($s);
   @include font-family($ff-sans);
 }
 
 .article__thumbnail-date {
-  @include text-size($regular);
+  @include text-size($s);
   @include font-family($ff-sans);
   font-weight: normal;
 }

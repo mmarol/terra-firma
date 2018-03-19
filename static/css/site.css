@@ -4,6 +4,22 @@
   font-weight: 100;
   src: url("../fonts/modernpics_2_268e-webfont.woff2") format("woff2"), url("../fonts/modernpics_2_268e-webfont.woff") format("woff"), url("../fonts/modernpics_2_268e-webfont.eot") format("eot");
 }
+@font-face {
+  font-family: 'Canela';
+  font-weight: 400;
+  src: url("../fonts/Canela-Regular-Web.woff2") format("woff2"), url("../fonts/Canela-Regular-Web.woff") format("woff"), url("../fonts/Canela-Regular-Web.eot") format("eot");
+}
+@font-face {
+  font-family: 'Canela';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../fonts/Canela-RegularItalic-Web.woff2") format("woff2"), url("../fonts/Canela-RegularItalic-Web.woff") format("woff"), url("../fonts/Canela-RegularItalic-Web.eot") format("eot");
+}
+@font-face {
+  font-family: 'Canela';
+  font-weight: 700;
+  src: url("../fonts/Canela-Bold-Web.woff2") format("woff2"), url("../fonts/Canela-Bold-Web.woff") format("woff"), url("../fonts/Canela-Bold-Web.eot") format("eot");
+}
 /* --------------------------------------------------------
 
 Remove the unit of a length
@@ -18,7 +34,7 @@ Variable Map Lists for the text-size mixin
 -------------------------------------------------------- */
 /* --------------------------------------------------------
 Mixin for font-size and line-height definition
-  Usage Example: @include text-size($large);
+  Usage Example: @include text-size($l);
 
 If the mixin is called and values are not entered, it will default to regular font-size
 -------------------------------------------------------- */
@@ -166,7 +182,7 @@ a {
 }
 
 body {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   color: #505050;
   display: -ms-flexbox;
   display: flex;
@@ -202,11 +218,6 @@ body {
     font-size: 22px;
     line-height: calc(30 / 22);
   }
-}
-
-footer {
-  -ms-flex-preferred-size: 85%;
-      flex-basis: 85%;
 }
 
 section {
@@ -344,6 +355,74 @@ iframe {
   color: #ff8260;
 }
 
+.footer {
+  margin-top: 3rem;
+  padding: 3rem 2rem 2rem 3rem;
+  border-top: 1px solid #b7f622;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  width: 100%;
+}
+
+.footer__logo {
+  -ms-flex-preferred-size: calc(25% - 3rem);
+      flex-basis: calc(25% - 3rem);
+  margin-right: 3rem;
+}
+
+.footer__contact {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  width: auto;
+  max-width: 25%;
+  margin-right: 3rem;
+}
+
+.footer__location {
+  margin-bottom: 0.5rem;
+}
+
+.footer__contact-info {
+  margin-bottom: 0.5rem;
+}
+.footer__contact-info a {
+  color: #ff8260;
+  transition: color 0.2s ease;
+}
+.footer__contact-info a:hover {
+  color: #505050;
+}
+
+.footer__social {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+
+.footer__social-item {
+  max-width: 2rem;
+  margin-right: 0.5rem;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  display: inline-block;
+}
+.footer__social-item path, .footer__social-item circle {
+  fill: #b7f622;
+  transition: fill 0.2s ease;
+}
+.footer__social-item:hover path, .footer__social-item:hover circle {
+  fill: #505050;
+}
+
 .page__main {
   box-sizing: border-box;
   width: 100%;
@@ -456,7 +535,7 @@ iframe {
 }
 
 .section__name {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #b7f622;
@@ -493,11 +572,41 @@ iframe {
 }
 
 .home__description {
-  font-family: "PT Sans", sans-serif;
-  width: 40%;
+  font-family: "Canela", serif;
+  max-width: 30em;
   position: relative;
   margin-left: 10rem;
   margin-top: 3rem;
+}
+@media screen and (min-width: 1px) {
+  .home__description {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 513px) {
+  .home__description {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 769px) {
+  .home__description {
+    font-size: 24px;
+    line-height: calc(30 / 24);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .home__description {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .home__description {
+    font-size: 28px;
+    line-height: calc(36 / 28);
+  }
 }
 .home__description p {
   margin-bottom: 0.5rem;
@@ -678,7 +787,7 @@ iframe {
 }
 
 .people__info {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   font-style: italic;
 }
 @media screen and (min-width: 1px) {
@@ -746,11 +855,11 @@ iframe {
 }
 
 .awards__notes {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
 }
 
 .awards__project {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   font-style: italic;
 }
 .awards__project a {
@@ -940,7 +1049,7 @@ iframe {
 }
 
 .projects__type {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   font-style: normal;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1109,7 +1218,7 @@ iframe {
 }
 
 .project__info-title {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   font-style: italic;
   font-weight: bold;
   color: #505050;
@@ -1117,7 +1226,7 @@ iframe {
 }
 
 .project__info-value {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   color: #505050;
 }
 
@@ -1142,7 +1251,7 @@ iframe {
 .project__title {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   color: #b7f622;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -1636,7 +1745,7 @@ iframe {
   }
 }
 .jobs__name span {
-  font-family: "Playfair Display", serif;
+  font-family: "Canela", serif;
   font-style: italic;
   font-weight: normal;
 }

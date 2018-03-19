@@ -12,7 +12,7 @@
 .people__item {
   // margin-bottom: 2rem;
   box-sizing: border-box;
-  @include text-size($regular);
+  @include text-size($s);
   flex-grow: 0;
   // margin-right: 1rem;
   // margin-bottom: 2rem;
@@ -102,13 +102,13 @@
 
 .people__designations {
   @include font-family($ff-sans);
-  @include text-size($small);
+  @include text-size($xs);
   font-weight: normal;
 }
 
 .people__info {
   @include font-family($ff-serif);
-  @include text-size($small);
+  @include text-size($xs);
   font-style: italic;
 
   a {

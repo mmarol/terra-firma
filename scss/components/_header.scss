@@ -56,7 +56,7 @@
 .nav__item {
   margin: 0 2rem 0 1rem;
   transition: color 0.2s ease;
-  @include text-size($regular);
+  @include text-size($s);
 
   @include respond-above(small) {
     margin: 0 2rem;
