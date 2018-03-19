@@ -1,0 +1,27 @@
+{% set contact = cms.contact %}
+<footer class="footer">
+  <div class="footer__logo">{% include "templates/partials/icons/logo__full.svg" %}</div>
+  {% if contact.locations %}
+    {% for location in contact.locations %}
+      <div class="footer__contact">
+        <h3 class="footer__location">{{ location.city }}</h3>
+        <div class="footer__contact-info"><a href="{{ location.google_map_link }}" target="_blank">{{ location.address|safe }}</a></div>
+        {% if location.email %}
+          <p class="footer__contact-info"><a href="mailto:{{ location.email }}" target="_blank">{{ location.email }}</a></p>
+        {% endif %}
+        <p class="footer__contact-info">
+        {% if location.phone_number_1 %}
+          <a href="tel:{{ location.phone_number_1 }}">{{ location.phone_number_1 }}</a>
+        {% endif %}
+        {% if location.phone_number_2 %}
+          <br><a href="tel:{{ location.phone_number_2 }}">{{ location.phone_number_2 }}</a>
+        {% endif %}
+        </p>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <div class="footer__social">
+    <a href="https://www.facebook.com/terrafirmalandscapearchitecture/" class="footer__social-item" target="_blank">{% include "templates/partials/icons/facebook.svg" %}</a>
+    <a href="https://www.instagram.com/terrafirma_landscape_arch/" class="footer__social-item" target="_blank">{% include "templates/partials/icons/instagram.svg" %}</a>
+  </div>
+</footer>

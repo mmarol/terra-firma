@@ -6,7 +6,7 @@
 {% block content %}
 
   <section class="page__hero" style="background-image: url({{ home.hero_image|imageSize(1600) }})">
-    <div class="page__logo">{% include "templates/partials/icons/logo__full.html" %}</div>
+    <div class="page__logo">{% include "templates/partials/icons/logo__full.svg" %}</div>
   </section>
 
   <section class="home__description">{{ home.short_description|safe }}</section>
@@ -35,7 +35,7 @@
     </section>
   {% endif %}
 
-  {% if media %}
+  {# {% if media %}
     <section class="home__media">
       <h2 class="section__name">Media recognition</h2>
       {% for article in media %}
@@ -56,6 +56,6 @@
         {% endif %}
       {% endfor %}
     </section>
-  {% endif %}
+  {% endif %} #}
 
 {% endblock %}

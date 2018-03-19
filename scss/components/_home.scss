@@ -3,8 +3,9 @@
 }
 
 .home__description {
-  @include font-family($ff-sans);
-  width: 40%;
+  @include font-family($ff-serif);
+  @include text-size($m);
+  max-width: 30em;
   position: relative;
   margin-left: 10rem;
   margin-top: 3rem;
