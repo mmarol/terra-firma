@@ -3,8 +3,8 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: $background-color;
-  border-bottom: 1px solid $primary-color;
+  background-color: $primary-color;
+  // border-bottom: 1px solid $primary-color;
   @include font-family($ff-sans);
   box-sizing: border-box;
   display: flex;
@@ -30,17 +30,21 @@
   }
 
   path {
-
+    fill: $background-color;
+    transition: fill 0.2s ease;
   }
 
   .logo__mark, .logo__text {
-    fill: $text-color;
+    fill: $background-color;
     transition: fill 0.2s ease;
   }
 
   &:hover {
     .logo__mark, .logo__text {
-      fill: $secondary-color;
+      fill: $primary-color;
+    }
+    path {
+      fill: $primary-color;
     }
   }
 
@@ -63,11 +67,11 @@
   };
 
   a {
-    color: $text-color;
+    color: $background-color;
     border-bottom: 2px solid transparent;
     transition: color 0.2s ease;
     &:hover {
-      color: $secondary-color;
+      color: $primary-color;
     }
   }
 
