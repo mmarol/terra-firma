@@ -7,6 +7,7 @@ body {
   @include text-size($s);
   @include font-family($ff-serif);
   color: $text-color;
+  background-color: $background-color;
   display: flex;
   flex-wrap: wrap;
 }
@@ -20,7 +21,7 @@ main {
 }
 
 footer {
-  
+
 }
 
 section {

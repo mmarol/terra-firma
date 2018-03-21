@@ -36,7 +36,7 @@
   width: 100%;
   background-size: cover;
   padding: 0;
-  z-index: 2000;
+  // z-index: 2000;
   margin: 0;
 
   .page__logo {
@@ -54,7 +54,7 @@
     }
 
     path {
-      fill: $secondary-color;
+      fill: $primary-color;
     }
   }
 }
@@ -99,6 +99,8 @@
   @include text-size($xl);
   @include font-family($ff-serif);
   font-weight: bold;
+  margin-top: -6rem;
+  padding-top: 6rem;
   margin-bottom: 1rem;
   // font-style: italic;
   color: $primary-color;

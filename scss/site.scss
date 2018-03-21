@@ -9,9 +9,9 @@
 @import "foundation/base";
 
 //Global components that exist on multiple pages, but not necessarily all pages
+@import "components/logo";
 @import "components/header";
 @import "components/footer";
-@import "components/logo";
 @import "components/page";
 @import "components/home";
 @import "components/people";

@@ -183,7 +183,8 @@ a {
 
 body {
   font-family: "Canela", serif;
-  color: #505050;
+  color: #1e1e1e;
+  background-color: #f1f9ec;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -253,13 +254,20 @@ iframe {
   width: 100%;
 }
 
+.logo__full path {
+  fill: #01aa78;
+}
+
+.logo__simplified path {
+  fill: #01aa78;
+}
+
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: white;
-  border-bottom: 1px solid #b7f622;
+  background-color: #01aa78;
   font-family: "PT Sans", sans-serif;
   box-sizing: border-box;
   display: -ms-flexbox;
@@ -289,12 +297,19 @@ iframe {
   width: auto;
   height: 2rem;
 }
+.nav__logo path {
+  fill: #f1f9ec;
+  transition: fill 0.2s ease;
+}
 .nav__logo .logo__mark, .nav__logo .logo__text {
-  fill: #505050;
+  fill: #f1f9ec;
   transition: fill 0.2s ease;
 }
 .nav__logo:hover .logo__mark, .nav__logo:hover .logo__text {
-  fill: #ff8260;
+  fill: #01aa78;
+}
+.nav__logo:hover path {
+  fill: #01aa78;
 }
 
 .nav__item-container {
@@ -347,18 +362,18 @@ iframe {
   }
 }
 .nav__item a {
-  color: #505050;
+  color: #f1f9ec;
   border-bottom: 2px solid transparent;
   transition: color 0.2s ease;
 }
 .nav__item a:hover {
-  color: #ff8260;
+  color: #01aa78;
 }
 
 .footer {
   margin-top: 3rem;
   padding: 3rem 2rem 2rem 3rem;
-  border-top: 1px solid #b7f622;
+  border-top: 1px solid #01aa78;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -390,11 +405,11 @@ iframe {
   margin-bottom: 0.5rem;
 }
 .footer__contact-info a {
-  color: #ff8260;
+  color: #01aa78;
   transition: color 0.2s ease;
 }
 .footer__contact-info a:hover {
-  color: #505050;
+  color: #1e1e1e;
 }
 
 .footer__social {
@@ -416,11 +431,11 @@ iframe {
   display: inline-block;
 }
 .footer__social-item path, .footer__social-item circle {
-  fill: #b7f622;
+  fill: #01aa78;
   transition: fill 0.2s ease;
 }
 .footer__social-item:hover path, .footer__social-item:hover circle {
-  fill: #505050;
+  fill: #1e1e1e;
 }
 
 .page__main {
@@ -452,7 +467,6 @@ iframe {
   width: 100%;
   background-size: cover;
   padding: 0;
-  z-index: 2000;
   margin: 0;
 }
 .page__hero .page__logo {
@@ -469,7 +483,7 @@ iframe {
   height: auto;
 }
 .page__hero .page__logo path {
-  fill: #ff8260;
+  fill: #01aa78;
 }
 
 .page__hero-title {
@@ -477,7 +491,7 @@ iframe {
   top: 0;
   left: 0;
   z-index: 300;
-  color: #b7f622;
+  color: #01aa78;
   font-size: 7rem;
   line-height: 0.8;
   letter-spacing: 0.03em;
@@ -537,8 +551,10 @@ iframe {
 .section__name {
   font-family: "Canela", serif;
   font-weight: bold;
+  margin-top: -6rem;
+  padding-top: 6rem;
   margin-bottom: 1rem;
-  color: #b7f622;
+  color: #01aa78;
 }
 @media screen and (min-width: 1px) {
   .section__name {
@@ -821,7 +837,7 @@ iframe {
   }
 }
 .people__info a {
-  border-bottom: 1px solid #b7f622;
+  border-bottom: 1px solid #01aa78;
 }
 
 .awards {
@@ -863,7 +879,7 @@ iframe {
   font-style: italic;
 }
 .awards__project a {
-  border-bottom: 1px solid #b7f622;
+  border-bottom: 1px solid #01aa78;
 }
 
 .projects {
@@ -904,12 +920,12 @@ iframe {
   line-height: 0;
 }
 .featured-projects__item:hover .featured-projects__thumbnail-title {
-  color: #505050;
+  color: #1e1e1e;
 }
 
 .featured-projects__thumbnail-title {
   font-family: "PT Sans", sans-serif;
-  color: #ff8260;
+  color: #01aa78;
   display: inline-block;
   transition: color 0.2s ease;
   margin-top: 0.25rem;
@@ -980,7 +996,7 @@ iframe {
   line-height: 0;
 }
 .projects__item:hover .projects__thumbnail-title {
-  color: #505050;
+  color: #1e1e1e;
 }
 
 .projects__item-container {
@@ -1003,7 +1019,7 @@ iframe {
 
 .projects__thumbnail-title {
   font-family: "PT Sans", sans-serif;
-  color: #ff8260;
+  color: #01aa78;
   display: inline-block;
   transition: color 0.2s ease;
 }
@@ -1053,18 +1069,21 @@ iframe {
   font-style: normal;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: #ff8260;
+  color: #01aa78;
+  border: 2px solid #01aa78;
+  padding: 0 0.3em;
   -ms-flex-preferred-size: calc(50% - 1rem);
       flex-basis: calc(50% - 1rem);
   margin-bottom: 1rem;
   margin-right: 1rem;
 }
 .projects__type:hover {
-  color: #505050;
+  border-color: #1e1e1e;
+  color: #1e1e1e;
 }
 .projects__type.active {
-  color: #505050;
-  font-style: italic;
+  color: #1e1e1e;
+  border-color: #1e1e1e;
 }
 @media screen and (min-width: 513px) {
   .projects__type {
@@ -1178,7 +1197,7 @@ iframe {
 
 .project__info-name {
   font-family: "PT Sans", sans-serif;
-  color: #ff8260;
+  color: #01aa78;
   display: none;
 }
 @media screen and (min-width: 1px) {
@@ -1221,13 +1240,13 @@ iframe {
   font-family: "Canela", serif;
   font-style: italic;
   font-weight: bold;
-  color: #505050;
+  color: #1e1e1e;
   margin-top: 1rem;
 }
 
 .project__info-value {
   font-family: "Canela", serif;
-  color: #505050;
+  color: #1e1e1e;
 }
 
 .project__description-container {
@@ -1252,7 +1271,7 @@ iframe {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   font-family: "Canela", serif;
-  color: #b7f622;
+  color: #01aa78;
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -1492,13 +1511,13 @@ iframe {
 
 .project__previous, .project__next {
   font-family: "PT Sans", sans-serif;
-  color: #b7f622;
+  color: #01aa78;
   font-weight: bold;
   border-bottom: 2px solid transparent;
   transition: border-color 0.2s ease;
 }
 .project__previous:hover, .project__next:hover {
-  border-color: #b7f622;
+  border-color: #01aa78;
 }
 
 .media__list {
@@ -1622,7 +1641,7 @@ iframe {
   -ms-flex-preferred-size: calc(50% - 2rem);
       flex-basis: calc(50% - 2rem);
   margin-right: 2rem;
-  border: 1px solid #b7f622;
+  border: 1px solid #01aa78;
   box-sizing: border-box;
   -ms-flex-positive: 1;
       flex-grow: 1;
@@ -1679,10 +1698,10 @@ iframe {
   color: #bebebe;
 }
 .locations__info a {
-  color: #ff8260;
+  color: #01aa78;
 }
 .locations__info a:hover {
-  border-bottom: 1px solid #ff8260;
+  border-bottom: 1px solid #01aa78;
 }
 
 .jobs {
