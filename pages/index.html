@@ -2,6 +2,9 @@
 
 {% set home = cms.home %}
 {% set media = cms.mediacoverage | slice(0, 6) %}
+{% set projects = cms.projects %}
+{% set projectTypes = cms.projecttypes %}
+{% set clients = cms.clients %}
 
 {% block content %}
 
@@ -11,29 +14,45 @@
 
   <section class="home__description">{{ home.short_description|safe }}</section>
 
-  {% if home.projects %}
-    <section class="home__projects">
-      <h2 class="section__name">Featured projects</h2>
-      {% for project in home.projects %}
-        {% if loop.first %}
-          <div class="featured-projects__list">
-            <div class="packery__gutter"></div>
-            <div class="packery__sizer"></div>
-        {% endif %}
-            <div class="featured-projects__item">
-              <a href="{{ url(project) }}">
-                {% if project.photographs[0] %}
-                  <img src="{{ project.photographs[0].image|imageSize(800) }}" alt="" class="featured-projects__thumbnail-image">
-                {% endif %}
-                <h3 class="featured-projects__thumbnail-title">{{ project.name }}</h3>
-              </a>
-            </div>
-        {% if loop.last %}
-          </div>
-        {% endif %}
-      {% endfor %}
-    </section>
-  {% endif %}
+  {% for project in projects %}
+    {% set project.dateSort = project.year + project.month|slice(0,2) %}
+    {% set project.projectCategories = [] %}
+    {% for category in project.project_type %}
+      {% set project.categoryString = category.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') %}
+      {% set project.projectCategories = project.projectCategories.concat([project.categoryString]) %}
+    {% endfor %}
+  {% endfor %}
+
+  {% for project in projects|sort('dateSort', true) %}
+    {% if loop.first %}
+      <section class="projects">
+        <h2 class="section__name" id="work">Projects</h2>
+        <div class="projects__type-container">
+          {# <h4 class="projects__type-title">Filter projects:</h4> #}
+          <a data-project-type-query="all" class="projects__type active">All</a>
+          {% for projectType in projectTypes %}
+            <a data-project-type-query="{{ projectType.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}" class="projects__type">{{ projectType.name }}</a>
+          {% endfor %}
+        </div>
+        <div class="projects__list">
+          <div class="packery__gutter"></div>
+          <div class="packery__sizer"></div>
+    {% endif %}
+    {% if project.photographs %}
+          <a href="{{ url(project) }}" class="projects__item {{ project.projectCategories|join(' ') }}">
+            {% if project.photographs[0] %}
+              <div class="projects__item-container">
+                <img src="{{ project.photographs[0].image|imageSize(500) }}" alt="" class="projects__thumbnail-image">
+              </div>
+            {% endif %}
+            <h3 class="projects__thumbnail-title">{{ project.name }}</h3>
+          </a>
+    {% endif %}
+    {% if loop.last %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
 
   {# {% if media %}
     <section class="home__media">

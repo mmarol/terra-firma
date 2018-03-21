@@ -14651,7 +14651,7 @@ module.exports = function($) {
       if (projectQuery === 'all') {
         projectTargets = projects;
       } else {
-        projectTargets = $('.projects__item[data-project-type-target='+ projectQuery +']');
+        projectTargets = $('.'+ projectQuery);
       }
       projects.addClass('hide');
       projectTargets.removeClass('hide');

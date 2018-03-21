@@ -44,7 +44,7 @@
 .featured-projects__thumbnail-title {
   @include text-size($m);
   @include font-family($ff-sans);
-  color: $secondary-color;
+  color: $primary-color;
   display: inline-block;
   transition: color 0.2s ease;
   margin-top: 0.25rem;
@@ -118,7 +118,7 @@
 .projects__thumbnail-title {
   @include text-size($s);
   @include font-family($ff-sans);
-  color: $secondary-color;
+  color: $primary-color;
   display: inline-block;
   transition: color 0.2s ease;
 }
@@ -135,18 +135,21 @@
   font-style: normal;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: $secondary-color;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+  padding: 0 0.3em;
   flex-basis: calc(50% - 1rem);
   margin-bottom: 1rem;
   margin-right: 1rem;
 
   &:hover {
+    border-color: $text-color;
     color: $text-color;
   }
 
   &.active {
     color: $text-color;
-    font-style: italic;
+    border-color: $text-color;
   }
 
   @include respond-above(small) {
@@ -214,7 +217,7 @@
 .project__info-name {
   @include font-family($ff-sans);
   @include text-size($s);
-  color: $secondary-color;
+  color: $primary-color;
   display: none;
 
   @include respond-above(large) {
