@@ -173,10 +173,6 @@
   margin-top: 1rem;
   box-sizing: border-box;
 
-  &:first-child {
-    margin-top: 0;
-  }
-
   @include respond-above(small) {
     flex-basis: calc(100% / 3);
   };
@@ -187,18 +183,26 @@
 
   @include respond-above(large) {
     flex-basis: 100%;
+    &:nth-child(2) {
+      margin-top: 0;
+    }
   };
 }
 
 .project__info-name {
-  @include font-family($ff-sans);
+  @include font-family($ff-serif);
   @include text-size($s);
   color: $primary-color;
-  display: none;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
 
-  @include respond-above(large) {
-    display: block;
-  };
+  &.hidden {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    margin-bottom: 0;
+  }
 }
 
 .project__info-title {

@@ -14392,6 +14392,7 @@ global.$ = global.jQuery;
 var projectFilter = require('./projectFilter.js')($);
 var imageSort = require('./imageSort.js')($);
 var map = require('./map.js')($);
+var showOnScroll = require('./showOnScroll.js')($);
 // var projectLightbox = require('./lightbox.js')({
 //   decorate: '.project__image'
 // });
@@ -14409,13 +14410,24 @@ imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 // People
 imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
 
+// Initialize show on scroll
+showOnScroll.showOnScrollPast('.project__title', '.project__info-name');
+showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
+
+// Scroll past project name
+$(window).scroll(function () {
+  showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
+  showOnScroll.showOnScrollPast('.project__title', '.project__info-name', false);
+});
+
+
 $('.projects__type').click(function() {
   projectFilter.filter(this);
   imageSort.packImages('.projects__list', '.projects__item', '.projects__item');
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./imageSort.js":18,"./map.js":20,"./projectFilter.js":21,"jquery":10}],20:[function(require,module,exports){
+},{"./imageSort.js":18,"./map.js":20,"./projectFilter.js":21,"./showOnScroll.js":22,"jquery":10}],20:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
 
@@ -14659,6 +14671,44 @@ module.exports = function($) {
 
 	return {
     filter: filter
+	};
+
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],22:[function(require,module,exports){
+(function (global){
+var $ = global.jQuery;
+
+module.exports = function($) {
+
+  console.log("ShowOnScroll initialized");
+
+  function showOnScrollPast(itemToScrollPast, itemToShow, onAllWindowSizes = true) {
+    var $itemToScrollPast = $(itemToScrollPast);
+    var $itemToShow = $(itemToShow);
+
+    if ($itemToScrollPast.length === 0 || $itemToShow.length === 0) {
+      return;
+    }
+
+    if (onAllWindowSizes === false && window.innerWidth <= 1023) {
+      return;
+    }
+
+    var itemScrollDepth = $(itemToScrollPast).offset().top + $(itemToScrollPast).height();
+    var hasScrolledPast;
+
+    if ($(window).scrollTop() > itemScrollDepth) {
+      $(itemToShow).removeClass('hidden');
+    } else {
+      $(itemToShow).addClass('hidden');
+    }
+
+  }
+
+	return {
+    showOnScrollPast: showOnScrollPast
 	};
 
 };

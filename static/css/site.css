@@ -267,7 +267,8 @@ iframe {
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #01aa78;
+  background-color: #f1f9ec;
+  border-bottom: 1px solid #01aa78;
   font-family: "PT Sans", sans-serif;
   box-sizing: border-box;
   display: -ms-flexbox;
@@ -285,6 +286,7 @@ iframe {
       flex-basis: 2rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  transition: all 0.2s ease;
 }
 @media screen and (min-width: 513px) {
   .nav__logo {
@@ -298,18 +300,15 @@ iframe {
   height: 2rem;
 }
 .nav__logo path {
-  fill: #f1f9ec;
-  transition: fill 0.2s ease;
-}
-.nav__logo .logo__mark, .nav__logo .logo__text {
-  fill: #f1f9ec;
-  transition: fill 0.2s ease;
-}
-.nav__logo:hover .logo__mark, .nav__logo:hover .logo__text {
   fill: #01aa78;
+  transition: opacity 0.2s ease;
 }
 .nav__logo:hover path {
-  fill: #01aa78;
+  opacity: 0.5;
+}
+.nav__logo.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .nav__item-container {
@@ -362,18 +361,20 @@ iframe {
   }
 }
 .nav__item a {
-  color: #f1f9ec;
+  color: #01aa78;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 .nav__item a:hover {
-  color: #01aa78;
+  opacity: 0.5;
 }
 
 .footer {
   margin-top: 3rem;
   padding: 3rem 2rem 2rem 3rem;
   border-top: 1px solid #01aa78;
+  background-color: #f1f9ec;
+  z-index: 1000;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -594,7 +595,7 @@ iframe {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0 0 5rem 0;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .home__hero-text {
@@ -620,7 +621,7 @@ iframe {
 .home__hero-logo {
   width: 100%;
   height: auto;
-  margin-top: 3rem;
+  margin-top: 6rem;
   margin-bottom: 2rem;
 }
 .home__hero-logo svg {
@@ -1188,9 +1189,6 @@ iframe {
     line-height: calc(30 / 22);
   }
 }
-.project__info:first-child {
-  margin-top: 0;
-}
 @media screen and (min-width: 513px) {
   .project__info {
     -ms-flex-preferred-size: calc(100% / 3);
@@ -1208,12 +1206,17 @@ iframe {
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
   }
+  .project__info:nth-child(2) {
+    margin-top: 0;
+  }
 }
 
 .project__info-name {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Canela", serif;
   color: #01aa78;
-  display: none;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
 }
 @media screen and (min-width: 1px) {
   .project__info-name {
@@ -1245,10 +1248,11 @@ iframe {
     line-height: calc(30 / 22);
   }
 }
-@media screen and (min-width: 1025px) {
-  .project__info-name {
-    display: block;
-  }
+.project__info-name.hidden {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  margin-bottom: 0;
 }
 
 .project__info-title {

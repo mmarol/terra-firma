@@ -13,7 +13,7 @@
     <div class="project">
 
       <div class="project__info-group">
-        {# <h5 class="project__info-name">Project details</h5> #}
+        <h5 class="project__info-name hidden">{{ item.name }}</h5>
         <dl class="project__info">
           {% for projectTypes in item.project_type %}
             {% if loop.first %}

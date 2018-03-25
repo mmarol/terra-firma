@@ -3,8 +3,8 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  background-color: $primary-color;
-  // border-bottom: 1px solid $primary-color;
+  background-color: $background-color;
+  border-bottom: 1px solid $primary-color;
   @include font-family($ff-sans);
   box-sizing: border-box;
   display: flex;
@@ -17,6 +17,7 @@
   margin: 0 1rem 0 2rem;
   flex-basis: 2rem;
   flex-shrink: 0;
+  transition: all 0.2s ease;
 
   @include respond-above(small) {
     margin: 0 2rem;
@@ -30,22 +31,19 @@
   }
 
   path {
-    fill: $background-color;
-    transition: fill 0.2s ease;
-  }
-
-  .logo__mark, .logo__text {
-    fill: $background-color;
-    transition: fill 0.2s ease;
+    fill: $primary-color;
+    transition: opacity 0.2s ease;
   }
 
   &:hover {
-    .logo__mark, .logo__text {
-      fill: $primary-color;
-    }
     path {
-      fill: $primary-color;
+      opacity: 0.5;
     }
+  }
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
   }
 
 }
@@ -67,11 +65,11 @@
   };
 
   a {
-    color: $background-color;
+    color: $primary-color;
     border-bottom: 2px solid transparent;
-    transition: color 0.2s ease;
+    transition: opacity 0.2s ease;
     &:hover {
-      color: $primary-color;
+      opacity: 0.5;
     }
   }
 
