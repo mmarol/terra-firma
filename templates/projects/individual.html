@@ -13,10 +13,14 @@
     <div class="project">
 
       <div class="project__info-group">
-        <h5 class="project__info-name">Project details</h5>
+        {# <h5 class="project__info-name">Project details</h5> #}
         <dl class="project__info">
-          <dt class="project__info-title">Type</dt>
-          <dd class="project__info-value">{{ item.project_type.name }}</dd>
+          {% for projectTypes in item.project_type %}
+            {% if loop.first %}
+              <dt class="project__info-title">Project type</dt>
+            {% endif %}
+            <dd class="project__info-value">{{ projectTypes.name }}</dd>
+          {% endfor %}
         </dl>
         {% if item.location %}
           <dl class="project__info">

@@ -5,53 +5,6 @@
   align-items: flex-start;
 }
 
-// Home page
-
-.featured-projects__list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.featured-projects__item {
-  flex-basis: calc((100% / 3) - 1rem);
-  width: calc((100% / 3) - 1rem);
-  margin-bottom: 1rem;
-  display: block;
-  line-height: 0;
-
-  &.hide {
-    display: none;
-  }
-
-  a {
-    display: block;
-    line-height: 0;
-  }
-
-  &:hover {
-    .featured-projects__thumbnail-title {
-      color: $text-color;
-    }
-  }
-}
-
-.featured-projects__thumbnail-image {
-
-}
-
-.featured-projects__thumbnail-title {
-  @include text-size($m);
-  @include font-family($ff-sans);
-  color: $primary-color;
-  display: inline-block;
-  transition: color 0.2s ease;
-  margin-top: 0.25rem;
-}
-
-// Project list page
-
 .projects__list {
   flex-basis: 100%;
 }
@@ -128,6 +81,11 @@
   flex-wrap: wrap;
   margin-bottom: 1rem;
   flex-basis: 100%;
+  justify-content: space-between;
+
+  @include respond-above(medium) {
+    justify-content: flex-start;
+  };
 }
 
 .projects__type {
@@ -141,6 +99,7 @@
   flex-basis: calc(50% - 1rem);
   margin-bottom: 1rem;
   margin-right: 1rem;
+  box-sizing: border-box;
 
   &:hover {
     border-color: $text-color;
@@ -151,6 +110,18 @@
     color: $text-color;
     border-color: $text-color;
   }
+
+  @include respond-below(small) {
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  };
+
+  @include respond-at(small) {
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  };
 
   @include respond-above(small) {
     flex-basis: calc(100% / 3 - 1rem)
@@ -199,7 +170,12 @@
   @include text-size($s);
   flex-basis: 50%;
   padding-right: 1rem;
+  margin-top: 1rem;
   box-sizing: border-box;
+
+  &:first-child {
+    margin-top: 0;
+  }
 
   @include respond-above(small) {
     flex-basis: calc(100% / 3);
@@ -228,14 +204,14 @@
 .project__info-title {
   @include font-family($ff-serif);
   font-style: italic;
-  font-weight: bold;
-  color: $text-color;
-  margin-top: 1rem;
+  // font-weight: bold;
+  color: $primary-color;
 }
 
 .project__info-value {
   @include font-family($ff-serif);
   color: $text-color;
+  margin-bottom: 0.25rem;
 }
 
 .project__description-container {
