@@ -8,11 +8,13 @@
 
 {% block content %}
 
-  <section class="page__hero" style="background-image: url({{ home.hero_image|imageSize(1600) }})">
-    <div class="page__logo">{% include "templates/partials/icons/logo__full.svg" %}</div>
+  <section class="home__hero">
+    <div class="home__hero-text">
+      <div class="home__hero-logo">{% include "templates/partials/icons/logo__full.svg" %}</div>
+      <div class="home__hero-description">{{ home.short_description|safe }}</div>
+    </div>
+    <div class="home__hero-image" style="background-image: url({{ home.hero_image|imageSize(1600) }})"></div>
   </section>
-
-  <section class="home__description">{{ home.short_description|safe }}</section>
 
   {% for project in projects %}
     {% set project.dateSort = project.year + project.month|slice(0,2) %}
