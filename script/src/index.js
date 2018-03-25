@@ -5,6 +5,7 @@ var projectFilter = require('./projectFilter.js')($);
 var imageSort = require('./imageSort.js')($);
 var map = require('./map.js')($);
 var showOnScroll = require('./showOnScroll.js')($);
+var lightbox = require('./lightbox.js')($);
 // var projectLightbox = require('./lightbox.js')({
 //   decorate: '.project__image'
 // });
@@ -21,6 +22,9 @@ imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 
 // People
 imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
+
+// Lightbox
+lightbox.initializeLightbox('.project__image > img');
 
 // Initialize show on scroll
 showOnScroll.showOnScrollPast('.project__title', '.project__info-name');

@@ -14393,6 +14393,7 @@ var projectFilter = require('./projectFilter.js')($);
 var imageSort = require('./imageSort.js')($);
 var map = require('./map.js')($);
 var showOnScroll = require('./showOnScroll.js')($);
+var lightbox = require('./lightbox.js')($);
 // var projectLightbox = require('./lightbox.js')({
 //   decorate: '.project__image'
 // });
@@ -14409,6 +14410,9 @@ imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 
 // People
 imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
+
+// Lightbox
+lightbox.initializeLightbox('.project__image > img');
 
 // Initialize show on scroll
 showOnScroll.showOnScrollPast('.project__title', '.project__info-name');
@@ -14427,7 +14431,46 @@ $('.projects__type').click(function() {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./imageSort.js":18,"./map.js":20,"./projectFilter.js":21,"./showOnScroll.js":22,"jquery":10}],20:[function(require,module,exports){
+},{"./imageSort.js":18,"./lightbox.js":20,"./map.js":21,"./projectFilter.js":22,"./showOnScroll.js":23,"jquery":10}],20:[function(require,module,exports){
+(function (global){
+var $ = global.jQuery;
+
+module.exports = function($) {
+
+  console.log("Lightbox initialized");
+
+  function initializeLightbox(images) {
+    $images = $(images);
+    $lightboxContainer = $('.lightbox');
+    $lightboxImage = $('.lightbox__image');
+    $lightboxToggle = $('.lightbox__toggle, .lightbox__background');
+
+    if ($images.length === 0) {
+      return;
+    }
+
+    $images.click(function () {
+      var $this = $(this);
+      var lightboxUrl = $this.data('lightbox-image');
+      $lightboxContainer.removeClass('hidden');
+      $lightboxImage.attr('src', lightboxUrl);
+    });
+
+    $lightboxToggle.click(function () {
+      console.log("toggle clicked");
+      $lightboxContainer.addClass('hidden');
+    })
+
+  }
+
+	return {
+    initializeLightbox: initializeLightbox
+	};
+
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],21:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
 
@@ -14642,7 +14685,7 @@ function Map(opts) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
 
@@ -14676,7 +14719,7 @@ module.exports = function($) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
 

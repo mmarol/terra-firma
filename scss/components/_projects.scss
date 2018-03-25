@@ -275,6 +275,7 @@
 .project__image {
   width: calc(50% - 1rem);
   box-sizing: border-box;
+  cursor: zoom-in;
 
   @include respond-above(small) {
 		width: calc(50% - 1rem);
