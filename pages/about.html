@@ -54,12 +54,6 @@
           {% if person.title %}
             <h4 class="people__designations">{{ person.title }}</h4>
           {% endif %}
-          {% if person.email %}
-            <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-          {% endif %}
-          {% if person.phone_number %}
-            <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
-          {% endif %}
         </div>
       {% endif %}
 
