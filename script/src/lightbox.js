@@ -5,10 +5,10 @@ module.exports = function($) {
   console.log("Lightbox initialized");
 
   function initializeLightbox(images) {
-    $images = $(images);
-    $lightboxContainer = $('.lightbox');
-    $lightboxImage = $('.lightbox__image');
-    $lightboxToggle = $('.lightbox__toggle, .lightbox__background');
+    var $images = $(images);
+    var $lightboxContainer = $('.lightbox');
+    var $lightboxImage = $('.lightbox__image');
+    var $lightboxToggle = $('.lightbox__toggle, .lightbox__background');
 
     if ($images.length === 0) {
       return;

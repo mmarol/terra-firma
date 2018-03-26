@@ -4,7 +4,7 @@ module.exports = function($) {
 
   console.log("ShowOnScroll initialized");
 
-  function showOnScrollPast(itemToScrollPast, itemToShow, onAllWindowSizes = true) {
+  function showOnScrollPast(itemToScrollPast, itemToShow, onAllWindowSizes) {
     var $itemToScrollPast = $(itemToScrollPast);
     var $itemToShow = $(itemToShow);
 
@@ -17,7 +17,6 @@ module.exports = function($) {
     }
 
     var itemScrollDepth = $(itemToScrollPast).offset().top + $(itemToScrollPast).height();
-    var hasScrolledPast;
 
     if ($(window).scrollTop() > itemScrollDepth) {
       $(itemToShow).removeClass('hidden');
