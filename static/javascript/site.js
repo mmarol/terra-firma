@@ -14357,23 +14357,28 @@ module.exports = function($) {
     imagesLoaded.makeJQueryPlugin( $ );
     jQueryBridget( 'packery', Packery, $ );
 
-    imagesLoaded($images).on('progress', function(imagesLoadedInstance, image) {
+    // imagesLoaded($images).on('progress', function(imagesLoadedInstance, image) {
+    //   $(image.img).parents(images).addClass('show');
+    // });
+
+    $imageContainer.imagesLoaded().progress( function( instance, image ) {
+      console.log($(image.img));
       $(image.img).parents(images).addClass('show');
     });
 
-    // now use .imagesLoaded() jQuery plugin
-    $imageContainer.imagesLoaded( function() {
-
-      // now you can use $().packery()
-      var $grid = $imageContainer.packery({
-        itemSelector: images,
-        columnWidth: imageSizer,
-        gutter: '.packery__gutter',
-        transitionDuration: '0.2s',
-        percentPosition: true
-      });
-
+    var $grid = $imageContainer.packery({
+      itemSelector: images,
+      columnWidth: imageSizer,
+      gutter: '.packery__gutter',
+      transitionDuration: '0.2s',
+      percentPosition: true
     });
+
+    // now use .imagesLoaded() jQuery plugin
+    $grid.imagesLoaded().progress( function() {
+      $grid.packery();
+    });
+
   }
 
 	return {

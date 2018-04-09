@@ -276,6 +276,8 @@
   width: calc(50% - 1rem);
   box-sizing: border-box;
   cursor: zoom-in;
+  opacity: 0;
+  transition: all 0.2s ease;
 
   @include respond-above(small) {
 		width: calc(50% - 1rem);
