@@ -14357,15 +14357,7 @@ module.exports = function($) {
     imagesLoaded.makeJQueryPlugin( $ );
     jQueryBridget( 'packery', Packery, $ );
 
-    // imagesLoaded($images).on('progress', function(imagesLoadedInstance, image) {
-    //   $(image.img).parents(images).addClass('show');
-    // });
-
-    $imageContainer.imagesLoaded().progress( function( instance, image ) {
-      console.log($(image.img));
-      $(image.img).parents(images).addClass('show');
-    });
-
+    // initialize packery on container
     var $grid = $imageContainer.packery({
       itemSelector: images,
       columnWidth: imageSizer,
@@ -14374,8 +14366,9 @@ module.exports = function($) {
       percentPosition: true
     });
 
-    // now use .imagesLoaded() jQuery plugin
-    $grid.imagesLoaded().progress( function() {
+    // check if each image is loaded
+    $grid.imagesLoaded().progress( function(instance, image) {
+      $(image.img).parents(images).addClass('show');
       $grid.packery();
     });
 

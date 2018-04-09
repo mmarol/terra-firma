@@ -239,7 +239,6 @@
   margin-bottom: 1rem;
 
   @include respond-above(large) {
-    flex-basis: 50%;
     margin-bottom: 3rem;
   };
 }
