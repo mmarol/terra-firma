@@ -1,23 +1,36 @@
 .jobs {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 3rem;
+
+  @include respond-above(medium) {
+    margin-top: 6rem;
+  };
 }
 
 .jobs__title {
   flex-basis: 100%;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+
+  @include respond-above(medium) {
+    margin-bottom: 3rem;
+  };
 }
 
-.jobs__intro {
-  max-width: 35em;
-  margin-left: 20%;
-  @include font-family($ff-sans);
-  margin-bottom: 3rem;
+.jobs__list {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .jobs__item {
   flex-basis: 100%;
   @include font-family($ff-sans);
+
+  @include respond-above(medium) {
+    margin-right: 2rem;
+    flex-basis: calc(50% - 2rem);
+  };
 }
 
 .jobs__name {
@@ -35,7 +48,7 @@
 }
 
 .jobs__description {
-  max-width: 35em;
+  max-width: 30em;
   margin-bottom: 1rem;
 
   span {
@@ -47,18 +60,21 @@
    }
 }
 
+.jobs__button {
+  margin-top: 2rem;
 
-.jobs__list {
-  margin-left: 10%;
-  max-width: 35em;
-  list-style: disc;
-}
+  a {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    transition: all 0.2s ease;
+    background-color: $primary-color;
+    color: $background-color;
+    @include font-family($ff-sans);
+    @include text-size($m);
+    font-weight: bold;
 
-.jobs__subtitle {
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-.jobs__list-item {
-  margin-bottom: 0.5rem;
+    &:hover {
+      background-color: $text-color;
+    }
+  }
 }

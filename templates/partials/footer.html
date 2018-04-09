@@ -5,7 +5,14 @@
     {% for location in contact.locations %}
       <div class="footer__contact">
         <h3 class="footer__location">{{ location.city }}</h3>
-        <div class="footer__contact-info"><a href="{{ location.google_map_link }}" target="_blank">{{ location.address|safe }}</a></div>
+        <div class="footer__contact-info">
+          <a href="{{ location.google_map_link }}" target="_blank">
+            {{ location.address.street1 }}<br>
+            {{ location.address.street2 }}<br>
+            {{ location.address.city }}<br>
+            {{ location.address.state }} {{ location.address.zip }}
+          </a>
+        </div>
         {% if location.email %}
           <p class="footer__contact-info"><a href="mailto:{{ location.email }}" target="_blank">{{ location.email }}</a></p>
         {% endif %}

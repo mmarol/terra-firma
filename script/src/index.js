@@ -3,7 +3,7 @@ global.$ = global.jQuery;
 
 var projectFilter = require('./projectFilter.js')($);
 var imageSort = require('./imageSort.js')($);
-var map = require('./map.js')($);
+// var map = require('./map.js')($);
 var showOnScroll = require('./showOnScroll.js')($);
 var lightbox = require('./lightbox.js')($);
 // var projectLightbox = require('./lightbox.js')({

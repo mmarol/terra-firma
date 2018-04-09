@@ -237,10 +237,6 @@
   color: $primary-color;
   font-weight: bold;
   margin-bottom: 1rem;
-
-  @include respond-above(large) {
-    margin-bottom: 3rem;
-  };
 }
 
 .project__description {
@@ -250,11 +246,6 @@
   width: 40%;
   position: relative;
   right: 0;
-
-  @include respond-above(large) {
-    flex-basis: 50%;
-    top: -2rem;
-  };
 }
 
 .project__gallery {
