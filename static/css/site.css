@@ -379,23 +379,75 @@ iframe {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
   width: 100%;
+}
+@media screen and (min-width: 1025px) {
+  .footer {
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+  }
 }
 
 .footer__logo {
-  -ms-flex-preferred-size: calc(25% - 3rem);
-      flex-basis: calc(25% - 3rem);
-  margin-right: 3rem;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 1025px) {
+  .footer__logo {
+    -ms-flex-preferred-size: calc(25% - 3rem);
+        flex-basis: calc(25% - 3rem);
+    margin-right: 3rem;
+  }
+}
+.footer__logo svg {
+  width: 100%;
+}
+@media screen and (min-width: 513px) {
+  .footer__logo svg {
+    width: 35%;
+  }
+}
+@media screen and (min-width: 769px) {
+  .footer__logo svg {
+    width: 25%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .footer__logo svg {
+    width: 100%;
+    margin-bottom: 0;
+  }
 }
 
 .footer__contact {
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
   width: auto;
-  max-width: 25%;
-  margin-right: 3rem;
+}
+@media screen and (min-width: 513px) {
+  .footer__contact {
+    -ms-flex-preferred-size: calc(50% - 2rem);
+        flex-basis: calc(50% - 2rem);
+    margin-right: 2rem;
+  }
+}
+@media screen and (min-width: 769px) {
+  .footer__contact {
+    -ms-flex-preferred-size: calc(35% - 2rem);
+        flex-basis: calc(35% - 2rem);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .footer__contact {
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    width: auto;
+    max-width: 25%;
+    margin-right: 3rem;
+  }
 }
 
 .footer__location {
@@ -414,14 +466,22 @@ iframe {
 }
 
 .footer__social {
-  -ms-flex-preferred-size: 25%;
-      flex-basis: 25%;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -ms-flex-align: start;
       align-items: flex-start;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  margin-top: 2rem;
+}
+@media screen and (min-width: 1025px) {
+  .footer__social {
+    -ms-flex-preferred-size: 25%;
+        flex-basis: 25%;
+    margin-top: 0;
+  }
 }
 
 .footer__social-item {
