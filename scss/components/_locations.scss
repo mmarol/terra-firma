@@ -27,10 +27,16 @@
     margin-top: 1rem;
   }
 
+  @include respond-above(small) {
+    &:last-child {
+      margin-top: 2rem;
+    }
+  };
+
   @include respond-above(medium) {
     flex-basis: auto;
     &:last-child {
-      margin-top: 2rem;
+      margin-top: 0rem;
     }
   };
 }

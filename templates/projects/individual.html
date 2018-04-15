@@ -58,15 +58,20 @@
         <div class="packery__gutter"></div>
         <div class="packery__sizer"></div>
         {% for image in item.photographs %}
-          <div class="project__image project__image--{{ image.size|lower }}">
-            <img data-lightbox-image="{{ image.image|imageSize(1200) }}" src="{{ image.image|imageSize(1200) }}" alt="">
-            {% if image.caption %}
-              <figcaption class="project__image-caption">{{ image.caption }}</figcaption>
-            {% endif %}
-          </div>
+          <a class="project__image project__image--{{ image.size|lower }}"
+          href="{{ image.image|imageSize(1200) }}"
+          data-caption="{{ image.caption }}"
+          data-at-450="{{ image.image|imageSize(600) }}"
+          data-at-800="{{ image.image|imageSize(800) }}"
+          data-at-1366="{{ image.image|imageSize(1200) }}"
+          data-at-1920="{{ image.image|imageSize(1600) }}">
+            <img src="{{ image.image|imageSize(600) }}" alt="">
+          </a>
         {% endfor %}
       </div>
+
     </div>
+
     <div class="project__more">
     {% if previousProject %}
       <span class="project__previous"><a href="{{ url(previousProject) }}">Previous project</a></span>

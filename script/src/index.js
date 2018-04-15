@@ -23,9 +23,6 @@ imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 // People
 imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
 
-// Lightbox
-lightbox.initializeLightbox('.project__image > img');
-
 // Initialize show on scroll
 showOnScroll.showOnScrollPast('.project__title', '.project__info-name');
 showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
