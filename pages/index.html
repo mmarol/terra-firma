@@ -3,7 +3,6 @@
 {% set home = cms.home %}
 {% set media = cms.mediacoverage | slice(0, 6) %}
 {% set projects = cms.projects %}
-{% set projectTypes = cms.projecttypes %}
 {% set clients = cms.clients %}
 
 {% block content %}
@@ -32,7 +31,7 @@
         <div class="projects__type-container">
           {# <h4 class="projects__type-title">Filter projects:</h4> #}
           <a data-project-type-query="all" class="projects__type active">All</a>
-          {% for projectType in projectTypes %}
+          {% for projectType in home.project_categories %}
             <a data-project-type-query="{{ projectType.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}" class="projects__type">{{ projectType.name }}</a>
           {% endfor %}
         </div>
