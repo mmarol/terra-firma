@@ -72,13 +72,18 @@
 
     </div>
 
-    <div class="project__more">
-    {% if previousProject %}
-      <span class="project__previous"><a href="{{ url(previousProject) }}">Previous project</a></span>
-    {% endif %}
-    {% if nextProject %}
-      <span class="project__next"><a href="{{ url(nextProject) }}">Next project</a></span>
-    {% endif %}
+    <div class="related-projects">
+      <h2 class="related-projects__title">Related projects</h2>
+      {% for project in item.related_projects %}
+        <a href="{{ url(project) }}" class="related-projects__item">
+          {% if project.photographs[0] %}
+            <div class="related-projects__image-container">
+              <img src="{{ project.photographs[0].image|imageSize(500) }}" alt="" class="related-projects__image">
+            </div>
+          {% endif %}
+          <h3 class="related-projects__name">{{ project.name }}</h3>
+        </a>
+      {% endfor %}
     </div>
   </section>
 
