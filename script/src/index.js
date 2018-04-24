@@ -21,7 +21,7 @@ imageSort.packImages('.projects__list', '.projects__item', '.projects__item');
 imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 
 // People
-imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
+// imageSort.packImages('.people', '.people__item', '.people__grid-sizer');
 
 // Initialize show on scroll
 showOnScroll.showOnScrollPast('.project__title', '.project__info-name');

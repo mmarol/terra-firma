@@ -16,44 +16,40 @@
 
   {% for personGroup in team|groupBy('level') %}
     {% set imageSizeClass %}
-    {% if loop.key === 'Principal' %}
-      {% set imageSizeClass = 'large' %}
-    {% elseif loop.key === 'Associate' %}
-      {% set imageSizeClass = 'medium' %}
-    {% elseif loop.key === 'Senior' %}
-      {% set imageSizeClass = 'small' %}
-    {% elseif loop.key === 'Junior' %}
-      {% set imageSizeClass = 'hidden' %}
-    {% endif %}
     {% if loop.first %}
       <section class="people">
-        <div class="packery__gutter"></div>
-        <div class="people__grid-sizer"></div>
+    {% endif %}
+    {% if loop.key === 'Principal' %}
+      {% set imageSizeClass = 'large' %}
+      <h2 class="people__subtitle">Founders & Principals</h2>
+    {% elseif loop.key === 'Associate' %}
+      {% set imageSizeClass = 'medium' %}
+      <h2 class="people__subtitle">Associates</h2>
+    {% elseif loop.key === 'Senior' || loop.key === 'Junior' %}
+      {% set imageSizeClass = 'small' %}
+      <h2 class="people__subtitle">Team</h2>
     {% endif %}
     {% for person in personGroup %}
-      {% if imageSizeClass === 'large' || imageSizeClass === 'medium' || imageSizeClass === 'small' %}
-        <div class="people__item {{ imageSizeClass }}">
-          <img src="/static/images/portrait_placeholder.jpg" alt="" class="people__image">
-          {# {% if person.portrait %}
-            <img src="{{ person.portrait|imageSize(300) }}" alt="" class="people__image">
-          {% endif %} #}
+      {% if imageSizeClass === 'large' %}
+        <div class="people__item large">
+          <img src="{{ person.portrait|imageSize(800) }}" alt="" class="people__image">
           <h3 class="people__name">{{ person.name }}</h3>
-          {% if person.title %}
-            <h4 class="people__designations">{{ person.title }}</h4>
-          {% endif %}
-          {% if person.email %}
+            {# <h4 class="people__designations">{{ person.title }}</h4> #}
             <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-          {% endif %}
-          {% if person.phone_number %}
             <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
-          {% endif %}
+        </div>
+      {% elseif imageSizeClass === 'medium' %}
+        <div class="people__item medium">
+          <img src="{{ person.portrait|imageSize(600) }}" alt="" class="people__image">
+          <h3 class="people__name">{{ person.name }}</h3>
+          {# <h4 class="people__designations">{{ person.title }}</h4> #}
+          <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
         </div>
       {% else %}
         <div class="people__item small">
+          <img src="{{ person.portrait|imageSize(300) }}" alt="" class="people__image">
           <h3 class="people__name">{{ person.name }}</h3>
-          {% if person.title %}
-            <h4 class="people__designations">{{ person.title }}</h4>
-          {% endif %}
+          <h4 class="people__designations">{{ person.title }}</h4>
         </div>
       {% endif %}
 

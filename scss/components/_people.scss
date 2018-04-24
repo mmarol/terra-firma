@@ -1,6 +1,6 @@
 .people {
-  // display: flex;
-  // flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   // justify-content: space-between;
 }
@@ -9,12 +9,20 @@
   flex-basis: 100%;
 }
 
+.people__subtitle {
+  @include font-family($ff-sans);
+  @include text-size($m);
+  color: $primary-color;
+  flex-basis: 100%;
+  margin-bottom: 1rem;
+}
+
 .people__item {
-  // margin-bottom: 2rem;
+  margin-bottom: 2rem;
   box-sizing: border-box;
   @include text-size($s);
   flex-grow: 0;
-  // margin-right: 1rem;
+  margin-right: 1rem;
   // margin-bottom: 2rem;
   overflow: hidden;
 
