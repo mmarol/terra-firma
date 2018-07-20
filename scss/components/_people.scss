@@ -117,9 +117,14 @@
 .people__info {
   @include font-family($ff-serif);
   @include text-size($xs);
-  font-style: italic;
+  // font-style: italic;
 
   a {
     border-bottom: 1px solid $primary-color;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 }

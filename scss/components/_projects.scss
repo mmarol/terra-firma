@@ -36,7 +36,7 @@
   }
 
   &:hover {
-    .projects__thumbnail-image {
+    .projects__item-container {
 
     }
     .projects__thumbnail-title {
@@ -50,6 +50,9 @@
   padding-bottom: 65%;
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease;
 
   img {
     position: absolute;
@@ -157,13 +160,29 @@
   order: 2;
   display: flex;
   flex-wrap: wrap;
+  max-height: 73vh;
+  overflow-y: auto;
 
   @include respond-above(large) {
     order: 1;
     position: fixed;
-    flex-basis: 15%;
-    width: 15%;
+    flex-basis: 13%;
+    width: 13%;
   };
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $secondary-color;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+  }
+
 }
 
 .project__info {
@@ -247,7 +266,7 @@
 .project__description {
   @include font-family($ff-sans);
   flex-basis: 100%;
-  max-width: 30em;
+  max-width: 40em;
   width: 40%;
   position: relative;
   right: 0;

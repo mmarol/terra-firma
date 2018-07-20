@@ -64,17 +64,18 @@
 
 .footer__location {
   margin-bottom: 0.5rem;
+  color: $primary-color;
 }
 
 .footer__contact-info {
   margin-bottom: 0.5rem;
 
   a {
-    color: $primary-color;
-    transition: color 0.2s ease;
+    border-bottom: 1px solid $primary-color;
+    transition: all 0.2s ease;
 
     &:hover {
-      color: $text-color;
+      color: $primary-color;
     }
   }
 }

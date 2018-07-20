@@ -1,14 +1,15 @@
 var $ = global.jQuery;
 
-module.exports = ExampleModule;
+module.exports = function($) {
 
-function ExampleModule(opts) {
-  if (!(this instanceof ExampleModule)) {
-    return new ExampleModule(opts);
+  console.log("ExampleModule initialized");
+
+  function functionName() {
+
   }
 
-  console.log('ExampleModule initialized.');
+	return {
+    functionName: functionName
+	};
 
-  // Script goes here
-
-}
+};

@@ -42,8 +42,8 @@
     {% if project.photographs %}
           <a href="{{ url(project) }}" class="projects__item {{ project.projectCategories|join(' ') }}">
             {% if project.photographs[0] %}
-              <div class="projects__item-container">
-                <img src="{{ project.photographs[0].image|imageSize(500) }}" alt="" class="projects__thumbnail-image">
+              <div class="projects__item-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})">
+                {# <img src="{{ project.photographs[0].image|imageSize(500) }}" alt="" class="projects__thumbnail-image"> #}
               </div>
             {% endif %}
             <h3 class="projects__thumbnail-title">{{ project.name }}</h3>

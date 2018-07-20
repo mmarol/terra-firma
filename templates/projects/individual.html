@@ -17,7 +17,11 @@
         <dl class="project__info">
           {% for projectTypes in item.project_type %}
             {% if loop.first %}
-              <dt class="project__info-title">Project type</dt>
+              {% if loop.revindex > 1 %}
+                <dt class="project__info-title">Project types</dt>
+              {% else %}
+                <dt class="project__info-title">Type of project</dt>
+              {% endif %}
             {% endif %}
             <dd class="project__info-value">{{ projectTypes.name }}</dd>
           {% endfor %}
@@ -46,6 +50,14 @@
             <dd class="project__info-value">{{ item.client.name }}</dd>
           </dl>
         {% endif %}
+        {% if item.team %}
+          <dl class="project__info">
+            <dt class="project__info-title">Team</dt>
+            {% for member in item.team %}
+              <dd class="project__info-value">{{ member.name }}</dd>
+            {% endfor %}
+          </dl>
+        {% endif %}
         </dl>
       </div>
 
@@ -70,10 +82,14 @@
         {% endfor %}
       </div>
 
+      <div class="project__description-container">
+        <div class="project__description"><strong>Team: </strong></div>
+      </div>
+
     </div>
 
     <div class="related-projects">
-      <h2 class="related-projects__title">Related projects</h2>
+      <h2 class="related-projects__title">More projects</h2>
       {% for project in item.related_projects %}
         <a href="{{ url(project) }}" class="related-projects__item">
           {% if project.photographs[0] %}

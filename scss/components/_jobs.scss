@@ -55,9 +55,14 @@
 
   }
 
-   a {
+  a {
+    border-bottom: 1px solid $primary-color;
+    transition: color 0.2s ease;
 
-   }
+    &:hover {
+      color: $primary-color;
+    }
+  }
 }
 
 .jobs__button {
