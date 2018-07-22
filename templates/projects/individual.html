@@ -88,7 +88,43 @@
 
     <div class="related-projects">
       <h2 class="related-projects__title">More projects</h2>
-      {% for project in item.related_projects %}
+      {% for project in item.related_projects|slice(0,3) %}
+        <a href="{{ url(project) }}" class="related-projects__item">
+          {% if project.photographs[0] %}
+            <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+          {% endif %}
+          <h3 class="related-projects__name">{{ project.name }}</h3>
+        </a>
+      {% endfor %}
+      {% if item.related_projects|size === 0 %}
+        {% for project in cms.projects|exclude('_id', item._id)|sort('year', true)|slice(0,3) %}
+          <a href="{{ url(project) }}" class="related-projects__item">
+            {% if project.photographs[0] %}
+              <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+            {% endif %}
+            <h3 class="related-projects__name">{{ project.name }}</h3>
+          </a>
+        {% endfor %}
+      {% elseif item.related_projects|size === 1 %}
+        {% for project in cms.projects|exclude('_id', item._id)|sort('year', true)|slice(0,2) %}
+          <a href="{{ url(project) }}" class="related-projects__item">
+            {% if project.photographs[0] %}
+              <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+            {% endif %}
+            <h3 class="related-projects__name">{{ project.name }}</h3>
+          </a>
+        {% endfor %}
+      {% elseif item.related_projects|size === 2 %}
+        {% for project in cms.projects|exclude('_id', item._id)|sort('year', true)|slice(0,1) %}
+          <a href="{{ url(project) }}" class="related-projects__item">
+            {% if project.photographs[0] %}
+              <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+            {% endif %}
+            <h3 class="related-projects__name">{{ project.name }}</h3>
+          </a>
+        {% endfor %}
+      {% endif %}
+      {# {% for project in item.related_projects %}
         <a href="{{ url(project) }}" class="related-projects__item">
           {% if project.photographs[0] %}
             <div class="related-projects__image-container">
@@ -97,7 +133,7 @@
           {% endif %}
           <h3 class="related-projects__name">{{ project.name }}</h3>
         </a>
-      {% endfor %}
+      {% endfor %} #}
     </div>
   </section>
 

@@ -424,9 +424,19 @@
   margin-bottom: 1rem;
 
   @include respond-above(small) {
-    flex-basis: calc((100% / 3) - 1rem);
+    flex-basis: calc((100% / 2) - 1rem);
     margin-right: 1rem;
     margin-bottom: 0;
+  };
+
+  @include respond-above(medium) {
+    flex-basis: calc((100% / 3) - 1rem);
+  };
+
+  @include respond-below(medium) {
+    &:last-child {
+      display: none;
+    }
   };
 
   &:hover {
@@ -437,11 +447,21 @@
 }
 
 .related-projects__image-container {
-  display: none;
+  height: 0;
+  padding-bottom: 65%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease;
 
-  @include respond-above(small) {
-    display: block;
-  };
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
+  }
 }
 
 .related-projects__image {
