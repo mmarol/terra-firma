@@ -186,7 +186,7 @@
 }
 
 .project__info {
-  @include text-size($s);
+  @include text-size($xs);
   flex-basis: 50%;
   padding-right: 1rem;
   margin-top: 1rem;

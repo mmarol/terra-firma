@@ -52,7 +52,7 @@
         {% endif %}
         {% if item.team %}
           <dl class="project__info">
-            <dt class="project__info-title">Team</dt>
+            <dt class="project__info-title">Core team</dt>
             {% for member in item.team %}
               <dd class="project__info-value">{{ member.name }}</dd>
             {% endfor %}
@@ -83,10 +83,6 @@
           </li>
         {% endfor %}
       </ul>
-
-      <div class="project__description-container">
-        <div class="project__description"><strong>Team: </strong></div>
-      </div>
 
     </div>
 

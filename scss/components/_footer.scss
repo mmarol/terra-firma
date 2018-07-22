@@ -44,6 +44,7 @@
 .footer__contact {
   flex-basis: 100%;
   width: auto;
+  margin-bottom: 2rem;
 
   @include respond-above(small) {
     flex-basis: calc(50% - 2rem);
@@ -51,7 +52,7 @@
   };
 
   @include respond-above(medium) {
-    flex-basis: calc(35% - 2rem);
+    flex-basis: calc(33% - 2rem);
   };
 
   @include respond-above(large) {
@@ -85,11 +86,9 @@
   flex-wrap: wrap;
   align-items: flex-start;
   flex-basis: 100%;
-  margin-top: 2rem;
 
   @include respond-above(large) {
-    flex-basis: 25%;
-    margin-top: 0;
+    justify-content: center;
   };
 }
 

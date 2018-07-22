@@ -426,6 +426,7 @@ iframe {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   width: auto;
+  margin-bottom: 2rem;
 }
 @media screen and (min-width: 513px) {
   .footer__contact {
@@ -436,8 +437,8 @@ iframe {
 }
 @media screen and (min-width: 769px) {
   .footer__contact {
-    -ms-flex-preferred-size: calc(35% - 2rem);
-        flex-basis: calc(35% - 2rem);
+    -ms-flex-preferred-size: calc(33% - 2rem);
+        flex-basis: calc(33% - 2rem);
   }
 }
 @media screen and (min-width: 1025px) {
@@ -475,13 +476,11 @@ iframe {
       align-items: flex-start;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
-  margin-top: 2rem;
 }
 @media screen and (min-width: 1025px) {
   .footer__social {
-    -ms-flex-preferred-size: 25%;
-        flex-basis: 25%;
-    margin-top: 0;
+    -ms-flex-pack: center;
+        justify-content: center;
   }
 }
 
@@ -1283,32 +1282,32 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .project__info {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 12px;
+    line-height: calc(16 / 12);
   }
 }
 @media screen and (min-width: 513px) {
   .project__info {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 12px;
+    line-height: calc(16 / 12);
   }
 }
 @media screen and (min-width: 769px) {
   .project__info {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 12px;
+    line-height: calc(16 / 12);
   }
 }
 @media screen and (min-width: 1025px) {
   .project__info {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 14px;
+    line-height: calc(18 / 14);
   }
 }
 @media screen and (min-width: 1441px) {
   .project__info {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 16px;
+    line-height: calc(24 / 16);
   }
 }
 @media screen and (min-width: 513px) {
@@ -1866,7 +1865,8 @@ iframe {
 
 .locations__item {
   width: auto;
-  margin-right: 6rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
   font-family: "PT Sans", sans-serif;
   display: -ms-flexbox;
   display: flex;
@@ -1878,20 +1878,24 @@ iframe {
       flex-shrink: 1;
 }
 .locations__item:last-child {
-  margin-top: 1rem;
+  margin-bottom: 0;
 }
 @media screen and (min-width: 513px) {
-  .locations__item:last-child {
-    margin-top: 2rem;
+  .locations__item {
+    -ms-flex-preferred-size: calc(50% - 2rem);
+        flex-basis: calc(50% - 2rem);
   }
 }
 @media screen and (min-width: 769px) {
   .locations__item {
     -ms-flex-preferred-size: auto;
         flex-basis: auto;
+    margin-right: 6rem;
   }
-  .locations__item:last-child {
-    margin-top: 0rem;
+}
+@media screen and (min-width: 1025px) {
+  .locations__item {
+    margin-bottom: 0;
   }
 }
 
