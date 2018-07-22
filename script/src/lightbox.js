@@ -1,5 +1,5 @@
 var $ = global.jQuery;
-var baguetteBox = require('baguettebox.js');
+var baguetteBox = require('lightbox');
 
 module.exports = function($) {
 

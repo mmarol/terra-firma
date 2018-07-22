@@ -11,7 +11,9 @@
   "bugs": {
     "url": "https://github.com/webhook/webhook-generate/issues"
   },
-  "browser": {},
+  "browser": {
+    "lightbox": "./script/lib/baguetteBox.js"
+  },
   "scripts": {
     "start": "wh serve",
     "build": "grunt build",
@@ -25,7 +27,6 @@
     "MD5": "~1.2.1",
     "adm-zip": "~0.4.3",
     "async": "~0.2.10",
-    "baguettebox.js": "^1.10.0",
     "cheerio": "~0.18.0",
     "colors": "~0.6.2",
     "connect-header": "0.0.5",

@@ -66,21 +66,23 @@
         <div class="project__description">{{ item.description|safe }}</div>
       </div>
 
-      <div class="project__gallery">
+      <ul class="project__gallery">
         <div class="packery__gutter"></div>
         <div class="packery__sizer"></div>
         {% for image in item.photographs %}
-          <a class="project__image project__image--{{ image.size|lower }}"
-          href="{{ image.image|imageSize(1200) }}"
-          data-caption="{{ image.caption }}"
-          data-at-450="{{ image.image|imageSize(600) }}"
-          data-at-800="{{ image.image|imageSize(800) }}"
-          data-at-1366="{{ image.image|imageSize(1200) }}"
-          data-at-1920="{{ image.image|imageSize(1600) }}">
-            <img src="{{ image.image|imageSize(600) }}" alt="">
-          </a>
+          <li>
+            <a class="project__image project__image--{{ image.size|lower }}"
+            href="{{ image.image|imageSize(1200) }}"
+            data-caption="{{ image.caption }}"
+            data-at-450="{{ image.image|imageSize(600) }}"
+            data-at-800="{{ image.image|imageSize(800) }}"
+            data-at-1366="{{ image.image|imageSize(1200) }}"
+            data-at-1920="{{ image.image|imageSize(1600) }}">
+              <img src="{{ image.image|imageSize(600) }}" alt="">
+            </a>
+          </li>
         {% endfor %}
-      </div>
+      </ul>
 
       <div class="project__description-container">
         <div class="project__description"><strong>Team: </strong></div>
@@ -102,7 +104,5 @@
       {% endfor %}
     </div>
   </section>
-
-  {% include "templates/partials/lightbox.html" %}
 
 {% endblock %}

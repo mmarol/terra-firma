@@ -1,13 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
- * baguetteBox.js
- * @author  feimosi
- * @version 1.10.0
- * @url https://github.com/feimosi/baguetteBox.js
- */
-!function(e,t){"use strict";"function"==typeof define&&define.amd?define(t):"object"==typeof exports?module.exports=t():e.baguetteBox=t()}(this,function(){"use strict";var e,t,n,o,i,a='<svg width="44" height="60"><polyline points="30 10 10 30 30 50" stroke="rgba(255,255,255,0.5)" stroke-width="4"stroke-linecap="butt" fill="none" stroke-linejoin="round"/></svg>',s='<svg width="44" height="60"><polyline points="14 10 34 30 14 50" stroke="rgba(255,255,255,0.5)" stroke-width="4"stroke-linecap="butt" fill="none" stroke-linejoin="round"/></svg>',l='<svg width="30" height="30"><g stroke="rgb(160,160,160)" stroke-width="4"><line x1="5" y1="5" x2="25" y2="25"/><line x1="5" y1="25" x2="25" y2="5"/></g></svg>',r={},u={captions:!0,buttons:"auto",fullScreen:!1,noScrollbars:!1,bodyClass:"baguetteBox-open",titleTag:!1,async:!1,preload:2,animation:"slideIn",afterShow:null,afterHide:null,onChange:null,overlayBackgroundColor:"rgba(0,0,0,.8)"},c={},d=[],f=0,g=!1,p={},b=!1,m=/.+\.(gif|jpe?g|png|webp)/i,v={},h=[],y=null,w=function(e){-1!==e.target.id.indexOf("baguette-img")&&I()},k=function(e){e.stopPropagation?e.stopPropagation():e.cancelBubble=!0,q()},x=function(e){e.stopPropagation?e.stopPropagation():e.cancelBubble=!0,j()},C=function(e){e.stopPropagation?e.stopPropagation():e.cancelBubble=!0,I()},E=function(e){p.count++,p.count>1&&(p.multitouch=!0),p.startX=e.changedTouches[0].pageX,p.startY=e.changedTouches[0].pageY},B=function(e){if(!b&&!p.multitouch){e.preventDefault?e.preventDefault():e.returnValue=!1;var t=e.touches[0]||e.changedTouches[0];t.pageX-p.startX>40?(b=!0,q()):t.pageX-p.startX<-40?(b=!0,j()):p.startY-t.pageY>100&&I()}},T=function(){p.count--,p.count<=0&&(p.multitouch=!1),b=!1},N=function(){T()},L=function(t){"block"===e.style.display&&e.contains&&!e.contains(t.target)&&(t.stopPropagation(),H())};function A(e){if(v.hasOwnProperty(e)){var t=v[e].galleries;[].forEach.call(t,function(e){[].forEach.call(e,function(e){V(e.imageElement,"click",e.eventHandler)}),d===e&&(d=[])}),delete v[e]}}function P(e){switch(e.keyCode){case 37:q();break;case 39:j();break;case 27:I()}}function S(i,a){if(d!==i){for(d=i,function(i){i||(i={});for(var a in u)r[a]=u[a],"undefined"!=typeof i[a]&&(r[a]=i[a]);t.style.transition=t.style.webkitTransition="fadeIn"===r.animation?"opacity .4s ease":"slideIn"===r.animation?"":"none","auto"===r.buttons&&("ontouchstart"in window||1===d.length)&&(r.buttons=!1);n.style.display=o.style.display=r.buttons?"":"none";try{e.style.backgroundColor=r.overlayBackgroundColor}catch(s){}}(a);t.firstChild;)t.removeChild(t.firstChild);h.length=0;for(var s,l=[],c=[],f=0;f<i.length;f++)(s=W("div")).className="full-image",s.id="baguette-img-"+f,h.push(s),l.push("baguetteBox-figure-"+f),c.push("baguetteBox-figcaption-"+f),t.appendChild(h[f]);e.setAttribute("aria-labelledby",l.join(" ")),e.setAttribute("aria-describedby",c.join(" "))}}function F(t){r.noScrollbars&&(document.documentElement.style.overflowY="hidden",document.body.style.overflowY="scroll"),"block"!==e.style.display&&(D(document,"keydown",P),p={count:0,startX:null,startY:null},Y(f=t,function(){R(f),z(f)}),O(),e.style.display="block",r.fullScreen&&(e.requestFullscreen?e.requestFullscreen():e.webkitRequestFullscreen?e.webkitRequestFullscreen():e.mozRequestFullScreen&&e.mozRequestFullScreen()),setTimeout(function(){e.className="visible",r.bodyClass&&document.body.classList&&document.body.classList.add(r.bodyClass),r.afterShow&&r.afterShow()},50),r.onChange&&r.onChange(f,h.length),y=document.activeElement,H(),g=!0)}function H(){r.buttons?n.focus():i.focus()}function I(){r.noScrollbars&&(document.documentElement.style.overflowY="auto",document.body.style.overflowY="auto"),"none"!==e.style.display&&(V(document,"keydown",P),e.className="",setTimeout(function(){e.style.display="none",document.exitFullscreen?document.exitFullscreen():document.mozCancelFullScreen?document.mozCancelFullScreen():document.webkitExitFullscreen&&document.webkitExitFullscreen(),r.bodyClass&&document.body.classList&&document.body.classList.remove(r.bodyClass),r.afterHide&&r.afterHide(),y&&y.focus(),g=!1},500))}function Y(e,t){var n=h[e],o=d[e];if(void 0!==n&&void 0!==o)if(n.getElementsByTagName("img")[0])t&&t();else{var i=o.imageElement,a=i.getElementsByTagName("img")[0],s="function"==typeof r.captions?r.captions.call(d,i):i.getAttribute("data-caption")||i.title,l=function(e){var t=e.href;if(e.dataset){var n=[];for(var o in e.dataset)"at-"!==o.substring(0,3)||isNaN(o.substring(3))||(n[o.replace("at-","")]=e.dataset[o]);for(var i=Object.keys(n).sort(function(e,t){return parseInt(e,10)<parseInt(t,10)?-1:1}),a=window.innerWidth*window.devicePixelRatio,s=0;s<i.length-1&&i[s]<a;)s++;t=n[i[s]]||t}return t}(i),u=W("figure");if(u.id="baguetteBox-figure-"+e,u.innerHTML='<div class="baguetteBox-spinner"><div class="baguetteBox-double-bounce1"></div><div class="baguetteBox-double-bounce2"></div></div>',r.captions&&s){var c=W("figcaption");c.id="baguetteBox-figcaption-"+e,c.innerHTML=s,u.appendChild(c)}n.appendChild(u);var f=W("img");f.onload=function(){var n=document.querySelector("#baguette-img-"+e+" .baguetteBox-spinner");u.removeChild(n),!r.async&&t&&t()},f.setAttribute("src",l),f.alt=a&&a.alt||"",r.titleTag&&s&&(f.title=s),u.appendChild(f),r.async&&t&&t()}}function j(){return X(f+1)}function q(){return X(f-1)}function X(e,t){return!g&&e>=0&&e<t.length?(S(t,r),F(e),!0):e<0?(r.animation&&M("left"),!1):e>=h.length?(r.animation&&M("right"),!1):(Y(f=e,function(){R(f),z(f)}),O(),r.onChange&&r.onChange(f,h.length),!0)}function M(e){t.className="bounce-from-"+e,setTimeout(function(){t.className=""},400)}function O(){var e=100*-f+"%";"fadeIn"===r.animation?(t.style.opacity=0,setTimeout(function(){c.transforms?t.style.transform=t.style.webkitTransform="translate3d("+e+",0,0)":t.style.left=e,t.style.opacity=1},400)):c.transforms?t.style.transform=t.style.webkitTransform="translate3d("+e+",0,0)":t.style.left=e}function R(e){e-f>=r.preload||Y(e+1,function(){R(e+1)})}function z(e){f-e>=r.preload||Y(e-1,function(){z(e-1)})}function D(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent("on"+t,function(e){(e=e||window.event).target=e.target||e.srcElement,n(e)})}function V(e,t,n,o){e.removeEventListener?e.removeEventListener(t,n,o):e.detachEvent("on"+t,n)}function U(e){return document.getElementById(e)}function W(e){return document.createElement(e)}return[].forEach||(Array.prototype.forEach=function(e,t){for(var n=0;n<this.length;n++)e.call(t,this[n],n,this)}),[].filter||(Array.prototype.filter=function(e,t,n,o,i){for(n=this,o=[],i=0;i<n.length;i++)e.call(t,n[i],i,n)&&o.push(n[i]);return o}),{run:function(r,u){var d,f,g,p,b,h;return c.transforms="undefined"!=typeof(d=W("div")).style.perspective||"undefined"!=typeof d.style.webkitPerspective,c.svg=((f=W("div")).innerHTML="<svg/>","http://www.w3.org/2000/svg"===(f.firstChild&&f.firstChild.namespaceURI)),c.passiveEvents=function(){var e=!1;try{var t=Object.defineProperty({},"passive",{get:function(){e=!0}});window.addEventListener("test",null,t)}catch(n){}return e}(),function(){if(e=U("baguetteBox-overlay"))return t=U("baguetteBox-slider"),n=U("previous-button"),o=U("next-button"),void(i=U("close-button"));var r;(e=W("div")).setAttribute("role","dialog"),e.id="baguetteBox-overlay",document.getElementsByTagName("body")[0].appendChild(e),(t=W("div")).id="baguetteBox-slider",e.appendChild(t),(n=W("button")).setAttribute("type","button"),n.id="previous-button",n.setAttribute("aria-label","Previous"),n.innerHTML=c.svg?a:"&lt;",e.appendChild(n),(o=W("button")).setAttribute("type","button"),o.id="next-button",o.setAttribute("aria-label","Next"),o.innerHTML=c.svg?s:"&gt;",e.appendChild(o),(i=W("button")).setAttribute("type","button"),i.id="close-button",i.setAttribute("aria-label","Close"),i.innerHTML=c.svg?l:"&times;",e.appendChild(i),n.className=o.className=i.className="baguetteBox-button",r=c.passiveEvents?{passive:!0}:null,D(e,"click",w),D(n,"click",k),D(o,"click",x),D(i,"click",C),D(t,"contextmenu",N),D(e,"touchstart",E,r),D(e,"touchmove",B,r),D(e,"touchend",T),D(document,"focus",L,!0)}(),A(r),g=r,p=u,b=document.querySelectorAll(g),h={galleries:[],nodeList:b},v[g]=h,[].forEach.call(b,function(e){p&&p.filter&&(m=p.filter);var t=[];if(t="A"===e.tagName?[e]:e.getElementsByTagName("a"),0!==(t=[].filter.call(t,function(e){if(-1===e.className.indexOf(p&&p.ignoreClass))return m.test(e.href)})).length){var n=[];[].forEach.call(t,function(e,t){var o=function(e){e.preventDefault?e.preventDefault():e.returnValue=!1,S(n,p),F(t)},i={eventHandler:o,imageElement:e};D(e,"click",o),n.push(i)}),h.galleries.push(n)}}),h.galleries},show:X,showNext:j,showPrevious:q,hide:I,destroy:function(){var a;a=c.passiveEvents?{passive:!0}:null,V(e,"click",w),V(n,"click",k),V(o,"click",x),V(i,"click",C),V(t,"contextmenu",N),V(e,"touchstart",E,a),V(e,"touchmove",B,a),V(e,"touchend",T),V(document,"focus",L,!0),function(){for(var e in v)v.hasOwnProperty(e)&&A(e)}(),V(document,"keydown",P),document.getElementsByTagName("body")[0].removeChild(document.getElementById("baguetteBox-overlay")),v={},d=[],f=0}}});
-},{}],2:[function(require,module,exports){
-/*!
  * classie v1.0.1
  * class helper functions
  * from bonzo https://github.com/ded/bonzo
@@ -93,7 +85,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{}],3:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 /*!
  * getStyleProperty v1.0.4
  * original by kangax
@@ -150,7 +142,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  * matchesSelector v1.0.3
  * matchesSelector( element, '.selector' )
@@ -259,7 +251,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( Element.prototype );
 
-},{}],5:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /*!
  * docReady v1.0.4
  * Cross browser DOMContentLoaded event emitter
@@ -341,7 +333,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"eventie":6}],6:[function(require,module,exports){
+},{"eventie":5}],5:[function(require,module,exports){
 /*!
  * eventie v1.0.6
  * event binding helper
@@ -425,7 +417,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 /**
  * Fizzy UI utils v1.0.1
  * MIT license
@@ -697,7 +689,7 @@ return utils;
 
 }));
 
-},{"desandro-matches-selector":4,"doc-ready":5}],8:[function(require,module,exports){
+},{"desandro-matches-selector":3,"doc-ready":4}],7:[function(require,module,exports){
 /*!
  * getSize v1.2.2
  * measure size of elements
@@ -949,7 +941,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 })( window );
 
-},{"desandro-get-style-property":3}],9:[function(require,module,exports){
+},{"desandro-get-style-property":2}],8:[function(require,module,exports){
 /*!
  * imagesLoaded v3.2.0
  * JavaScript is all like "You images are done yet or what?"
@@ -1335,7 +1327,7 @@ function makeArray( obj ) {
 
 });
 
-},{"eventie":6,"wolfy87-eventemitter":18}],10:[function(require,module,exports){
+},{"eventie":5,"wolfy87-eventemitter":17}],9:[function(require,module,exports){
 /**
  * Bridget makes jQuery widgets
  * v2.0.1
@@ -1480,7 +1472,7 @@ return jQueryBridget;
 
 }));
 
-},{"jquery":11}],11:[function(require,module,exports){
+},{"jquery":10}],10:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.2.4
  * http://jquery.com/
@@ -11296,7 +11288,7 @@ if ( !noGlobal ) {
 return jQuery;
 }));
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * Outlayer Item
  */
@@ -11882,7 +11874,7 @@ return Item;
 
 }));
 
-},{"desandro-get-style-property":3,"fizzy-ui-utils":7,"get-size":8,"wolfy87-eventemitter":18}],13:[function(require,module,exports){
+},{"desandro-get-style-property":2,"fizzy-ui-utils":6,"get-size":7,"wolfy87-eventemitter":17}],12:[function(require,module,exports){
 /*!
  * Outlayer v1.4.2
  * the brains and guts of a layout library
@@ -12810,7 +12802,7 @@ return Outlayer;
 }));
 
 
-},{"./item":12,"eventie":6,"fizzy-ui-utils":7,"get-size":8,"wolfy87-eventemitter":18}],14:[function(require,module,exports){
+},{"./item":11,"eventie":5,"fizzy-ui-utils":6,"get-size":7,"wolfy87-eventemitter":17}],13:[function(require,module,exports){
 /**
  * Packery Item Element
 **/
@@ -12993,7 +12985,7 @@ return Item;
 
 }));
 
-},{"./rect":17,"desandro-get-style-property":3,"outlayer":13}],15:[function(require,module,exports){
+},{"./rect":16,"desandro-get-style-property":2,"outlayer":12}],14:[function(require,module,exports){
 /**
  * Packer
  * bin-packing algorithm
@@ -13160,7 +13152,7 @@ var sorters = {
 return Packer;
 
 }));
-},{"./rect":17}],16:[function(require,module,exports){
+},{"./rect":16}],15:[function(require,module,exports){
 /*!
  * Packery v1.4.3
  * bin-packing layout library
@@ -13671,7 +13663,7 @@ return Packery;
 
 }));
 
-},{"./item":14,"./packer":15,"./rect":17,"desandro-classie":2,"get-size":8,"outlayer":13}],17:[function(require,module,exports){
+},{"./item":13,"./packer":14,"./rect":16,"desandro-classie":1,"get-size":7,"outlayer":12}],16:[function(require,module,exports){
 /**
  * Rect
  * low-level utility class for basic geometry
@@ -13831,7 +13823,7 @@ return Rect;
 
 }));
 
-},{}],18:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 /*!
  * EventEmitter v4.2.11 - git.io/ee
  * Unlicense - http://unlicense.org/
@@ -14307,6 +14299,771 @@ return Rect;
     }
 }.call(this));
 
+},{}],18:[function(require,module,exports){
+/*!
+ * baguetteBox.js
+ * @author  feimosi
+ * @version 1.10.0
+ * @url https://github.com/feimosi/baguetteBox.js
+ */
+
+/* global define, module */
+
+(function (root, factory) {
+    'use strict';
+    if (typeof define === 'function' && define.amd) {
+        define(factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory();
+    } else {
+        root.baguetteBox = factory();
+    }
+}(this, function () {
+    'use strict';
+
+    // SVG shapes used on the buttons
+    var leftArrow = '<svg width="44" height="60">' +
+            '<polyline points="30 10 10 30 30 50" stroke="rgba(255,255,255,0.5)" stroke-width="4"' +
+              'stroke-linecap="butt" fill="none" stroke-linejoin="round"/>' +
+            '</svg>',
+        rightArrow = '<svg width="44" height="60">' +
+            '<polyline points="14 10 34 30 14 50" stroke="rgba(255,255,255,0.5)" stroke-width="4"' +
+              'stroke-linecap="butt" fill="none" stroke-linejoin="round"/>' +
+            '</svg>',
+        closeX = '<svg width="30" height="30">' +
+            '<g stroke="rgb(160,160,160)" stroke-width="4">' +
+            '<line x1="5" y1="5" x2="25" y2="25"/>' +
+            '<line x1="5" y1="25" x2="25" y2="5"/>' +
+            '</g></svg>';
+    // Global options and their defaults
+    var options = {},
+        defaults = {
+            captions: true,
+            buttons: 'auto',
+            fullScreen: false,
+            noScrollbars: false,
+            bodyClass: 'baguetteBox-open',
+            titleTag: false,
+            async: false,
+            preload: 2,
+            animation: 'slideIn',
+            afterShow: null,
+            afterHide: null,
+            onChange: null,
+            overlayBackgroundColor: 'rgba(0,0,0,.8)'
+        };
+    // Object containing information about features compatibility
+    var supports = {};
+    // DOM Elements references
+    var overlay, slider, previousButton, nextButton, closeButton;
+    // An array with all images in the current gallery
+    var currentGallery = [];
+    // Current image index inside the slider
+    var currentIndex = 0;
+    // Visibility of the overlay
+    var isOverlayVisible = false;
+    // Touch event start position (for slide gesture)
+    var touch = {};
+    // If set to true ignore touch events because animation was already fired
+    var touchFlag = false;
+    // Regex pattern to match image files
+    var regex = /.+\.(gif|jpe?g|png|webp)/i;
+    // Object of all used galleries
+    var data = {};
+    // Array containing temporary images DOM elements
+    var imagesElements = [];
+    // The last focused element before opening the overlay
+    var documentLastFocus = null;
+    var overlayClickHandler = function(event) {
+        // Close the overlay when user clicks directly on the background
+        if (event.target.id.indexOf('baguette-img') !== -1) {
+            hideOverlay();
+        }
+    };
+    var previousButtonClickHandler = function(event) {
+        event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true; // eslint-disable-line no-unused-expressions
+        showPreviousImage();
+    };
+    var nextButtonClickHandler = function(event) {
+        event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true; // eslint-disable-line no-unused-expressions
+        showNextImage();
+    };
+    var closeButtonClickHandler = function(event) {
+        event.stopPropagation ? event.stopPropagation() : event.cancelBubble = true; // eslint-disable-line no-unused-expressions
+        hideOverlay();
+    };
+    var touchstartHandler = function(event) {
+        touch.count++;
+        if (touch.count > 1) {
+            touch.multitouch = true;
+        }
+        // Save x and y axis position
+        touch.startX = event.changedTouches[0].pageX;
+        touch.startY = event.changedTouches[0].pageY;
+    };
+    var touchmoveHandler = function(event) {
+        // If action was already triggered or multitouch return
+        if (touchFlag || touch.multitouch) {
+            return;
+        }
+        event.preventDefault ? event.preventDefault() : event.returnValue = false; // eslint-disable-line no-unused-expressions
+        var touchEvent = event.touches[0] || event.changedTouches[0];
+        // Move at least 40 pixels to trigger the action
+        if (touchEvent.pageX - touch.startX > 40) {
+            touchFlag = true;
+            showPreviousImage();
+        } else if (touchEvent.pageX - touch.startX < -40) {
+            touchFlag = true;
+            showNextImage();
+        // Move 100 pixels up to close the overlay
+        } else if (touch.startY - touchEvent.pageY > 100) {
+            hideOverlay();
+        }
+    };
+    var touchendHandler = function() {
+        touch.count--;
+        if (touch.count <= 0) {
+            touch.multitouch = false;
+        }
+        touchFlag = false;
+    };
+    var contextmenuHandler = function() {
+        touchendHandler();
+    };
+
+    var trapFocusInsideOverlay = function(event) {
+        if (overlay.style.display === 'block' && (overlay.contains && !overlay.contains(event.target))) {
+            event.stopPropagation();
+            initFocus();
+        }
+    };
+
+    // forEach polyfill for IE8
+    // http://stackoverflow.com/a/14827443/1077846
+    /* eslint-disable */
+    if (![].forEach) {
+        Array.prototype.forEach = function(callback, thisArg) {
+            for (var i = 0; i < this.length; i++) {
+                callback.call(thisArg, this[i], i, this);
+            }
+        };
+    }
+
+    // filter polyfill for IE8
+    // https://gist.github.com/eliperelman/1031656
+    if (![].filter) {
+        Array.prototype.filter = function(a, b, c, d, e) {
+            c = this;
+            d = [];
+            for (e = 0; e < c.length; e++)
+                a.call(b, c[e], e, c) && d.push(c[e]);
+            return d;
+        };
+    }
+    /* eslint-enable */
+
+    // Script entry point
+    function run(selector, userOptions) {
+        // Fill supports object
+        supports.transforms = testTransformsSupport();
+        supports.svg = testSvgSupport();
+        supports.passiveEvents = testPassiveEventsSupport();
+
+        buildOverlay();
+        removeFromCache(selector);
+        return bindImageClickListeners(selector, userOptions);
+    }
+
+    function bindImageClickListeners(selector, userOptions) {
+        // For each gallery bind a click event to every image inside it
+        var galleryNodeList = document.querySelectorAll(selector);
+        var selectorData = {
+            galleries: [],
+            nodeList: galleryNodeList
+        };
+        data[selector] = selectorData;
+
+        [].forEach.call(galleryNodeList, function(galleryElement) {
+            if (userOptions && userOptions.filter) {
+                regex = userOptions.filter;
+            }
+
+            // Get nodes from gallery elements or single-element galleries
+            var tagsNodeList = [];
+            if (galleryElement.tagName === 'A') {
+                tagsNodeList = [galleryElement];
+            } else {
+                tagsNodeList = galleryElement.getElementsByTagName('a');
+            }
+
+            // Filter 'a' elements from those not linking to images
+            tagsNodeList = [].filter.call(tagsNodeList, function(element) {
+                if (element.className.indexOf(userOptions && userOptions.ignoreClass) === -1) {
+                    return regex.test(element.href);
+                }
+            });
+            if (tagsNodeList.length === 0) {
+                return;
+            }
+
+            var gallery = [];
+            [].forEach.call(tagsNodeList, function(imageElement, imageIndex) {
+                var imageElementClickHandler = function(event) {
+                    event.preventDefault ? event.preventDefault() : event.returnValue = false; // eslint-disable-line no-unused-expressions
+                    prepareOverlay(gallery, userOptions);
+                    showOverlay(imageIndex);
+                };
+                var imageItem = {
+                    eventHandler: imageElementClickHandler,
+                    imageElement: imageElement
+                };
+                bind(imageElement, 'click', imageElementClickHandler);
+                gallery.push(imageItem);
+            });
+            selectorData.galleries.push(gallery);
+        });
+
+        return selectorData.galleries;
+    }
+
+    function clearCachedData() {
+        for (var selector in data) {
+            if (data.hasOwnProperty(selector)) {
+                removeFromCache(selector);
+            }
+        }
+    }
+
+    function removeFromCache(selector) {
+        if (!data.hasOwnProperty(selector)) {
+            return;
+        }
+        var galleries = data[selector].galleries;
+        [].forEach.call(galleries, function(gallery) {
+            [].forEach.call(gallery, function(imageItem) {
+                unbind(imageItem.imageElement, 'click', imageItem.eventHandler);
+            });
+
+            if (currentGallery === gallery) {
+                currentGallery = [];
+            }
+        });
+
+        delete data[selector];
+    }
+
+    function buildOverlay() {
+        overlay = getByID('baguetteBox-overlay');
+        // Check if the overlay already exists
+        if (overlay) {
+            slider = getByID('baguetteBox-slider');
+            previousButton = getByID('previous-button');
+            nextButton = getByID('next-button');
+            closeButton = getByID('close-button');
+            return;
+        }
+        // Create overlay element
+        overlay = create('div');
+        overlay.setAttribute('role', 'dialog');
+        overlay.id = 'baguetteBox-overlay';
+        document.getElementsByTagName('body')[0].appendChild(overlay);
+        // Create gallery slider element
+        slider = create('div');
+        slider.id = 'baguetteBox-slider';
+        overlay.appendChild(slider);
+        // Create all necessary buttons
+        previousButton = create('button');
+        previousButton.setAttribute('type', 'button');
+        previousButton.id = 'previous-button';
+        previousButton.setAttribute('aria-label', 'Previous');
+        previousButton.innerHTML = supports.svg ? leftArrow : '&lt;';
+        overlay.appendChild(previousButton);
+
+        nextButton = create('button');
+        nextButton.setAttribute('type', 'button');
+        nextButton.id = 'next-button';
+        nextButton.setAttribute('aria-label', 'Next');
+        nextButton.innerHTML = supports.svg ? rightArrow : '&gt;';
+        overlay.appendChild(nextButton);
+
+        closeButton = create('button');
+        closeButton.setAttribute('type', 'button');
+        closeButton.id = 'close-button';
+        closeButton.setAttribute('aria-label', 'Close');
+        closeButton.innerHTML = supports.svg ? closeX : '&times;';
+        overlay.appendChild(closeButton);
+
+        previousButton.className = nextButton.className = closeButton.className = 'baguetteBox-button';
+
+        bindEvents();
+    }
+
+    function keyDownHandler(event) {
+        switch (event.keyCode) {
+        case 37: // Left arrow
+            showPreviousImage();
+            break;
+        case 39: // Right arrow
+            showNextImage();
+            break;
+        case 27: // Esc
+            hideOverlay();
+            break;
+        }
+    }
+
+    function bindEvents() {
+        var options = supports.passiveEvents ? { passive: true } : null;
+        bind(overlay, 'click', overlayClickHandler);
+        bind(previousButton, 'click', previousButtonClickHandler);
+        bind(nextButton, 'click', nextButtonClickHandler);
+        bind(closeButton, 'click', closeButtonClickHandler);
+        bind(slider, 'contextmenu', contextmenuHandler);
+        bind(overlay, 'touchstart', touchstartHandler, options);
+        bind(overlay, 'touchmove', touchmoveHandler, options);
+        bind(overlay, 'touchend', touchendHandler);
+        bind(document, 'focus', trapFocusInsideOverlay, true);
+    }
+
+    function unbindEvents() {
+        var options = supports.passiveEvents ? { passive: true } : null;
+        unbind(overlay, 'click', overlayClickHandler);
+        unbind(previousButton, 'click', previousButtonClickHandler);
+        unbind(nextButton, 'click', nextButtonClickHandler);
+        unbind(closeButton, 'click', closeButtonClickHandler);
+        unbind(slider, 'contextmenu', contextmenuHandler);
+        unbind(overlay, 'touchstart', touchstartHandler, options);
+        unbind(overlay, 'touchmove', touchmoveHandler, options);
+        unbind(overlay, 'touchend', touchendHandler);
+        unbind(document, 'focus', trapFocusInsideOverlay, true);
+    }
+
+    function prepareOverlay(gallery, userOptions) {
+        // If the same gallery is being opened prevent from loading it once again
+        if (currentGallery === gallery) {
+            return;
+        }
+        currentGallery = gallery;
+        // Update gallery specific options
+        setOptions(userOptions);
+        // Empty slider of previous contents (more effective than .innerHTML = "")
+        while (slider.firstChild) {
+            slider.removeChild(slider.firstChild);
+        }
+        imagesElements.length = 0;
+
+        var imagesFiguresIds = [];
+        var imagesCaptionsIds = [];
+        // Prepare and append images containers and populate figure and captions IDs arrays
+        for (var i = 0, fullImage; i < gallery.length; i++) {
+            fullImage = create('div');
+            fullImage.className = 'full-image';
+            fullImage.id = 'baguette-img-' + i;
+            imagesElements.push(fullImage);
+
+            imagesFiguresIds.push('baguetteBox-figure-' + i);
+            imagesCaptionsIds.push('baguetteBox-figcaption-' + i);
+            slider.appendChild(imagesElements[i]);
+        }
+        overlay.setAttribute('aria-labelledby', imagesFiguresIds.join(' '));
+        overlay.setAttribute('aria-describedby', imagesCaptionsIds.join(' '));
+    }
+
+    function setOptions(newOptions) {
+        if (!newOptions) {
+            newOptions = {};
+        }
+        // Fill options object
+        for (var item in defaults) {
+            options[item] = defaults[item];
+            if (typeof newOptions[item] !== 'undefined') {
+                options[item] = newOptions[item];
+            }
+        }
+        /* Apply new options */
+        // Change transition for proper animation
+        slider.style.transition = slider.style.webkitTransition = (options.animation === 'fadeIn' ? 'opacity .4s ease' :
+            options.animation === 'slideIn' ? '' : 'none');
+        // Hide buttons if necessary
+        if (options.buttons === 'auto' && ('ontouchstart' in window || currentGallery.length === 1)) {
+            options.buttons = false;
+        }
+        // Set buttons style to hide or display them
+        previousButton.style.display = nextButton.style.display = (options.buttons ? '' : 'none');
+        // Set overlay color
+        try {
+            overlay.style.backgroundColor = options.overlayBackgroundColor;
+        } catch (e) {
+            // Silence the error and continue
+        }
+    }
+
+    function showOverlay(chosenImageIndex) {
+        if (options.noScrollbars) {
+            document.documentElement.style.overflowY = 'hidden';
+            document.body.style.overflowY = 'scroll';
+        }
+        if (overlay.style.display === 'block') {
+            return;
+        }
+
+        bind(document, 'keydown', keyDownHandler);
+        currentIndex = chosenImageIndex;
+        touch = {
+            count: 0,
+            startX: null,
+            startY: null
+        };
+        loadImage(currentIndex, function() {
+            preloadNext(currentIndex);
+            preloadPrev(currentIndex);
+        });
+
+        updateOffset();
+        overlay.style.display = 'block';
+        if (options.fullScreen) {
+            enterFullScreen();
+        }
+        // Fade in overlay
+        setTimeout(function() {
+            overlay.className = 'visible';
+            if (options.bodyClass && document.body.classList) {
+                document.body.classList.add(options.bodyClass);
+            }
+            if (options.afterShow) {
+                options.afterShow();
+            }
+        }, 50);
+        if (options.onChange) {
+            options.onChange(currentIndex, imagesElements.length);
+        }
+        documentLastFocus = document.activeElement;
+        initFocus();
+        isOverlayVisible = true;
+    }
+
+    function initFocus() {
+        if (options.buttons) {
+            previousButton.focus();
+        } else {
+            closeButton.focus();
+        }
+    }
+
+    function enterFullScreen() {
+        if (overlay.requestFullscreen) {
+            overlay.requestFullscreen();
+        } else if (overlay.webkitRequestFullscreen) {
+            overlay.webkitRequestFullscreen();
+        } else if (overlay.mozRequestFullScreen) {
+            overlay.mozRequestFullScreen();
+        }
+    }
+
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+    }
+
+    function hideOverlay() {
+        if (options.noScrollbars) {
+            document.documentElement.style.overflowY = 'auto';
+            document.body.style.overflowY = 'auto';
+        }
+        if (overlay.style.display === 'none') {
+            return;
+        }
+
+        unbind(document, 'keydown', keyDownHandler);
+        // Fade out and hide the overlay
+        overlay.className = '';
+        setTimeout(function() {
+            overlay.style.display = 'none';
+            exitFullscreen();
+            if (options.bodyClass && document.body.classList) {
+                document.body.classList.remove(options.bodyClass);
+            }
+            if (options.afterHide) {
+                options.afterHide();
+            }
+            documentLastFocus && documentLastFocus.focus();
+            isOverlayVisible = false;
+        }, 500);
+    }
+
+    function loadImage(index, callback) {
+        var imageContainer = imagesElements[index];
+        var galleryItem = currentGallery[index];
+
+        // Return if the index exceeds prepared images in the overlay
+        // or if the current gallery has been changed / closed
+        if (typeof imageContainer === 'undefined' || typeof galleryItem === 'undefined') {
+            return;
+        }
+
+        // If image is already loaded run callback and return
+        if (imageContainer.getElementsByTagName('img')[0]) {
+            if (callback) {
+                callback();
+            }
+            return;
+        }
+
+        // Get element reference, optional caption and source path
+        var imageElement = galleryItem.imageElement;
+        var thumbnailElement = imageElement.getElementsByTagName('img')[0];
+        var imageCaption = typeof options.captions === 'function' ?
+            options.captions.call(currentGallery, imageElement) :
+            imageElement.getAttribute('data-caption') || imageElement.title;
+        var imageSrc = getImageSrc(imageElement);
+
+        // Prepare figure element
+        var figure = create('figure');
+        figure.id = 'baguetteBox-figure-' + index;
+        figure.innerHTML = '<div class="baguetteBox-spinner">' +
+            '<div class="baguetteBox-double-bounce1"></div>' +
+            '<div class="baguetteBox-double-bounce2"></div>' +
+            '</div>';
+        // Insert caption if available
+        if (options.captions && imageCaption) {
+            var figcaption = create('figcaption');
+            figcaption.id = 'baguetteBox-figcaption-' + index;
+            figcaption.innerHTML = imageCaption;
+            figure.appendChild(figcaption);
+        }
+        imageContainer.appendChild(figure);
+
+        // Prepare gallery img element
+        var image = create('img');
+        image.onload = function() {
+            // Remove loader element
+            var spinner = document.querySelector('#baguette-img-' + index + ' .baguetteBox-spinner');
+            figure.removeChild(spinner);
+            if (!options.async && callback) {
+                callback();
+            }
+        };
+        image.setAttribute('src', imageSrc);
+        image.alt = thumbnailElement ? thumbnailElement.alt || '' : '';
+        if (options.titleTag && imageCaption) {
+            image.title = imageCaption;
+        }
+        figure.appendChild(image);
+
+        // Run callback
+        if (options.async && callback) {
+            callback();
+        }
+    }
+
+    // Get image source location, mostly used for responsive images
+    function getImageSrc(image) {
+        // Set default image path from href
+        var result = image.href;
+        // If dataset is supported find the most suitable image
+        if (image.dataset) {
+            var srcs = [];
+            // Get all possible image versions depending on the resolution
+            for (var item in image.dataset) {
+                if (item.substring(0, 3) === 'at-' && !isNaN(item.substring(3))) {
+                    srcs[item.replace('at-', '')] = image.dataset[item];
+                }
+            }
+            // Sort resolutions ascending
+            var keys = Object.keys(srcs).sort(function(a, b) {
+                return parseInt(a, 10) < parseInt(b, 10) ? -1 : 1;
+            });
+            // Get real screen resolution
+            var width = window.innerWidth * window.devicePixelRatio;
+            // Find the first image bigger than or equal to the current width
+            var i = 0;
+            while (i < keys.length - 1 && keys[i] < width) {
+                i++;
+            }
+            result = srcs[keys[i]] || result;
+        }
+        return result;
+    }
+
+    // Return false at the right end of the gallery
+    function showNextImage() {
+        return show(currentIndex + 1);
+    }
+
+    // Return false at the left end of the gallery
+    function showPreviousImage() {
+        return show(currentIndex - 1);
+    }
+
+    /**
+     * Move the gallery to a specific index
+     * @param `index` {number} - the position of the image
+     * @param `gallery` {array} - gallery which should be opened, if omitted assumes the currently opened one
+     * @return {boolean} - true on success or false if the index is invalid
+     */
+    function show(index, gallery) {
+        if (!isOverlayVisible && index >= 0 && index < gallery.length) {
+            prepareOverlay(gallery, options);
+            showOverlay(index);
+            return true;
+        }
+        if (index < 0) {
+            if (options.animation) {
+                bounceAnimation('left');
+            }
+            return false;
+        }
+        if (index >= imagesElements.length) {
+            if (options.animation) {
+                bounceAnimation('right');
+            }
+            return false;
+        }
+
+        currentIndex = index;
+        loadImage(currentIndex, function() {
+            preloadNext(currentIndex);
+            preloadPrev(currentIndex);
+        });
+        updateOffset();
+
+        if (options.onChange) {
+            options.onChange(currentIndex, imagesElements.length);
+        }
+
+        return true;
+    }
+
+    /**
+     * Triggers the bounce animation
+     * @param {('left'|'right')} direction - Direction of the movement
+     */
+    function bounceAnimation(direction) {
+        slider.className = 'bounce-from-' + direction;
+        setTimeout(function() {
+            slider.className = '';
+        }, 400);
+    }
+
+    function updateOffset() {
+        var offset = -currentIndex * 100 + '%';
+        if (options.animation === 'fadeIn') {
+            slider.style.opacity = 0;
+            setTimeout(function() {
+                supports.transforms ?
+                    slider.style.transform = slider.style.webkitTransform = 'translate3d(' + offset + ',0,0)'
+                    : slider.style.left = offset;
+                slider.style.opacity = 1;
+            }, 400);
+        } else {
+            supports.transforms ?
+                slider.style.transform = slider.style.webkitTransform = 'translate3d(' + offset + ',0,0)'
+                : slider.style.left = offset;
+        }
+    }
+
+    // CSS 3D Transforms test
+    function testTransformsSupport() {
+        var div = create('div');
+        return typeof div.style.perspective !== 'undefined' || typeof div.style.webkitPerspective !== 'undefined';
+    }
+
+    // Inline SVG test
+    function testSvgSupport() {
+        var div = create('div');
+        div.innerHTML = '<svg/>';
+        return (div.firstChild && div.firstChild.namespaceURI) === 'http://www.w3.org/2000/svg';
+    }
+
+    // Borrowed from https://github.com/seiyria/bootstrap-slider/pull/680/files
+    function testPassiveEventsSupport() {
+        var passiveEvents = false;
+        try {
+            var opts = Object.defineProperty({}, 'passive', {
+                get: function() {
+                    passiveEvents = true;
+                }
+            });
+            window.addEventListener('test', null, opts);
+        } catch (e) { /* Silence the error and continue */ }
+
+        return passiveEvents;
+    }
+
+    function preloadNext(index) {
+        if (index - currentIndex >= options.preload) {
+            return;
+        }
+        loadImage(index + 1, function() {
+            preloadNext(index + 1);
+        });
+    }
+
+    function preloadPrev(index) {
+        if (currentIndex - index >= options.preload) {
+            return;
+        }
+        loadImage(index - 1, function() {
+            preloadPrev(index - 1);
+        });
+    }
+
+    function bind(element, event, callback, options) {
+        if (element.addEventListener) {
+            element.addEventListener(event, callback, options);
+        } else {
+            // IE8 fallback
+            element.attachEvent('on' + event, function(event) {
+                // `event` and `event.target` are not provided in IE8
+                event = event || window.event;
+                event.target = event.target || event.srcElement;
+                callback(event);
+            });
+        }
+    }
+
+    function unbind(element, event, callback, options) {
+        if (element.removeEventListener) {
+            element.removeEventListener(event, callback, options);
+        } else {
+            // IE8 fallback
+            element.detachEvent('on' + event, callback);
+        }
+    }
+
+    function getByID(id) {
+        return document.getElementById(id);
+    }
+
+    function create(element) {
+        return document.createElement(element);
+    }
+
+    function destroyPlugin() {
+        unbindEvents();
+        clearCachedData();
+        unbind(document, 'keydown', keyDownHandler);
+        document.getElementsByTagName('body')[0].removeChild(document.getElementById('baguetteBox-overlay'));
+        data = {};
+        currentGallery = [];
+        currentIndex = 0;
+    }
+
+    return {
+        run: run,
+        show: show,
+        showNext: showNextImage,
+        showPrevious: showPreviousImage,
+        hide: hideOverlay,
+        destroy: destroyPlugin
+    };
+}));
+
 },{}],19:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
@@ -14390,7 +15147,7 @@ module.exports = function($) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"imagesloaded":9,"jquery-bridget":10,"packery":16}],20:[function(require,module,exports){
+},{"imagesloaded":8,"jquery-bridget":9,"packery":15}],20:[function(require,module,exports){
 (function (global){
 global.jQuery = require('jquery');
 global.$ = global.jQuery;
@@ -14400,9 +15157,7 @@ var imageSort = require('./imageSort.js')($);
 // var map = require('./map.js')($);
 var showOnScroll = require('./showOnScroll.js')($);
 var lightbox = require('./lightbox.js')($);
-// var projectLightbox = require('./lightbox.js')({
-//   decorate: '.project__image'
-// });
+var sidebarSizing = require('./sidebarSizing.js')($);
 
 // Featured projects
 imageSort.shuffleImages('.featured-projects__list', '.featured-projects__item');
@@ -14421,10 +15176,17 @@ imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 showOnScroll.showOnScrollPast('.project__title', '.project__info-name');
 showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
 
+// Sidebar sizing
+sidebarSizing.setSidebarSize();
+
 // Scroll past project name
 $(window).scroll(function () {
   showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
   showOnScroll.showOnScrollPast('.project__title', '.project__info-name', false);
+});
+
+$(window).resize(function () {
+  sidebarSizing.setSidebarSize();
 });
 
 
@@ -14434,10 +15196,10 @@ $('.projects__type').click(function() {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./imageSort.js":19,"./lightbox.js":21,"./projectFilter.js":22,"./showOnScroll.js":23,"jquery":11}],21:[function(require,module,exports){
+},{"./imageSort.js":19,"./lightbox.js":21,"./projectFilter.js":22,"./showOnScroll.js":23,"./sidebarSizing.js":24,"jquery":10}],21:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
-var baguetteBox = require('baguettebox.js');
+var baguetteBox = require('lightbox');
 
 module.exports = function($) {
 
@@ -14454,7 +15216,7 @@ module.exports = function($) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"baguettebox.js":1}],22:[function(require,module,exports){
+},{"lightbox":18}],22:[function(require,module,exports){
 (function (global){
 var $ = global.jQuery;
 
@@ -14520,6 +15282,32 @@ module.exports = function($) {
 
 	return {
     showOnScrollPast: showOnScrollPast
+	};
+
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],24:[function(require,module,exports){
+(function (global){
+var $ = global.jQuery;
+
+module.exports = function($) {
+
+  console.log("SidebarSizing initialized");
+
+  function setSidebarSize() {
+    var $projectContainer = $('.projects')
+    var $sidebar = $('.project__info-group');
+    var sidebarHeight;
+
+    sidebarHeight = $(window).height() - 150; // 150 is approximately the space above
+
+    $sidebar.css('max-height', sidebarHeight);
+
+  }
+
+	return {
+    setSidebarSize: setSidebarSize
 	};
 
 };

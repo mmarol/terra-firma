@@ -6,9 +6,7 @@ var imageSort = require('./imageSort.js')($);
 // var map = require('./map.js')($);
 var showOnScroll = require('./showOnScroll.js')($);
 var lightbox = require('./lightbox.js')($);
-// var projectLightbox = require('./lightbox.js')({
-//   decorate: '.project__image'
-// });
+var sidebarSizing = require('./sidebarSizing.js')($);
 
 // Featured projects
 imageSort.shuffleImages('.featured-projects__list', '.featured-projects__item');
@@ -27,10 +25,17 @@ imageSort.packImages('.project__gallery', '.project__image', '.packery__sizer');
 showOnScroll.showOnScrollPast('.project__title', '.project__info-name');
 showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
 
+// Sidebar sizing
+sidebarSizing.setSidebarSize();
+
 // Scroll past project name
 $(window).scroll(function () {
   showOnScroll.showOnScrollPast('.home__hero-logo', '.nav__logo');
   showOnScroll.showOnScrollPast('.project__title', '.project__info-name', false);
+});
+
+$(window).resize(function () {
+  sidebarSizing.setSidebarSize();
 });
 
 
