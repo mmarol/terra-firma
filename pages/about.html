@@ -35,29 +35,30 @@
       {% else %}
         {% set portrait = about.placeholder_image %}
       {% endif %}
-      {% if imageSizeClass === 'large' %}
-        <div class="people__item large">
-          <img src="{{ portrait|imageSize(800) }}" alt="" class="people__image">
-          <h3 class="people__name">{{ person.name }}</h3>
+      {% if person.is_current_employee !== false %}
+        {% if imageSizeClass === 'large' %}
+          <div class="people__item large">
+            <img src="{{ portrait|imageSize(800) }}" alt="" class="people__image">
+            <h3 class="people__name">{{ person.name }}</h3>
+              {# <h4 class="people__designations">{{ person.title }}</h4> #}
+              <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
+              <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
+          </div>
+        {% elseif imageSizeClass === 'medium' %}
+          <div class="people__item medium">
+            <img src="{{ portrait|imageSize(600) }}" alt="" class="people__image">
+            <h3 class="people__name">{{ person.name }}</h3>
             {# <h4 class="people__designations">{{ person.title }}</h4> #}
             <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-            <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
-        </div>
-      {% elseif imageSizeClass === 'medium' %}
-        <div class="people__item medium">
-          <img src="{{ portrait|imageSize(600) }}" alt="" class="people__image">
-          <h3 class="people__name">{{ person.name }}</h3>
-          {# <h4 class="people__designations">{{ person.title }}</h4> #}
-          <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-        </div>
-      {% else %}
-        <div class="people__item small">
-          <img src="{{ portrait|imageSize(300) }}" alt="" class="people__image">
-          <h3 class="people__name">{{ person.name }}</h3>
-          <h4 class="people__designations">{{ person.title }}</h4>
-        </div>
+          </div>
+        {% else %}
+          <div class="people__item small">
+            <img src="{{ portrait|imageSize(300) }}" alt="" class="people__image">
+            <h3 class="people__name">{{ person.name }}</h3>
+            <h4 class="people__designations">{{ person.title }}</h4>
+          </div>
+        {% endif %}
       {% endif %}
-
     {% endfor %}
     {% if loop.last %}
       </section>

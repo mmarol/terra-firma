@@ -105,6 +105,7 @@
 
 .people__name {
   @include font-family($ff-sans);
+  @include text-size($s);
   font-weight: bold;
 }
 

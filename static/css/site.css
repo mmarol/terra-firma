@@ -192,8 +192,8 @@ body {
 }
 @media screen and (min-width: 1px) {
   body {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -327,8 +327,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .nav__item {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -812,8 +812,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .people__item {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -929,6 +929,36 @@ iframe {
 .people__name {
   font-family: "PT Sans", sans-serif;
   font-weight: bold;
+}
+@media screen and (min-width: 1px) {
+  .people__name {
+    font-size: 13px;
+    line-height: calc(17 / 13);
+  }
+}
+@media screen and (min-width: 513px) {
+  .people__name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 769px) {
+  .people__name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .people__name {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .people__name {
+    font-size: 22px;
+    line-height: calc(30 / 22);
+  }
 }
 
 .people__designations {
@@ -1127,8 +1157,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .projects__thumbnail-title {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -1342,8 +1372,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .project__info-name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -1747,8 +1777,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .related-projects__name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -1796,8 +1826,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .article__thumbnail-name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
@@ -1831,8 +1861,8 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .article__thumbnail-date {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 13px;
+    line-height: calc(17 / 13);
   }
 }
 @media screen and (min-width: 513px) {
