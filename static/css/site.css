@@ -210,14 +210,14 @@ body {
 }
 @media screen and (min-width: 1025px) {
   body {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   body {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 
@@ -345,14 +345,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .nav__item {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .nav__item {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 @media screen and (min-width: 513px) {
@@ -861,14 +861,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .people__item {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .people__item {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 @media screen and (min-width: 1px) {
@@ -928,6 +928,11 @@ iframe {
 }
 @media screen and (min-width: 1441px) {
   .people__item.small {
+    width: calc(100% * 1 / 8 - 1rem);
+  }
+}
+@media screen and (min-width: 2001px) {
+  .people__item.small {
     width: calc(100% * 1 / 12 - 1rem);
   }
 }
@@ -981,14 +986,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .people__name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .people__name {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 
@@ -1206,14 +1211,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .projects__thumbnail-title {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .projects__thumbnail-title {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 
@@ -1421,14 +1426,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .project__info-name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .project__info-name {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 @media screen and (min-width: 1025px) {
@@ -1826,14 +1831,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .related-projects__name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .related-projects__name {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 
@@ -1875,14 +1880,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .article__thumbnail-name {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .article__thumbnail-name {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 
@@ -1910,14 +1915,14 @@ iframe {
 }
 @media screen and (min-width: 1025px) {
   .article__thumbnail-date {
-    font-size: 16px;
-    line-height: calc(24 / 16);
+    font-size: 18px;
+    line-height: calc(26 / 18);
   }
 }
 @media screen and (min-width: 1441px) {
   .article__thumbnail-date {
-    font-size: 22px;
-    line-height: calc(30 / 22);
+    font-size: 20px;
+    line-height: calc(28 / 20);
   }
 }
 

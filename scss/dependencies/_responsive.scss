@@ -6,7 +6,7 @@ $breakpoints: (
   medium: 768px,
   large: 1024px,
   huge: 1440px,
-  massive: 1800px
+  massive: 2000px
 ) !default;
 
 @mixin respond-above($breakpoint, $breakpoints: $breakpoints) {

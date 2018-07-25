@@ -76,6 +76,9 @@
   	};
 
   	@include respond-above(huge) {
+  		width: calc(100% * 1 / 8 - 1rem);
+  	};
+  	@include respond-above(massive) {
   		width: calc(100% * 1 / 12 - 1rem);
   	};
   }
