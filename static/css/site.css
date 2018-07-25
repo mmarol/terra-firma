@@ -370,6 +370,7 @@ iframe {
 }
 
 .footer {
+  font-family: "PT Sans", sans-serif;
   margin-top: 3rem;
   padding: 2rem;
   border-top: 1px solid #01aa78;
@@ -382,6 +383,36 @@ iframe {
   -ms-flex-pack: start;
       justify-content: flex-start;
   width: 100%;
+}
+@media screen and (min-width: 1px) {
+  .footer {
+    font-size: 13px;
+    line-height: calc(17 / 13);
+  }
+}
+@media screen and (min-width: 513px) {
+  .footer {
+    font-size: 13px;
+    line-height: calc(17 / 13);
+  }
+}
+@media screen and (min-width: 769px) {
+  .footer {
+    font-size: 13px;
+    line-height: calc(17 / 13);
+  }
+}
+@media screen and (min-width: 1025px) {
+  .footer {
+    font-size: 13px;
+    line-height: calc(17 / 13);
+  }
+}
+@media screen and (min-width: 1441px) {
+  .footer {
+    font-size: 16px;
+    line-height: calc(24 / 16);
+  }
 }
 @media screen and (min-width: 1025px) {
   .footer {

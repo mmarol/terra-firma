@@ -1,4 +1,6 @@
 .footer {
+  @include text-size($xs);
+  @include font-family($ff-sans);
   margin-top: 3rem;
   padding: 2rem;
   border-top: 1px solid $primary-color;
