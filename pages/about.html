@@ -1,0 +1,72 @@
+{% extends "templates/partials/base.html" %}
+
+{% set about = cms.about %}
+{% set team = cms.team %}
+
+{% block title %}{% parent %} - {{ about.name }}{% endblock %}
+
+{% block mainClass %}padded{% endblock %}
+
+{% block content %}
+
+  <section class="page__description">
+    <h2 class="people__title section__name">About us</h2>
+    {{ about.long_description|safe }}
+  </section>
+
+  {% for personGroup in about.team_groups %}
+    {# Set image sizes #}
+    {% if loop.key === 0 %}
+      {% set personGroup.imageSizeClass = 'large' %}
+      {% set personGroup.imageSize = '800' %}
+    {% elseif loop.key === 1 %}
+      {% set personGroup.imageSizeClass = 'medium' %}
+      {% set personGroup.imageSize = '600' %}
+    {% else %}
+      {% set personGroup.imageSizeClass = 'small' %}
+      {% set personGroup.imageSize = '300' %}
+    {% endif %}
+
+    {# Create DOM elements #}
+    {% if loop.first %}
+      <section class="people">
+    {% endif %}
+      <h2 class="people__subtitle">{{ personGroup.group_title }}</h2>
+      {% for person in personGroup.people %}
+        {% if person.portrait %}
+          {% set portrait = person.portrait %}
+        {% else %}
+          {% set portrait = about.placeholder_image %}
+        {% endif %}
+        <div class="people__item {{ personGroup.imageSizeClass }}">
+          <img src="{{ portrait|imageSize(personGroup.imageSize) }}" alt="" class="people__image">
+          <h3 class="people__name">{{ person.name }}</h3>
+            {% if personGroup.imageSizeClass === 'large' %}
+              <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
+              <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
+            {% endif %}
+            {% if personGroup.imageSizeClass === 'medium' || personGroup.imageSizeClass === 'small' %}
+              <h4 class="people__designations">{{ person.title }}</h4>
+            {% endif %}
+        </div>
+      {% endfor %}
+    {% if loop.last %}
+      </section>
+    {% endif %}
+  {% endfor %}
+
+  {# {% if about.awards.show_award_list === true %}
+    <section class="awards">
+      <h2 class="awards__title section__name">Awards and Recognition</h2>
+      {% for award in about.awards %}
+        <div class="awards__item">
+          <h3 class="awards__name">{{ award.name }}</h3>
+          <h4 class="awards__year">{{ award.year }}</h4>
+          <div class="awards__notes">{{ award.award_notes|safe }}</div>
+          <p class="awards__project"><a href="{{ url(award.related_project) }}">View project</a></p>
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %} #}
+
+{% endblock %}

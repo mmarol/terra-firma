@@ -1,0 +1,189 @@
+@font-face {
+  font-family: 'Modern Pictograms Pro';
+  font-weight: 100;
+  src: url("../fonts/modernpics_2_268e-webfont.woff2") format('woff2'),
+  url("../fonts/modernpics_2_268e-webfont.woff") format('woff'),
+  url("../fonts/modernpics_2_268e-webfont.eot") format('eot'),;
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-weight: 400;
+  src: url("../fonts/Canela-Regular-Web.woff2") format('woff2'),
+  url("../fonts/Canela-Regular-Web.woff") format('woff'),
+  url("../fonts/Canela-Regular-Web.eot") format('eot'),;
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../fonts/Canela-RegularItalic-Web.woff2") format('woff2'),
+  url("../fonts/Canela-RegularItalic-Web.woff") format('woff'),
+  url("../fonts/Canela-RegularItalic-Web.eot") format('eot'),;
+}
+
+@font-face {
+  font-family: 'Canela';
+  font-weight: 700;
+  src: url("../fonts/Canela-Bold-Web.woff2") format('woff2'),
+  url("../fonts/Canela-Bold-Web.woff") format('woff'),
+  url("../fonts/Canela-Bold-Web.eot") format('eot'),;
+}
+
+$ff-sans: 'PT Sans', sans-serif;
+$ff-serif: 'Canela', serif;
+$ff-mono: 'PT Mono', monospace;
+$ff-pictographic: 'Modern Pictograms Pro';
+
+@mixin font-family($ff) {
+  font-family: $ff;
+}
+
+%sans-serif {
+  font-family: 'PT Sans', sans-serif;
+}
+
+%serif {
+  font-family: 'PT Serif', serif;
+}
+
+%mono {
+  font-family: 'PT Mono', monospace;
+}
+
+%antialiased {
+  -webkit-font-smoothing:antialiased;
+  -moz-font-smoothing:antialiased;
+  font-smoothing:antialiased;
+}
+
+%pictographic {
+  font-family: 'Modern Pictograms Pro';
+  line-height: 1;
+}
+
+%all-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+%inline-link {
+  border-bottom: 1px solid;
+
+  &:hover {
+
+  }
+}
+
+
+/* --------------------------------------------------------
+
+Remove the unit of a length
+@param {Number} $number - Number to remove unit from
+@return {Number} - Unitless number
+
+-------------------------------------------------------- */
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+/* --------------------------------------------------------
+
+Variable Map Lists for the text-size mixin
+
+-------------------------------------------------------- */
+
+$xs: (
+  base: (13px, 17px),
+  small: (13px, 17px),
+  medium: (13px, 17px),
+  large: (13px, 17px),
+  huge: (16px, 24px)
+) !default;
+
+$s: (
+  base: (13px, 17px),
+  small: (16px, 24px),
+  medium: (16px, 24px),
+  large: (18px, 26px),
+  huge: (20px, 28px)
+) !default;
+
+$m: (
+  base: (24px, 30px),
+  small: (24px, 30px),
+  medium: (24px, 30px),
+  large: (28px, 36px),
+  huge: (28px, 36px)
+) !default;
+
+$l: (
+  base: (24px, 30px),
+  small: (28px, 36px),
+  medium: (28px, 36px),
+  large: (36px, 42px),
+  huge: (36px, 42px)
+) !default;
+
+$xl: (
+  base: (42px, 48px),
+  small: (48px, 54px),
+  medium: (60px, 66px),
+  large: (66px, 72px),
+  huge: (66px, 72px)
+) !default;
+
+$xxl: (
+  base: (36px, 42px),
+  small: (48px, 54px),
+  medium: (48px, 54px),
+  large: (54px, 60px),
+  huge: (54px, 60px)
+) !default;
+
+
+/* --------------------------------------------------------
+Mixin for font-size and line-height definition
+  Usage Example: @include text-size($l);
+
+If the mixin is called and values are not entered, it will default to regular font-size
+-------------------------------------------------------- */
+
+@mixin text-size($fs-map: $s, $fs-breakpoints: $breakpoints, $lineheight: "") {
+  @each $fs-breakpoint, $keyNumber in $fs-map {
+
+    @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+    } @else {
+      @warn "Breakpoints have not been defined correctly";
+    }
+
+    // @debug $fs-breakpoint;
+    // @debug $keyNumber;
+
+    $fontSize: nth($keyNumber, 1);
+    $leading: nth($keyNumber, 2);
+    $leading-unitless: calc(#{strip-unit($leading)} / #{strip-unit($fontSize)});
+
+    // @debug $lineheight;
+    @if $lineheight != "" {
+      $leading-unitless: $lineheight;
+    }
+
+    // @debug $fontSize;
+    // @debug $leading;
+    // @debug $leading-unitless;
+
+    // @debug "------";
+
+    @include respond-above($fs-breakpoint) {
+      font-size: $fontSize;
+      line-height: $leading-unitless;
+    };
+  }
+}

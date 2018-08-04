@@ -1,0 +1,130 @@
+{% extends "templates/partials/base.html" %}
+
+{% set previousProject = prevItem(item, 'year', true) %}
+{% set nextProject = nextItem(item, 'year', true) %}
+
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
+{% block mainClass %}padded{% endblock %}
+
+{% block content %}
+
+  <section class="projects">
+    <div class="project">
+
+      <div class="project__info-group">
+        <h5 class="project__info-name hidden">{{ item.name }}</h5>
+        <dl class="project__info">
+          {% for projectTypes in item.project_type %}
+            {% if loop.first %}
+              {% if loop.revindex > 1 %}
+                <dt class="project__info-title">Project types</dt>
+              {% else %}
+                <dt class="project__info-title">Type of project</dt>
+              {% endif %}
+            {% endif %}
+            <dd class="project__info-value">{{ projectTypes.name }}</dd>
+          {% endfor %}
+        </dl>
+        {% if item.location %}
+          <dl class="project__info">
+            <dt class="project__info-title">Location</dt>
+            <dd class="project__info-value">{{ item.location }}</dd>
+          </dl>
+        {% endif %}
+        {% if item.size %}
+          <dl class="project__info">
+            <dt class="project__info-title">Size</dt>
+            <dd class="project__info-value">{{ item.size }}</dd>
+          </dl>
+        {% endif %}
+        {% if item.year %}
+          <dl class="project__info">
+            <dt class="project__info-title">Completion date</dt>
+            <dd class="project__info-value">{{ item.year }}</dd>
+          </dl>
+        {% endif %}
+        {% if item.client %}
+          <dl class="project__info">
+            <dt class="project__info-title">Client</dt>
+            <dd class="project__info-value">{{ item.client.name }}</dd>
+          </dl>
+        {% endif %}
+        {% if item.team %}
+          <dl class="project__info">
+            <dt class="project__info-title">Core team</dt>
+            {% for member in item.team %}
+              <dd class="project__info-value">{{ member.name }}</dd>
+            {% endfor %}
+          </dl>
+        {% endif %}
+        </dl>
+      </div>
+
+      <div class="project__description-container">
+        <h1 class="project__title">{{ item.name }}</h1>
+        <div class="project__description">{{ item.description|safe }}</div>
+      </div>
+
+      <ul class="project__gallery">
+        <div class="packery__gutter"></div>
+        <div class="packery__sizer"></div>
+        {% for image in item.photographs %}
+          <li>
+            <a class="project__image project__image--{{ image.size|lower }}"
+            href="{{ image.image|imageSize(1200) }}"
+            data-caption="{{ image.caption }}"
+            data-at-450="{{ image.image|imageSize(600) }}"
+            data-at-800="{{ image.image|imageSize(800) }}"
+            data-at-1366="{{ image.image|imageSize(1200) }}"
+            data-at-1920="{{ image.image|imageSize(1600) }}">
+              <img src="{{ image.image|imageSize(600) }}" alt="">
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+
+    <div class="related-projects">
+      <h2 class="related-projects__title">More projects</h2>
+      {% for project in item.related_projects|slice(0,3) %}
+        <a href="{{ url(project) }}" class="related-projects__item">
+          {% if project.photographs[0] %}
+            <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+          {% endif %}
+          <h3 class="related-projects__name">{{ project.name }}</h3>
+        </a>
+      {% endfor %}
+      {% if item.related_projects|size === 0 %}
+        {% for project in cms.projects|exclude('_id', item._id)|sort('year', true)|slice(0,3) %}
+          <a href="{{ url(project) }}" class="related-projects__item">
+            {% if project.photographs[0] %}
+              <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+            {% endif %}
+            <h3 class="related-projects__name">{{ project.name }}</h3>
+          </a>
+        {% endfor %}
+      {% elseif item.related_projects|size === 1 %}
+        {% for project in cms.projects|exclude('_id', item._id)|sort('year', true)|slice(0,2) %}
+          <a href="{{ url(project) }}" class="related-projects__item">
+            {% if project.photographs[0] %}
+              <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+            {% endif %}
+            <h3 class="related-projects__name">{{ project.name }}</h3>
+          </a>
+        {% endfor %}
+      {% elseif item.related_projects|size === 2 %}
+        {% for project in cms.projects|exclude('_id', item._id)|sort('year', true)|slice(0,1) %}
+          <a href="{{ url(project) }}" class="related-projects__item">
+            {% if project.photographs[0] %}
+              <div class="related-projects__image-container" style="background-image: url({{ project.photographs[0].image|imageSize(500) }})"></div>
+            {% endif %}
+            <h3 class="related-projects__name">{{ project.name }}</h3>
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </section>
+
+{% endblock %}

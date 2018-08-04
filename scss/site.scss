@@ -1,0 +1,27 @@
+//Variables, mixins, and basic classes for layout.
+@import "dependencies/map";
+@import "dependencies/responsive";
+@import "dependencies/color";
+@import "dependencies/type";
+
+//CSS reset and basic styling for html elements.
+@import "foundation/reset";
+@import "foundation/base";
+
+//Global components that exist on multiple pages, but not necessarily all pages
+@import "components/logo";
+@import "components/header";
+@import "components/footer";
+@import "components/page";
+@import "components/home";
+@import "components/people";
+@import "components/awards";
+@import "components/projects";
+@import "components/media";
+@import "components/locations";
+@import "components/jobs";
+
+// Vendor components
+@import "vendor/baguetteBox";
+
+//Page specific modules, which hopefully can distill down even further into components.

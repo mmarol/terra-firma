@@ -1,0 +1,48 @@
+{% extends "templates/partials/base.html" %}
+
+{% set projects = cms.projects %}
+{% set projectTypes = cms.projecttypes %}
+{% set clients = cms.clients %}
+
+{% block title %}{% parent %} - Projects{% endblock %}
+
+{% block mainClass %}padded{% endblock %}
+
+{% block content %}
+
+  <section class="page__description">
+    <h2 class="people__title section__name">Our work</h2>
+  </section>
+
+  {% for project in projects|sort('year', true) %}
+    {% set projectCategory = project.project_type %}
+    {% if loop.first %}
+      <section class="projects">
+        <div class="projects__type-container">
+          <h4 class="projects__type-title">Filter projects:</h4>
+          <a data-project-type-query="all" class="projects__type active">All</a>
+          {% for projectType in projectTypes %}
+            <a data-project-type-query="{{ projectType.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}" class="projects__type">{{ projectType.name }}</a>
+          {% endfor %}
+        </div>
+        <div class="projects__list">
+          <div class="packery__gutter"></div>
+          <div class="packery__sizer"></div>
+    {% endif %}
+    {% if project.photographs %}
+          <a href="{{ url(project) }}" class="projects__item" data-project-type-target="{{ projectCategory.name|lower|replace(' ','-','g')|replace('[^a-zA-Z0-9 -]','','g')|replace('-+','-','g') }}">
+            {% if project.photographs[0] %}
+              <div class="projects__item-container">
+                <img src="{{ project.photographs[0].image|imageSize(600) }}" alt="" class="projects__thumbnail-image">
+              </div>
+            {% endif %}
+            <h3 class="projects__thumbnail-title">{{ project.name }}</h3>
+          </a>
+    {% endif %}
+    {% if loop.last %}
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+
+{% endblock %}

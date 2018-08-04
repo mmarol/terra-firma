@@ -1,0 +1,29 @@
+.media {
+
+}
+
+.media__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.media__item {
+  flex-basis: calc((100% / 3) - 0.5rem);
+  margin-bottom: 1rem;
+}
+
+.article__thumbnail-image {
+
+}
+
+.article__thumbnail-name {
+  @include text-size($s);
+  @include font-family($ff-sans);
+}
+
+.article__thumbnail-date {
+  @include text-size($s);
+  @include font-family($ff-sans);
+  font-weight: normal;
+}

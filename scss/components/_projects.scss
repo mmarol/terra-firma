@@ -1,0 +1,479 @@
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+.projects__list {
+  flex-basis: 100%;
+}
+
+.projects__item {
+  flex-basis: 100%;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: block;
+  line-height: 0;
+
+  @include respond-above(medium) {
+    flex-basis: calc((100% / 2) - 1rem);
+    width: calc((100% / 2) - 1rem);
+  };
+
+  @include respond-above(large) {
+    flex-basis: calc((100% / 3) - 1rem);
+    width: calc((100% / 3) - 1rem);
+  };
+
+  &.hide {
+    display: none;
+  }
+
+  a {
+    display: block;
+    line-height: 0;
+  }
+
+  &:hover {
+    .projects__item-container {
+
+    }
+    .projects__thumbnail-title {
+      color: $text-color;
+    }
+  }
+}
+
+.projects__item-container {
+  height: 0;
+  padding-bottom: 65%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
+  }
+}
+
+.packery__gutter {
+  width: 1rem;
+}
+
+.projects__thumbnail-image {
+
+}
+
+.projects__thumbnail-title {
+  @include text-size($s);
+  @include font-family($ff-sans);
+  color: $primary-color;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.projects__type-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  flex-basis: 100%;
+  justify-content: space-between;
+
+  @include respond-above(medium) {
+    justify-content: flex-start;
+  };
+}
+
+.projects__type {
+  @include font-family($ff-serif);
+  font-style: normal;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+  padding: 0 0.3em;
+  flex-basis: calc(50% - 1rem);
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: $text-color;
+    color: $text-color;
+  }
+
+  &.active {
+    color: $text-color;
+    border-color: $text-color;
+  }
+
+  @include respond-below(small) {
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  };
+
+  @include respond-at(small) {
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  };
+
+  @include respond-above(small) {
+    flex-basis: calc(100% / 3 - 1rem)
+  };
+
+  @include respond-above(medium) {
+    flex-basis: auto;
+  };
+}
+
+.projects__type-title {
+  margin-bottom: 0.5rem;
+  @include font-family($ff-sans);
+  flex-basis: 100%;
+}
+
+
+// Project individual
+
+.project {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.project__info-group {
+  flex-basis: 100%;
+  width: 100%;
+  position: relative;
+  margin-top: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  order: 2;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 73vh;
+  overflow-y: auto;
+
+  @include respond-above(large) {
+    order: 1;
+    position: fixed;
+    flex-basis: 13%;
+    width: 13%;
+  };
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $secondary-color;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+  }
+
+}
+
+.project__info {
+  @include text-size($xs);
+  flex-basis: 50%;
+  padding-right: 1rem;
+  margin-top: 1rem;
+  box-sizing: border-box;
+
+  @include respond-above(small) {
+    flex-basis: calc(100% / 3);
+  };
+
+  @include respond-above(medium) {
+    flex-basis: 25%;
+  };
+
+  @include respond-above(large) {
+    flex-basis: 100%;
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+  };
+}
+
+.project__info-name {
+  @include font-family($ff-serif);
+  @include text-size($s);
+  color: $primary-color;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+  display: none;
+
+  @include respond-above(large) {
+    display: block;
+  };
+
+  &.hidden {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    margin-bottom: 0;
+  }
+}
+
+.project__info-title {
+  @include font-family($ff-serif);
+  font-style: italic;
+  // font-weight: bold;
+  color: $primary-color;
+}
+
+.project__info-value {
+  @include font-family($ff-serif);
+  color: $text-color;
+  margin-bottom: 0.25rem;
+}
+
+.project__description-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  order: 1;
+
+  @include respond-above(large) {
+    order: 2;
+    margin-left: 15%;
+  };
+}
+
+.project__title {
+  flex-basis: 100%;
+  @include font-family($ff-serif);
+  @include text-size($xl);
+  color: $primary-color;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.project__description {
+  @include font-family($ff-sans);
+  flex-basis: 100%;
+  max-width: 40em;
+  width: 40%;
+  position: relative;
+  right: 0;
+}
+
+.project__gallery {
+  // width: auto;
+  display: flex;
+  margin-top: 3rem;
+  flex-basis: 100%;
+  order: 3;
+
+  @include respond-above(large) {
+    order: 3;
+    margin-left: 15%;
+    flex-basis: 85%;
+  };
+}
+
+.project__image {
+  width: calc(50% - 1rem);
+  box-sizing: border-box;
+  cursor: zoom-in;
+  opacity: 0;
+  transition: all 0.2s ease;
+
+  @include respond-above(small) {
+		width: calc(50% - 1rem);
+	};
+
+	@include respond-above(medium) {
+		width: calc(100% / 3 - 1rem);
+	};
+
+	@include respond-above(large) {
+		width: calc(25% - 1rem);
+	};
+
+	@include respond-above(huge) {
+		width: calc(100% / 6 - 1rem);
+	};
+
+  &.show {
+    opacity: 1;
+  }
+
+	img {
+		margin: 0;
+		width: 100%;
+    line-height: 0;
+	}
+}
+
+.project__image-caption {
+  @include font-family($ff-sans);
+  @include text-size($xs, $lineheight: 1);
+  color: $text-color--light;
+  font-style: italic;
+  text-align: left;
+  display: block;
+}
+
+.packery__sizer {
+  width: calc(50% - 1rem);
+
+	@include respond-above(small) {
+		width: calc(50% - 1rem);
+	};
+
+	@include respond-above(medium) {
+		width: calc(100% / 3 - 1rem);
+	};
+
+	@include respond-above(large) {
+		width: calc(25% - 1rem);
+	};
+
+	@include respond-above(huge) {
+		width: calc(100% / 6 - 1rem);
+	};
+}
+
+.project__image--medium {
+  width: calc(50% - 1rem);
+
+	@include respond-above(small) {
+		width: calc(50% - 1rem);
+	};
+
+	@include respond-above(medium) {
+		width: calc(100% / 3 * 2 - 1rem);
+	};
+
+	@include respond-above(large) {
+		width: calc(50% - 1rem);
+	};
+
+	@include respond-above(huge) {
+		width: calc(100% / 3 - 1rem);
+	};
+}
+
+.project__image--large {
+  width: calc(100% - 1rem);
+
+	@include respond-above(small) {
+		width: calc(100% - 1rem);
+	};
+
+	@include respond-above(medium) {
+		width: calc(100% - 1rem);
+	};
+
+	@include respond-above(large) {
+		width: calc(75% - 1rem);
+	};
+
+	@include respond-above(huge) {
+		width: calc(100% / 3 * 2 - 1rem);
+	};
+}
+
+// Related projects --------------------------------
+
+.related-projects {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  flex-direction: column;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid $primary-color;
+
+  @include respond-above(small) {
+    flex-direction: row;
+  };
+
+  @include respond-above(large) {
+    flex-basis: 85%;
+    margin-left: 15%;
+  };
+}
+
+.related-projects__title {
+  @include font-family($ff-sans);
+  @include text-size($m);
+  font-weight: bold;
+  color: $primary-color;
+  margin-bottom: 1rem;
+  flex-basis: 100%;
+}
+
+.related-projects__item {
+  flex-basis: auto;
+  margin-bottom: 1rem;
+
+  @include respond-above(small) {
+    flex-basis: calc((100% / 2) - 1rem);
+    margin-right: 1rem;
+    margin-bottom: 0;
+  };
+
+  @include respond-above(medium) {
+    flex-basis: calc((100% / 3) - 1rem);
+  };
+
+  @include respond-below(medium) {
+    &:last-child {
+      display: none;
+    }
+  };
+
+  &:hover {
+    .related-projects__name {
+      color: $primary-color;
+    }
+  }
+}
+
+.related-projects__image-container {
+  height: 0;
+  padding-bottom: 65%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.2s ease;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
+  }
+}
+
+.related-projects__image {
+
+}
+
+.related-projects__name {
+  @include font-family($ff-sans);
+  @include text-size($s);
+  display: inline;
+  font-weight: bold;
+  color: $text-color;
+  border-bottom: 1px solid $primary-color;
+  transition: all 0.2s ease;
+}

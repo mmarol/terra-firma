@@ -1,15 +1,3 @@
-{# ------------------------------------------------------- #}
-
-{# YOUR BASE TEMPLATE. EVERYTHING GETS LOADED INTO THIS PAGE. #}
-
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-
-{# ------------------------------------------------------- #}
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -23,8 +11,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %}{{ site_title|default('Webhook site') }}{% endblock %}</title>
-    <meta name="description" content="{% block description %}{{ site_description|default('Built with Webhook.') }}{% endblock %}">
+    <title>{% block title %}{{ site_title }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ site_description }}{% endblock %}">
     <meta name="viewport" content="width=device-width">
 
     <link rel="shortcut icon" href="/static/images/favicon.png">
@@ -32,11 +20,10 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css">
 
-    {# Put your CSS in here and we'll minify it into one file. No CDN scripts. More info: #}
-    {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|Playfair+Display:400,400i,700,700i" rel="stylesheet">
 
     <!-- build:css /static/css/minified.css -->
-    <link rel="stylesheet" href="/static/css/main.css"/>
+    <link rel="stylesheet" href="/static/css/site.css"/>
     <link rel="stylesheet" href="/static/css/wysiwyg_figures.css"/>
     <!-- endbuild -->
 
@@ -44,6 +31,7 @@
 
     {# Useful block for loading outside scripts in other pages. #}
     {% block head_extra %}{% endblock %}
+
   </head>
   <body {% block body_attributes %}{% endblock %}>
     {% block body %}
@@ -51,12 +39,15 @@
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
       <![endif]-->
 
-      {% block header %}
-        {% include "templates/partials/header.html" %}
-      {% endblock %}
+      <header class="page__header">
+        {% block header %}
+          {% include "templates/partials/header.html" %}
+        {% endblock %}
+      </header>
 
-      {# By default, your inner pages will load into this block. #}
-      {% block content %}{% endblock %}
+      <main class="page__main {% block mainClass %}{% endblock %}">
+        {% block content %}{% endblock %}
+      </main>
 
       {% block footer %}
         {% include "templates/partials/footer.html" %}
@@ -68,18 +59,21 @@
       {# http://www.webhook.com/docs/minify-your-js-and-css/ #}
 
       <!-- build:js /static/javascript/minified.js -->
-      <script src="/static/javascript/main.js"></script>
+      <script src="/static/javascript/site.js"></script>
       <!-- endbuild -->
 
       {% block scripts_extra %}{% endblock %}
 
-      {# Google Analytics code. Feel free to remove. #}
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118078058-1"></script>
       <script>
-        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src='//www.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s)}(document,'script'));
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-118078058-1');
       </script>
+
     {% endblock %}
   </body>
 </html>

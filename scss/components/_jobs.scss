@@ -1,0 +1,85 @@
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+
+  @include respond-above(medium) {
+    margin-top: 6rem;
+  };
+}
+
+.jobs__title {
+  flex-basis: 100%;
+  margin-bottom: 1rem;
+
+  @include respond-above(medium) {
+    margin-bottom: 3rem;
+  };
+}
+
+.jobs__list {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.jobs__item {
+  flex-basis: 100%;
+  @include font-family($ff-sans);
+
+  @include respond-above(medium) {
+    margin-right: 2rem;
+    flex-basis: calc(50% - 2rem);
+  };
+}
+
+.jobs__name {
+  @include text-size($m);
+  margin-bottom: 0.5rem;
+
+  span {
+    @include font-family($ff-serif);
+    font-style: italic;
+    font-weight: normal;
+    // @include text-size($s);
+    // text-transform: uppercase;
+
+  }
+}
+
+.jobs__description {
+  max-width: 30em;
+  margin-bottom: 1rem;
+
+  span {
+
+  }
+
+  a {
+    border-bottom: 1px solid $primary-color;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.jobs__button {
+  margin-top: 2rem;
+
+  a {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    transition: all 0.2s ease;
+    background-color: $primary-color;
+    color: $background-color;
+    @include font-family($ff-sans);
+    @include text-size($m);
+    font-weight: bold;
+
+    &:hover {
+      background-color: $text-color;
+    }
+  }
+}

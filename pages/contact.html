@@ -1,0 +1,65 @@
+{% extends "templates/partials/base.html" %}
+
+{% set contact = cms.contact %}
+
+{% block title %}{% parent %} - {{ contact.name }}{% endblock %}
+
+{% block mainClass %}padded{% endblock %}
+
+{% block content %}
+
+  {% if contact.locations %}
+    <section class="locations">
+      <h2 class="section__name locations__title">Our offices</h2>
+      {% for location in contact.locations %}
+        <div class="locations__item">
+          <div class="locations__text">
+            <h3 class="locations__name">{{ location.city }}</h3>
+            <div class="locations__info-container">
+            <div class="locations__info">
+              <a href="{{ location.google_map_link }}" target="_blank">
+                {{ location.address.street1 }}<br>
+                {{ location.address.street2 }}<br>
+                {{ location.address.city }}<br>
+                {{ location.address.state }} {{ location.address.zip }}
+              </a>
+            </div>
+            {% if location.email %}
+              <p class="locations__info"><a href="mailto:{{ location.email }}" target="_blank">{{ location.email }}</a></p>
+            {% endif %}
+              <p class="locations__info">
+              {% if location.phone_number_1 %}
+                <a href="tel:{{ location.phone_number_1 }}">{{ location.phone_number_1 }}</a>
+              {% endif %}
+              {% if location.phone_number_2 %}
+                <br><a href="tel:{{ location.phone_number_2 }}">{{ location.phone_number_2 }}</a>
+              {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  <section class="jobs">
+    <h2 class="section__name jobs__title">Work with us</h2>
+
+    <div class="jobs__list">
+      <div class="jobs__item">
+        <h3 class="jobs__name">{{ contact.general_inquiry_title }}</h3>
+        <div class="jobs__description">{{ contact.general_inquiry_description|safe }}</div>
+      </div>
+      <div class="jobs__item">
+        <h3 class="jobs__name">{{ contact.internship_title }}</h3>
+        <div class="jobs__description">{{ contact.internship_description|safe }}</div>
+      </div>
+      <div class="jobs__item">
+        <h3 class="jobs__name">{{ contact.artist_collaboration_title }}</h3>
+        <div class="jobs__description">{{ contact.artist_collaboration_description|safe }}</div>
+      </div>
+      <div class="jobs__button"><a href="mailto:info@terrafirma.in" target="_blank">Get in touch</a></div>
+    </div>
+  </section>
+
+{% endblock %}

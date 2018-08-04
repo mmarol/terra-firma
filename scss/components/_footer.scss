@@ -1,0 +1,113 @@
+.footer {
+  @include text-size($xs);
+  @include font-family($ff-sans);
+  margin-top: 3rem;
+  padding: 2rem;
+  border-top: 1px solid $primary-color;
+  background-color: $background-color;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+
+  @include respond-above(large) {
+    justify-content: space-between;
+  };
+}
+
+.footer__logo {
+  flex-basis: 75%;
+  margin-bottom: 2rem;
+
+  @include respond-above(large) {
+    flex-basis: calc(25% - 3rem);
+    margin-right: 3rem;
+  };
+
+  svg {
+    width: 100%;
+
+    @include respond-above(small) {
+      width: 35%;
+    };
+
+    @include respond-above(medium) {
+      width: 25%;
+    };
+
+    @include respond-above(large) {
+      width: 100%;
+      margin-bottom: 0;
+    };
+  }
+}
+
+.footer__contact {
+  flex-basis: 100%;
+  width: auto;
+  margin-bottom: 2rem;
+
+  @include respond-above(small) {
+    flex-basis: calc(50% - 2rem);
+    margin-right: 2rem;
+  };
+
+  @include respond-above(medium) {
+    flex-basis: calc(33% - 2rem);
+  };
+
+  @include respond-above(large) {
+    flex-basis: auto;
+    width: auto;
+    max-width: 25%;
+    margin-right: 3rem;
+  };
+}
+
+.footer__location {
+  margin-bottom: 0.5rem;
+  color: $primary-color;
+}
+
+.footer__contact-info {
+  margin-bottom: 0.5rem;
+
+  a {
+    border-bottom: 1px solid $primary-color;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-basis: 100%;
+
+  @include respond-above(large) {
+    justify-content: center;
+  };
+}
+
+.footer__social-item {
+  max-width: 2rem;
+  margin-right: 0.5rem;
+  flex-basis: 100%;
+  display: inline-block;
+
+  path, circle {
+    fill: $primary-color;
+    transition: fill 0.2s ease;
+  }
+
+  &:hover {
+    path, circle {
+      fill: $text-color;
+    }
+  }
+}

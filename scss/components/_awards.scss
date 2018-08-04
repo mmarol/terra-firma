@@ -1,0 +1,38 @@
+.awards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.awards__title {
+  flex-basis: 100%;
+}
+
+.awards__item {
+  flex-basis: calc(100% / 4);
+  margin-bottom: 2rem;
+  padding-right: 2rem;
+  box-sizing: border-box;
+}
+
+.awards__name {
+  @include font-family($ff-sans);
+  font-weight: bold;
+}
+
+.awards__year {
+  @include font-family($ff-sans);
+  font-weight: normal;
+}
+
+.awards__notes {
+  @include font-family($ff-serif);
+}
+
+.awards__project {
+  @include font-family($ff-serif);
+  font-style: italic;
+
+  a {
+    border-bottom: 1px solid $primary-color;
+  }
+}

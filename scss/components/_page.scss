@@ -1,0 +1,107 @@
+.page__header {
+
+}
+
+.page__main {
+  box-sizing: border-box;
+  // border: 1rem solid $primary-color;
+  // height: 100vh;
+  width: 100%;
+  // overflow: auto;
+
+  &.padded {
+    section {
+      &:first-child {
+        padding-top: 3rem;
+
+        @include respond-above(small) {
+          padding-top: 4rem;
+        };
+
+        @include respond-above(medium) {
+          padding-top: 5rem;
+        };
+
+        @include respond-above(large) {
+          padding-top: 6rem;
+        };
+      }
+    }
+  }
+}
+
+.page__hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+  // z-index: 2000;
+  margin: 0;
+
+  .page__logo {
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    margin: 2rem;
+    width: 20%;
+    height: auto;
+    z-index: 200;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    path {
+      fill: $primary-color;
+    }
+  }
+}
+
+.page__hero-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 300;
+  color: $primary-color;
+  font-size: 7rem;
+  line-height: 0.8;
+  letter-spacing: 0.03em;
+  @include font-family($ff-sans);
+  text-transform: uppercase;
+}
+
+.page__title {
+  @include text-size($l);
+  @include font-family($ff-sans);
+  margin-bottom: 1rem;
+}
+
+.page__description {
+  @include font-family($ff-sans);
+  // width: 40%;
+  position: relative;
+  margin-top: 3rem;
+
+  p {
+    margin-bottom: 0.5rem;
+    max-width: 30em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.section__name {
+  @include text-size($xl);
+  @include font-family($ff-serif);
+  font-weight: bold;
+  margin-top: -6rem;
+  padding-top: 6rem;
+  margin-bottom: 1rem;
+  // font-style: italic;
+  color: $primary-color;
+}

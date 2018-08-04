@@ -1,0 +1,129 @@
+//Basic Setup-------------------------------------------
+html {
+
+}
+
+body {
+  @include text-size($s);
+  @include font-family($ff-serif);
+  color: $text-color;
+  background-color: $background-color;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+
+}
+
+main {
+
+}
+
+footer {
+
+}
+
+section {
+  margin: 2rem;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+h6 {
+
+}
+
+p {
+
+
+  &:last-child {
+
+  }
+}
+
+p + p {
+
+}
+
+a {
+  display: inline;
+
+  &:hover {
+  }
+
+  p & {
+    display: inline;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+figcaption {
+
+  span {
+
+  }
+}
+
+blockquote {
+
+}
+
+cite {
+
+  &:before {
+    content: "— ";
+  }
+}
+
+ol {
+
+  li {
+
+  }
+}
+
+ul {
+
+
+  li {
+
+  }
+}
+
+div,
+img {
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+}
+
+//Extra Setup ---------------------------------------
