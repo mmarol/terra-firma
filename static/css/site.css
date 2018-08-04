@@ -913,7 +913,12 @@ iframe {
 }
 @media screen and (min-width: 1px) {
   .people__item.small {
-    width: calc(100% * 2 / 6 - 1rem);
+    width: calc(100% * 3 / 6 - 1rem);
+  }
+}
+@media screen and (min-width: 513px) {
+  .people__item.small {
+    width: calc(100% * 3 / 12 - 1rem);
   }
 }
 @media screen and (min-width: 769px) {

@@ -64,7 +64,11 @@
 
   &.small {
     @include respond-above(base) {
-  		width: calc(100% * 2 / 6 - 1rem);
+  		width: calc(100% * 3 / 6 - 1rem);
+  	};
+
+  	@include respond-above(small) {
+  		width: calc(100% * 3 / 12 - 1rem);
   	};
 
   	@include respond-above(medium) {

@@ -14,59 +14,48 @@
     {{ about.long_description|safe }}
   </section>
 
-  {% for personGroup in team|groupBy('level') %}
-    {% set imageSizeClass %}
+  {% for personGroup in about.team_groups %}
+    {# Set image sizes #}
+    {% if loop.key === 0 %}
+      {% set personGroup.imageSizeClass = 'large' %}
+      {% set personGroup.imageSize = '800' %}
+    {% elseif loop.key === 1 %}
+      {% set personGroup.imageSizeClass = 'medium' %}
+      {% set personGroup.imageSize = '600' %}
+    {% else %}
+      {% set personGroup.imageSizeClass = 'small' %}
+      {% set personGroup.imageSize = '300' %}
+    {% endif %}
+
+    {# Create DOM elements #}
     {% if loop.first %}
       <section class="people">
     {% endif %}
-    {% if loop.key === 'Principal' %}
-      {% set imageSizeClass = 'large' %}
-      <h2 class="people__subtitle">Founders & Principals</h2>
-    {% elseif loop.key === 'Associate' %}
-      {% set imageSizeClass = 'medium' %}
-      <h2 class="people__subtitle">Associates</h2>
-    {% elseif loop.key === 'Senior' %}
-      {% set imageSizeClass = 'small' %}
-      <h2 class="people__subtitle">Team</h2>
-    {% endif %}
-    {% for person in personGroup %}
-      {% if person.portrait %}
-        {% set portrait = person.portrait %}
-      {% else %}
-        {% set portrait = about.placeholder_image %}
-      {% endif %}
-      {% if person.is_current_employee !== false %}
-        {% if imageSizeClass === 'large' %}
-          <div class="people__item large">
-            <img src="{{ portrait|imageSize(800) }}" alt="" class="people__image">
-            <h3 class="people__name">{{ person.name }}</h3>
-              {# <h4 class="people__designations">{{ person.title }}</h4> #}
+      <h2 class="people__subtitle">{{ personGroup.group_title }}</h2>
+      {% for person in personGroup.people %}
+        {% if person.portrait %}
+          {% set portrait = person.portrait %}
+        {% else %}
+          {% set portrait = about.placeholder_image %}
+        {% endif %}
+        <div class="people__item {{ personGroup.imageSizeClass }}">
+          <img src="{{ portrait|imageSize(personGroup.imageSize) }}" alt="" class="people__image">
+          <h3 class="people__name">{{ person.name }}</h3>
+            {% if personGroup.imageSizeClass === 'large' %}
               <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
               <p class="people__info"><a href="tel:{{ person.phone_number }}">{{ person.phone_number }}</a></p>
-          </div>
-        {% elseif imageSizeClass === 'medium' %}
-          <div class="people__item medium">
-            <img src="{{ portrait|imageSize(600) }}" alt="" class="people__image">
-            <h3 class="people__name">{{ person.name }}</h3>
-            {# <h4 class="people__designations">{{ person.title }}</h4> #}
-            <p class="people__info"><a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
-          </div>
-        {% else %}
-          <div class="people__item small">
-            <img src="{{ portrait|imageSize(300) }}" alt="" class="people__image">
-            <h3 class="people__name">{{ person.name }}</h3>
-            <h4 class="people__designations">{{ person.title }}</h4>
-          </div>
-        {% endif %}
-      {% endif %}
-    {% endfor %}
+            {% endif %}
+            {% if personGroup.imageSizeClass === 'medium' || personGroup.imageSizeClass === 'small' %}
+              <h4 class="people__designations">{{ person.title }}</h4>
+            {% endif %}
+        </div>
+      {% endfor %}
     {% if loop.last %}
       </section>
     {% endif %}
   {% endfor %}
 
-
-  {% if about.awards.show_award_list === true %}
+  {# {% if about.awards.show_award_list === true %}
     <section class="awards">
       <h2 class="awards__title section__name">Awards and Recognition</h2>
       {% for award in about.awards %}
@@ -78,6 +67,6 @@
         </div>
       {% endfor %}
     </section>
-  {% endif %}
+  {% endif %} #}
 
 {% endblock %}
